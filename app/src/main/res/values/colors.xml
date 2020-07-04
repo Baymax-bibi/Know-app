@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#fdfdfd</color>
+    <color name="colorPrimary">#E8E8E8</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="light_blue">#134563</color>
+    <color name="light_primary">#00B4B2B2</color>
+    <color name="transparent_bg">#45B4B2B2</color>
+    <color name="light_black">#74353535</color>
+    <color name="light_nav">#1baec3</color>
+    <color name="light_nav_center">#2DB5C8</color>
+    <color name="light_nav_end">#009db8</color>
+    <color name="login_bg">#FF8936</color>
+    <color name="notification">#E65A55</color>
+
+    <color name="text_color_black">#02363b</color>
+    <color name="text_color">#a302363b</color>
+    <color name="white_text_color">#CEE9EE</color>
+
+    <color name="transfer">#00000000</color>
+
+    <color name="transfer_color">#00ffffff</color>
+    <color name="text_fire">#6A2C00</color>
+
+    <color name="fire_color">#FF7A1B</color>
+    <color name="fire_color_trans">#40FF7A1B</color>
+    <color name="bg_assistance">#F5F5F5</color>
+
+    <color name="txt_dark">#02363b</color>
+
+<!--    loading page-->
+
+    <color name="circle_color">#89aeb6</color>
+    <color name="login_sm_bg">#0790a5</color>
+    <color name="txt_color_white">#ffffff</color>
+    <color name="pink_trans">#d9d0cf</color>
+    <color name="fire_trans">#ff7a1b</color>
+    <color name="nav_icon">#CEF9FF</color>
+
+    <color name="txt_home_black">#02363b</color>
+    <color name="txt_home_gray">#a302363b</color>
+
+
+    <color name="txt_index_gray">#a9a9a9</color>
+</resources>

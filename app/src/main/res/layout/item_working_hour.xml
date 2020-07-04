@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv__title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Sun"
+        android:textSize="10.8sp"
+        android:layout_marginTop="11.3dp"
+        android:textColor="#797979"/>
+    <TextView
+        android:id="@+id/tv__con"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10 AM - 5 PM"
+        android:layout_marginLeft="31.6dp"
+        android:textSize="10.8sp"
+        android:layout_alignTop="@id/tv__title"
+        android:fontFamily="@font/roboto"
+        android:textColor="#797979"/>
+</RelativeLayout>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <TextView
+        android:id="@+id/tv_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CARITAS ASSOCIATION"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textColor="#ff7a1b"
+        android:textSize="11.9sp"
+        android:fontFamily="@font/roboto"/>
+    <ImageView
+        android:id="@+id/img_top_under"
+        android:layout_width="wrap_content"
+        android:layout_height="1.5dp"
+        android:layout_alignStart="@id/tv_top"
+        android:layout_alignEnd="@id/tv_top"
+        android:background="#ff7a1b"
+        android:layout_below="@id/tv_top"
+        android:layout_marginTop="6.5dp"/>
+
+    <!--    <FrameLayout-->
+    <!--        android:id="@+id/fl_search_content"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_below="@id/img_top_under"-->
+    <!--        android:layout_marginTop="23.3dp"-->
+    <!--        android:background="#ffffff">-->
+
+    <View
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/padding_margin_30"
+        android:background="@drawable/roundbg_directory"
+        android:layout_below="@id/img_top_under"
+        android:layout_marginTop="23.3dp"/>
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_top_under"
+        android:layout_alignTop="@id/shadow"
+        android:layout_marginTop="16.3dp">
+        <ImageView
+            android:id="@+id/img_tel"
+            android:layout_width="21.8dp"
+            android:layout_height="21.8dp"
+            android:layout_toLeftOf="@id/img_loc"
+            android:layout_marginRight="32.5dp"
+            android:src="@drawable/ic_dir_tel"/>
+
+        <ImageView
+            android:id="@+id/img_loc"
+            android:layout_width="21.8dp"
+            android:layout_height="21.8dp"
+            android:layout_toLeftOf="@id/icon_center"
+            android:layout_marginRight="16.4dp"
+            android:src="@drawable/ic_dir_local"/>
+        <View
+            android:id="@+id/icon_center"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/img_saved"
+            android:layout_width="21.8dp"
+            android:layout_height="21.8dp"
+            android:layout_toRightOf="@id/icon_center"
+            android:layout_marginLeft="16.4dp"
+            android:src="@drawable/ic_dir_saved"/>
+
+        <ImageView
+            android:id="@+id/img_up"
+            android:layout_width="21.8dp"
+            android:layout_height="21.8dp"
+            android:layout_toRightOf="@id/img_saved"
+            android:layout_marginLeft="32.5dp"
+            android:src="@drawable/ic_dir_up"/>
+    </RelativeLayout>
+    <!--    </FrameLayout>-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_top"
+        android:layout_marginTop="15.5dp"
+        android:layout_marginLeft="20.3dp"
+        android:layout_marginRight="21dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:id="@+id/view_1"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#797979"/>
+            <TextView
+                android:id="@+id/tv_number_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/OPENINGHOUR"
+                android:fontFamily="@font/roboto"
+                android:textColor="#1baec3"
+                android:textSize="14sp"
+                android:layout_marginTop="20.8dp"/>
+            <TextView
+                android:id="@+id/tv_sun_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Sun"
+                android:textSize="10.8sp"
+                android:layout_below="@id/tv_number_title"
+                android:layout_marginTop="11.3dp"
+                android:textColor="#797979"/>
+            <TextView
+                android:id="@+id/tv_sun_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 AM - 5 PM"
+                android:layout_marginLeft="31.6dp"
+                android:textSize="10.8sp"
+                android:layout_alignTop="@id/tv_sun_title"
+                android:fontFamily="@font/roboto"
+                android:textColor="#797979"/>
+
+            <TextView
+                android:id="@+id/tv_mon_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mon"
+                android:textSize="10.8sp"
+                android:layout_below="@id/tv_sun_title"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginTop="11.3dp"
+                android:textColor="#797979"/>
+
+            <TextView
+                android:id="@+id/tv_mon_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="31.6dp"
+                android:text="10 AM - 5 PM"
+                android:layout_alignTop="@id/tv_mon_title"
+                android:textSize="10.8sp"
+                android:fontFamily="@font/roboto"/>
+
+
+            <TextView
+                android:id="@+id/tv_tue_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tue"
+                android:textSize="10.8sp"
+                android:layout_below="@id/tv_mon_title"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginTop="11.3dp"
+                android:textColor="#797979"/>
+
+            <TextView
+                android:id="@+id/tv_tue_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="31.6dp"
+                android:text="10 AM - 5 PM"
+                android:layout_alignTop="@id/tv_tue_title"
+                android:textSize="10.8sp"
+                android:fontFamily="@font/roboto"/>
+                android:textColor="#797979"/>
+
+
+            <TextView
+                android:id="@+id/tv_wed_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wed"
+                android:textSize="10.8sp"
+                android:layout_below="@id/tv_tue_title"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginTop="11.3dp"
+                android:textColor="#797979"
+                tools:ignore="DuplicateIds" />
+
+            <TextView
+                android:id="@+id/tv_wed_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="31.6dp"
+                android:text="10 AM - 5 PM"
+                android:layout_alignTop="@id/tv_wed_title"
+                android:textSize="10.8sp"
+                android:fontFamily="@font/roboto"/>
+                android:textColor="#797979"/>
+
+
+
+            <TextView
+                android:id="@+id/tv_thu_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thu"
+                android:textSize="10.8sp"
+                android:layout_below="@id/tv_wed_title"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginTop="11.3dp"
+                android:textColor="#797979"
+                tools:ignore="DuplicateIds" />
+
+            <TextView
+                android:id="@+id/tv_thu_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="31.6dp"
+                android:text="10 AM - 5 PM"
+                android:layout_alignTop="@id/tv_thu_title"
+                android:textSize="10.8sp"
+                android:fontFamily="@font/roboto"/>
+                android:textColor="#797979"/>
+
+
+            <TextView
+                android:id="@+id/tv_fri_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fri"
+                android:textSize="10.8sp"
+                android:layout_below="@id/tv_thu_title"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginTop="11.3dp"
+                android:textColor="#797979"
+                tools:ignore="DuplicateIds" />
+
+            <TextView
+                android:id="@+id/tv_fri_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="31.6dp"
+                android:text="Closed"
+                android:layout_alignTop="@id/tv_fri_title"
+                android:textSize="10.8sp"
+                android:fontFamily="@font/roboto"/>
+                android:textColor="#797979"/>
+
+            <TextView
+                android:id="@+id/tv_sat_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sat"
+                android:textSize="10.8sp"
+                android:layout_below="@id/tv_fri_title"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginTop="11.3dp"
+                android:textColor="#797979"
+                tools:ignore="DuplicateIds" />
+
+            <TextView
+                android:id="@+id/tv_sat_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="31.6dp"
+                android:text="Closed"
+                android:layout_alignTop="@id/tv_sat_title"
+                android:textSize="10.8sp"
+                android:fontFamily="@font/roboto"/>
+            android:textColor="#797979"/>
+            <View
+                android:id="@+id/view_5"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/tv_sat_title"
+                android:layout_marginTop="25.3dp"
+                android:background="#797979"/>
+
+
+            <TextView
+                android:id="@+id/tv_helth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#Health"
+                android:fontFamily="@font/roboto"
+                android:layout_below="@id/view_5"
+                android:textColor="#1baec3"
+                android:textSize="11sp"
+                android:layout_marginTop="36.5dp"/>
+
+            <TextView
+                android:id="@+id/tv_registeration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_helth"
+                android:layout_marginLeft="5dp"
+                android:text="#Registration"
+                android:fontFamily="@font/roboto"
+                android:layout_below="@id/view_5"
+                android:textColor="#1baec3"
+                android:textSize="11sp"
+                android:layout_marginTop="36.5dp"/>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

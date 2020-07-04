@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sign_bg"
+    android:layout_marginBottom="10dp">
+
+    <RelativeLayout
+        android:id="@+id/rl_media"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/rl_video"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:foreground="@drawable/img_radius_white"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/padding_margin_8">
+                <com.flipkart.youtubeview.YouTubePlayerView
+                    android:id="@+id/video_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    />
+                <ImageView
+                    android:id="@+id/img_search_sub"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_dir_saved"
+                    android:visibility="gone"/>
+            <RelativeLayout
+                android:id="@+id/rl_vimeo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone">
+
+                <WebView
+                    android:id="@+id/vv_vimeo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+                <ImageView
+                    android:id="@+id/img_vimeo_start"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/ic_media_start"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_media"
+        android:layout_marginLeft="13.8dp"
+        android:layout_marginRight="26.8dp"
+        android:layout_marginTop="3dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:layout_marginBottom="10.3dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="center_vertical"
+        android:text="LorLorem ipsum dolor sit amet, consecteur adipiscinLorem ipsum dolor sit amet, consecteur adipiscinLorem ipsum dolor sit amet, consecteur adipiscinem ipsum dolor sit amet, consecteur adipiscing elit. Fusce erat tortor, lacinia fringilla..."
+        android:textSize="10.8sp" />
+
+</RelativeLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:layout_marginLeft="21dp"
+    android:layout_marginBottom="19dp"
+    android:layout_marginRight="27dp"
+    android:orientation="horizontal"
+    android:id="@+id/rl_item_contact">
+
+    <View
+        android:id="@+id/v_1"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a9a9a9"/>
+    <TextView
+        android:id="@+id/tv_alphabet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:textSize="14sp"
+        android:layout_marginTop="21.3dp"
+        android:textColor="#1baec3"
+        tools:text="Alphabet text"/>
+    <TextView
+        android:id="@+id/tv_servicename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+2012840585"
+        android:textColor="#797979"
+        android:layout_below="@id/tv_alphabet"
+        android:textSize="10.8sp"
+        android:layout_marginTop="11.3dp"/>
+    <TextView
+        android:id="@+id/tv_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10.8sp"
+        android:textColor="#797979"
+        android:layout_below="@id/tv_servicename"
+        android:text="1 address street, district"
+        android:layout_marginTop="3dp"/>
+
+</RelativeLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sign_bg"
+    android:layout_marginBottom="15.3dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/img_home_assistance"
+        android:layout_width="match_parent"
+        android:layout_height="123dp"
+        app:riv_corner_radius="@dimen/padding_margin_15"
+        android:layout_marginTop="6.8dp"
+        android:layout_marginLeft="7.3dp"
+        android:layout_marginRight="7.5dp"
+        android:src="@drawable/migrate"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_home_assistance"
+        android:layout_marginTop="13dp"
+        android:layout_marginStart="13.8dp"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:fontFamily="@font/roboto"
+        android:gravity="center_vertical"
+        android:textColor="#797979"
+        android:text="Am I eligible for a cash grant?"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_marginStart="@dimen/padding_margin_14"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="7dp"
+        android:fontFamily="@font/roboto"
+        android:gravity="center_vertical"
+        android:text="Lorem ipsum dolor sit amet, consecteur adipiscing elit. Fusce erat tortor, lacinia fringilla..."
+        android:textSize="10.8sp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="12.8dp"
+        android:layout_marginEnd="13dp"
+        android:layout_below="@id/tv_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/one_sysmbol"
+            android:layout_width="21.8dp"
+            android:layout_height="21.8dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/sub_assistance"/>
+
+        <TextView
+            android:id="@+id/tv_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/one_sysmbol"
+            android:layout_toRightOf="@id/one_sysmbol"
+            android:fontFamily="@font/roboto"
+            android:layout_marginLeft="4.5dp"
+            android:text="Assistance"
+            android:textColor="@color/login_bg"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/img_end"
+            android:layout_toLeftOf="@id/img_end"
+            android:fontFamily="@font/roboto"
+            android:layout_marginRight="4.5dp"
+            android:text="Registeration"
+            android:textColor="@color/login_bg"
+            android:textSize="10sp" />
+        <ImageView
+            android:id="@+id/img_end"
+            android:layout_width="21.8dp"
+            android:layout_height="21.8dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/up"
+            android:tint="@color/login_bg"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+</RelativeLayout>

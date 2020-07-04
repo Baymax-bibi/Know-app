@@ -1,0 +1,3 @@
+rootProject.name='RefKnowledgebase'
+
+include ':app', ':inline-youtube-view', ':paginatedrecyclerview'

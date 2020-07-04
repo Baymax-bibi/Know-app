@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <FrameLayout
+        android:id="@+id/contact_container"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/white_square">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/padding_margin_30"
+                android:background="@drawable/roundbg_directory"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fast_scroller_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/padding_margin_20"
+                android:layout_toLeftOf="@id/rv_index"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="@dimen/padding_margin_30"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_index"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/padding_margin_20"
+                android:layout_marginRight="23.5dp"
+                android:layout_marginBottom="@dimen/padding_margin_30"/>
+
+            <!--            <in.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView-->
+            <!--                android:id="@+id/fast_scroller_recycler"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:layout_marginTop="@dimen/padding_margin_20"-->
+            <!--                android:layout_marginRight="23.5dp"-->
+            <!--                android:layout_marginBottom="@dimen/padding_margin_30"-->
+            <!--                />-->
+
+        </RelativeLayout>
+    </FrameLayout>
+</RelativeLayout>

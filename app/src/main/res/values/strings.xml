@@ -1,0 +1,154 @@
+<resources>
+    <string name="app_name">RefKnowledgebase</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="player_error">Error initializing YouTube player: %s</string>
+    <!--menu string-->
+    <string name="spinner_country">Country</string>
+    <string name="spinner_country_ar">بلد</string>
+    <string name="spinner_language">Language</string>
+    <string name="spinner_language_ar">لغة</string>
+    <string name="mode">Dark/Light mode</string>
+    <string name="notification">Push notification</string>
+    <string name="location">Access location</string>
+
+
+    <string name="submit_question">Submit a question</string>
+    <string name="help">How to use the app</string>
+    <string name="setting">Settings</string>
+    <string name="about">About</string>
+    <string name="legal">Legal</string>
+    <string name="log_in_out">Log in/out</string>
+    <!--end menu string-->
+    <string name="dashboard">Dashboard</string>
+    <string name="load">Loading...</string>
+
+
+    <string name="sign_facebook">Continue with Facebook</string>
+    <string name="sign_google">Continue with Google</string>
+
+    <string name="hello">Hello,</string>
+    <string name="hello_content">Please choose \nyour country \nand language.</string>
+
+    <!--    login in method-->
+    <string name="google_login">Continue\nwith\nGoogle</string>
+    <string name="facebook_login">Continue\nwith\nFacebook</string>
+    <string name="without_signup">Continue\nwithout\nLog in</string>
+
+    <!--    login-->
+
+    <string name="continue_as">Continue as John Doe</string>
+    <string name="search_hint">How can we help you?</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    assistance detail-->
+
+    <string name="assistance_detail">Over the past decade, the global population of
+        forcibly displaced people grew substantially from
+        43.3 million in 2009 to 70.8 million in 2018, reaching
+        a record high [Figure 1].
+        6 Most of this increase was
+        between 2012 and 2015, driven mainly by the Syrian
+        conflict. But conflicts in other areas also contributed
+        to this rise, including in the Middle East such as in
+        Iraq and Yemen, parts of sub-Saharan Africa such as
+        the Democratic Republic of the Congo (DRC) and
+        South Sudan, as well as the massive flow of
+        Rohingya refugees to Bangladesh at the end of 2017</string>
+    <string name="account">ACCOUNT</string>
+    <string name="darkmode">  Dark  Mode</string>
+    <string name="general">GENERAL</string>
+    <string name="map">MAP</string>
+    <string name="list">LIST</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="website">Website</string>
+    <string name="address">Address</string>
+    <string name="save_contact">+ Save contact</string>
+    <string name="legal_title_one">What is Lorem Ipsum?</string>
+    <string name="lorem_ipsum">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="com">www.unhcr.org</string>
+    <string name="help_1">Lorem ipsum dolor sit amet.</string>
+    <string name="home">Home</string>
+    <string name="direcotry">Directory</string>
+    <string name="saved">Saved</string>
+    <string name="media">Media</string>
+    <string name="noti">Notifications</string>
+    <string name="submit">Submit</string>
+    <string name="add_contact">+ Add contact</string>
+    <string name="grant_cash">Grant | Cash | Grant</string>
+    <string name="near">Show results near you</string>
+    <string name="close">Close</string>
+    <string name="loading">LOADING...</string>
+    <string name="loading_ar">جار التحميل...</string>
+
+<!--google key-->
+    <string name="google_maps_key">AIzaSyBaMjRv_vstNebbrGsQoTbnlTtx6uRxSZA</string>
+    <string name="login_login">Log In</string>
+    <string name="login_login_ar">تسجيل الدخول</string>
+    <string name="switch_account">Switch Account</string>
+    <string name="or">or</string>
+    <string name="signup_facebook">Login with Facebook</string>
+    <string name="signup_without_registration">Continue without registration</string>
+    <string name="tab">\u0009\u0009\u0009\u0009</string>
+    <string name="dash_refknowledge">KNOWLEDGEBASE</string>
+    <string name="dash_directory">Directory</string>
+    <string name="dash_saved">Saved data</string>
+    <string name="dash_media">Media</string>
+    <string name="dash_notification">Notification</string>
+    <string name="exit">Press back again to exit</string>
+    <string name="spinner_radius"> km radius</string>
+    <string name="directory_list_title">LIST</string>
+    <string name="dirctory_map_title">MAP</string>
+    <string name="home_assistance">Assistance</string>
+    <string name="home_education">Education</string>
+    <string name="home_health">Health</string>
+    <string name="home_legal">Legal</string>
+    <string name="select_country">Select Country</string>
+    <string name="select_radius">Select Radius</string>
+    <string name="btn_save">Save</string>
+    <string name="hint_question">Write your question here...</string>
+    <string name="SYRIA">Syria</string>
+    <string name="LIBYA">Libya</string>
+    <string name="EGYPT">Egypt</string>
+    <string name="SOMALIA">Somalia</string>
+    <string name="TUNISIA">Tunisia</string>
+    <string name="IRAQ">Iraq</string>
+    <string name="SYRIAN">Syrian</string>
+    <string name="LIBYAN">Ribyan</string>
+    <string name="EGYPTIAN">Egyptian</string>
+    <string name="SOMALI">Somali</string>
+    <string name="TUNISIAN">Tunisian</string>
+    <string name="signup_google">Login with Google</string>
+
+    <string name="cd_item_delete_button">Delete item</string>
+    <string name="ts">Terms and Conditions</string>
+    <string name="pref">PREFERENCES</string>
+    <string name="ts_and"><![CDATA[Terms & Conditions]]></string>
+    <string name="search">Search</string>
+    <string name="NUMBER">Number</string>
+    <string name="EMAIL">Email</string>
+    <string name="LANDMARK">Landmark</string>
+    <string name="NEARESTMETRO">Nearest metro</string>
+    <string name="PLUSCODE">Plus code</string>
+    <string name="OPENINGHOUR">Opening hours</string>
+
+
+    <string name="error_network_check">Please Check data network Connection</string>
+    <string name="loading_data">Loading data...</string>
+
+<!--    FB-->
+    <string name="facebook_app_id">2957892500993795</string>
+    <string name="fb_login_protocol_scheme">fb2957892500993795</string>
+    <string name="cancel_login">User cancel the login.</string>
+    <string name="error_login">Some error occure during the FB login.</string>
+    <string name="back4app_app_id">PASTE_YOUR_APPLICATION_ID_HERE</string>
+    <string name="back4app_client_key">PASTE_YOUR_CLIENT_KEY_HERE</string>
+</resources>

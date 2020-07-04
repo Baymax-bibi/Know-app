@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/rl_search_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/padding_margin_30"-->
+<!--        android:layout_marginLeft="21.8dp"-->
+<!--        android:layout_marginRight="21.8dp"-->
+<!--        android:layout_toRightOf="@id/group_button"-->
+<!--        android:background="@drawable/bg_searchview"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:visibility="visible">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/img_search_icon"-->
+<!--            android:layout_width="@dimen/padding_margin_18"-->
+<!--            android:layout_height="@dimen/padding_margin_18"-->
+<!--            android:layout_alignParentLeft="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginLeft="11.8dp"-->
+<!--            android:layout_marginTop="8.8dp"-->
+<!--            android:layout_marginBottom="8.3dp"-->
+<!--            android:src="@drawable/search" />-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/et_search_text"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginLeft="@dimen/padding_margin_10"-->
+<!--            android:layout_toRightOf="@id/img_search_icon"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:textSize="@dimen/padding_margin_12"-->
+<!--            android:textColor="@color/text_color_black"-->
+<!--            android:textStyle="italic"-->
+<!--            android:textColorHint="@color/light_nav" />-->
+
+<!--    </RelativeLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="24.5dp"
+        android:gravity="center_vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/rl_faq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/img_search_point_1"
+                android:layout_marginRight="@dimen/padding_margin_10">
+                <TextView
+                    android:id="@+id/tv_search_faq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/login_bg"
+                    android:textSize="11.9sp"
+                    android:text="FAQ"/>
+
+                <ImageView
+                    android:id="@+id/faq_under"
+                    android:layout_width="21.5dp"
+                    android:layout_height="1.5dp"
+                    android:layout_below="@id/tv_search_faq"
+                    android:layout_alignStart="@id/tv_search_faq"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/fire_color"/>
+            </RelativeLayout>
+            <ImageView
+                android:id="@+id/img_search_point_1"
+                android:layout_marginTop="4dp"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:layout_toLeftOf="@id/rl_media"
+                android:src="@drawable/ic_point"
+                android:tint="@color/light_nav"
+                />
+            <RelativeLayout
+                android:id="@+id/rl_media"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10">
+                <TextView
+                    android:id="@+id/tv_search_media"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_nav"
+                    android:textSize="11.9sp"
+                    android:text="MEDIA"/>
+
+                <ImageView
+                    android:id="@+id/media_under"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1.5dp"
+                    android:layout_below="@id/tv_search_media"
+                    android:layout_alignStart="@id/tv_search_media"
+                    android:layout_alignEnd="@id/tv_search_media"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/fire_color"
+                    android:visibility="invisible"/>
+            </RelativeLayout>
+            <ImageView
+                android:id="@+id/img_search_point_2"
+                android:layout_toRightOf="@id/rl_media"
+                android:layout_marginTop="4dp"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:src="@drawable/ic_point"
+                android:tint="@color/light_nav"
+                />
+            <RelativeLayout
+                android:id="@+id/rl_dir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img_search_point_2"
+                android:layout_marginLeft="@dimen/padding_margin_10">
+                <TextView
+                    android:id="@+id/tv_search_directory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_nav"
+                    android:textSize="11.9sp"
+                    android:text="DIRECTORY"/>
+
+
+                <ImageView
+                    android:id="@+id/dir_under"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1.5dp"
+                    android:layout_below="@id/tv_search_directory"
+                    android:layout_alignStart="@id/tv_search_directory"
+                    android:layout_alignEnd="@id/tv_search_directory"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/fire_color"
+                    android:visibility="invisible"/>
+            </RelativeLayout>
+
+
+
+
+
+        </RelativeLayout>
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/fl_search_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/padding_margin_20"
+        android:background="@color/white">
+
+
+    </FrameLayout>
+<!--    <FrameLayout-->
+<!--        android:id="@+id/fl_search_content"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_marginTop="@dimen/padding_margin_20"-->
+<!--        android:background="@drawable/home_bg"/>-->
+</LinearLayout>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ly_top"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_directory_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/padding_margin_10"
+                android:textColor="@color/login_bg"
+                android:layout_toLeftOf="@+id/img_point"
+                android:fontFamily="@font/roboto"
+                android:textSize="11.9sp"
+                android:text="@string/directory_list_title"/>
+
+            <ImageView
+                android:id="@+id/img_list_under"
+                android:layout_width="22.3dp"
+                android:layout_height="1.5dp"
+                android:background="@color/fire_color"
+                android:layout_below="@id/tv_directory_list"
+                android:layout_alignStart="@id/tv_directory_list"
+                android:layout_marginTop="6.3dp"/>
+            <ImageView
+                android:id="@+id/img_point"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="6dp"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:src="@drawable/ic_point"
+                android:tint="@color/light_nav"
+                />
+            <TextView
+                android:id="@+id/tv_directory_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_toRightOf="@+id/img_point"
+                android:textColor="@color/light_nav"
+                android:fontFamily="@font/roboto"
+                android:textSize="11.9sp"
+                android:text="@string/dirctory_map_title"/>
+            <ImageView
+                android:id="@+id/img_map_under"
+                android:layout_width="22.3dp"
+                android:layout_height="1.5dp"
+                android:background="@color/fire_color"
+                android:layout_below="@id/tv_directory_map"
+                android:layout_alignStart="@id/tv_directory_map"
+                android:layout_marginTop="6.3dp"
+                android:visibility="gone"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+    <FrameLayout
+        android:id="@+id/fl_directory_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ly_top"
+        android:background="@color/transfer">
+    </FrameLayout>
+
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/rl_top"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/ly_top"-->
+<!--        android:background="@drawable/bg_radius_gray" >-->
+<!--        <ImageView-->
+<!--            android:id="@+id/img_toggle"-->
+<!--            android:layout_width="@dimen/padding_margin_12"-->
+<!--            android:layout_height="@dimen/padding_margin_12"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:src="@drawable/icon_toggle"-->
+<!--            android:tint="@color/text_color_black"-->
+<!--            android:scaleType="fitXY" />-->
+<!--        <TextView-->
+<!--            android:id="@+id/tv_search_directory_near"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_toRightOf="@id/img_toggle"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginLeft="@dimen/padding_margin_5"-->
+<!--            android:text="@string/near"-->
+<!--            android:textSize="@dimen/padding_margin_12"-->
+<!--            android:textColor="@color/text_color_black"/>-->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ly_map_radius"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginLeft="@dimen/padding_margin_10"-->
+<!--            android:layout_toRightOf="@id/tv_search_directory_near"-->
+<!--            android:background="@drawable/bg_radius_black_line"-->
+<!--            android:paddingTop="@dimen/padding_margin_5"-->
+<!--            android:paddingBottom="@dimen/padding_margin_5"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginStart="@dimen/padding_margin_10"-->
+<!--            android:layout_toEndOf="@id/tv_search_directory_near">-->
+<!--            <ImageView-->
+<!--                android:layout_width="@dimen/padding_margin_5"-->
+<!--                android:layout_height="@dimen/padding_margin_5"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:src="@drawable/down_arrow"-->
+<!--                android:tint="@color/text_color_black"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_map_radius"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="@dimen/padding_margin_5"-->
+<!--                android:text="- km radius"-->
+<!--                android:textSize="@dimen/padding_margin_12"-->
+<!--                android:textColor="@color/text_color_black"/>-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ly_map_country"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginLeft="@dimen/padding_margin_10"-->
+<!--            android:layout_toRightOf="@id/ly_map_radius"-->
+<!--            android:background="@drawable/bg_radius_black_line"-->
+<!--            android:paddingTop="@dimen/padding_margin_5"-->
+<!--            android:paddingBottom="@dimen/padding_margin_5"-->
+<!--            android:orientation="horizontal">-->
+<!--            <ImageView-->
+<!--                android:layout_width="@dimen/padding_margin_5"-->
+<!--                android:layout_height="@dimen/padding_margin_5"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:src="@drawable/down_arrow"-->
+<!--                android:tint="@color/text_color_black"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_map_country"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="@dimen/padding_margin_5"-->
+<!--                android:text="@string/country"-->
+<!--                android:textSize="@dimen/padding_margin_12"-->
+<!--                android:textColor="@color/text_color_black"/>-->
+<!--        </LinearLayout>-->
+<!--    </RelativeLayout>-->
+</RelativeLayout>

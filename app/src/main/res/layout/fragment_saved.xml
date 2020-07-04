@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="24.5dp"
+        android:gravity="center_vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/tv_saved_article"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:textColor="@color/login_bg"
+                android:layout_toLeftOf="@+id/img_search_point_1"
+                android:textSize="11.9sp"
+                android:text="ARTICLES"/>
+
+            <ImageView
+                android:id="@+id/article_under"
+                android:layout_width="wrap_content"
+                android:layout_height="1.5dp"
+                android:layout_below="@id/tv_saved_article"
+                android:layout_alignStart="@id/tv_saved_article"
+                android:layout_alignEnd="@id/tv_saved_article"
+                android:layout_marginTop="5dp"
+                android:background="@color/fire_color"/>
+
+            <ImageView
+                android:id="@+id/img_search_point_1"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:layout_toLeftOf="@id/tv_saved_media"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/ic_point"
+                android:tint="@color/light_nav"
+                />
+            <TextView
+                android:id="@+id/tv_saved_media"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:layout_toLeftOf="@id/img_search_point_2"
+                android:textColor="@color/light_nav"
+                android:textSize="11.9sp"
+                android:text="MEDIA"/>
+
+            <ImageView
+                android:id="@+id/media_under"
+                android:layout_width="wrap_content"
+                android:layout_height="1.5dp"
+                android:layout_below="@id/tv_saved_media"
+                android:layout_alignStart="@id/tv_saved_media"
+                android:layout_alignEnd="@id/tv_saved_media"
+                android:layout_marginTop="5dp"
+                android:background="@color/fire_color"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/img_search_point_2"
+                android:layout_marginTop="4dp"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:src="@drawable/ic_point"
+                android:tint="@color/light_nav"
+                />
+            <TextView
+                android:id="@+id/tv_saved_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_toRightOf="@+id/img_search_point_2"
+                android:textColor="@color/light_nav"
+                android:textSize="11.9sp"
+                android:text="DIRECTORY"/>
+
+
+            <ImageView
+                android:id="@+id/contact_under"
+                android:layout_width="wrap_content"
+                android:layout_height="1.5dp"
+                android:layout_below="@id/tv_saved_contact"
+                android:layout_alignStart="@id/tv_saved_contact"
+                android:layout_alignEnd="@id/tv_saved_contact"
+                android:layout_marginTop="5dp"
+                android:background="@color/fire_color"
+                android:visibility="gone"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/fl_saved"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/padding_margin_20"
+        android:background="@color/white">
+
+
+    </FrameLayout>
+</LinearLayout>

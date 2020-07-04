@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#ffffff">
+<RelativeLayout
+    android:id="@+id/rl_contact_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CARITAS ASSOCIATION"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff7a1b"
+        android:textSize="11.9sp"
+        android:fontFamily="@font/roboto"/>
+    <ImageView
+        android:id="@+id/img_top_under"
+        android:layout_width="wrap_content"
+        android:layout_height="1.5dp"
+        android:layout_alignStart="@id/tv_top"
+        android:layout_alignEnd="@id/tv_top"
+        android:background="#ff7a1b"
+        android:layout_below="@id/tv_top"
+        android:layout_marginTop="6.5dp"/>
+
+    <!--    <FrameLayout-->
+    <!--        android:id="@+id/fl_search_content"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_below="@id/img_top_under"-->
+    <!--        android:layout_marginTop="23.3dp"-->
+    <!--        android:background="#ffffff">-->
+
+    <View
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/padding_margin_30"
+        android:background="@drawable/roundbg_directory"
+        android:layout_below="@id/img_top_under"
+        android:layout_marginTop="23.3dp"/>
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_top_under"
+        android:layout_alignTop="@id/shadow"
+        android:layout_marginTop="16.3dp">
+        <ImageView
+            android:id="@+id/img_tel"
+            android:layout_width="21.8dp"
+            android:layout_height="21.8dp"
+            android:layout_toLeftOf="@id/img_loc"
+            android:layout_marginRight="32.5dp"
+            android:src="@drawable/ic_dir_tel"/>
+
+        <ImageView
+            android:id="@+id/img_loc"
+            android:layout_width="21.8dp"
+            android:layout_height="21.8dp"
+            android:layout_toLeftOf="@id/icon_center"
+            android:layout_marginRight="16.4dp"
+            android:src="@drawable/ic_dir_local"/>
+        <View
+            android:id="@+id/icon_center"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/img_saved"
+            android:layout_width="21.8dp"
+            android:layout_height="21.8dp"
+            android:layout_toRightOf="@id/icon_center"
+            android:layout_marginLeft="16.4dp"
+            android:src="@drawable/ic_dir_saved"/>
+
+        <ImageView
+            android:id="@+id/img_up"
+            android:layout_width="21.8dp"
+            android:layout_height="21.8dp"
+            android:layout_toRightOf="@id/img_saved"
+            android:layout_marginLeft="32.5dp"
+            android:src="@drawable/ic_dir_up"/>
+    </RelativeLayout>
+    <!--    </FrameLayout>-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_top"
+        android:layout_marginTop="15.5dp"
+        android:layout_marginLeft="20.8dp"
+        android:layout_marginRight="21dp"
+        android:scrollbars="none"
+        android:layout_marginBottom="@dimen/padding_margin_50"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:id="@+id/view_1"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#797979"/>
+            <TextView
+                android:id="@+id/tv_number_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/NUMBER"
+                android:fontFamily="@font/roboto"
+                android:textColor="#1baec3"
+                android:textSize="14sp"
+                android:layout_marginTop="20.8dp"/>
+            <TextView
+                android:id="@+id/tv_number_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:layout_below="@id/tv_number_title"
+                android:layout_marginTop="11.3dp"
+                android:textColor="#797979"/>
+            <View
+                android:id="@+id/view_2"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/tv_number_con"
+                android:layout_marginTop="19.3dp"
+                android:background="#797979"/>
+            <TextView
+                android:id="@+id/tv_mail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/EMAIL"
+                android:layout_below="@id/view_2"
+                android:fontFamily="@font/roboto"
+                android:textColor="#1baec3"
+                android:textSize="14sp"
+                android:layout_marginTop="20.8dp"/>
+            <TextView
+                android:id="@+id/tv_mail_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_mail_title"
+                android:fontFamily="@font/roboto"
+                android:layout_marginTop="11.3dp"
+                android:textColor="#797979"/>
+            <View
+                android:id="@+id/view_3"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/tv_mail_con"
+                android:layout_marginTop="19.3dp"
+                android:background="#797979"/>
+            <TextView
+                android:id="@+id/tv_website_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/website"
+                android:layout_below="@id/view_3"
+                android:textColor="#1baec3"
+                android:fontFamily="@font/roboto"
+                android:textSize="14sp"
+                android:layout_marginTop="20.8dp"/>
+            <TextView
+                android:id="@+id/tv_website_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_website_title"
+                android:layout_marginTop="11.3dp"
+                android:fontFamily="@font/roboto"
+                android:textColor="#797979"/>
+            <View
+                android:id="@+id/view_4"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/tv_website_con"
+                android:layout_marginTop="19.3dp"
+                android:background="#797979"/>
+
+            <TextView
+                android:id="@+id/tv_address_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address"
+                android:layout_below="@id/view_4"
+                android:textColor="#1baec3"
+                android:fontFamily="@font/roboto"
+                android:textSize="14sp"
+                android:layout_marginTop="20.8dp"/>
+            <TextView
+                android:id="@+id/tv_address_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_address_title"
+                android:fontFamily="@font/roboto"
+                android:layout_marginTop="11.3dp"/>
+
+            <TextView
+                android:id="@+id/tv_landmark_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/LANDMARK"
+                android:layout_below="@id/tv_address_con"
+                android:textColor="#1baec3"
+                android:fontFamily="@font/roboto"
+                android:layout_marginTop="14.3dp"/>
+            <TextView
+                android:id="@+id/tv_landmark_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/tv_landmark_title"
+                android:layout_toRightOf="@id/tv_landmark_title"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/roboto"
+                android:textColor="#797979"/>
+
+
+            <TextView
+                android:id="@+id/tv_near_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/NEARESTMETRO"
+                android:layout_below="@id/tv_landmark_title"
+                android:textColor="#1baec3"
+                android:fontFamily="@font/roboto"
+                android:layout_marginTop="14.3dp"/>
+            <TextView
+                android:id="@+id/tv_near_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/tv_near_title"
+                android:layout_toRightOf="@id/tv_near_title"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/roboto"
+                android:textColor="#797979"/>
+
+            <TextView
+                android:id="@+id/tv_pluscode_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/PLUSCODE"
+                android:layout_below="@id/tv_near_title"
+                android:textColor="#1baec3"
+                android:fontFamily="@font/roboto"
+                android:layout_marginTop="14.3dp"/>
+            <TextView
+                android:id="@+id/tv_pluscode_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/tv_pluscode_title"
+                android:layout_toRightOf="@id/tv_pluscode_title"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/roboto"
+                android:textColor="#797979"/>
+            <View
+                android:id="@+id/view_5"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/tv_pluscode_title"
+                android:layout_marginTop="21.8dp"
+                android:background="#797979"/>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_open_hour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_5">
+                <!--                <View-->
+                <!--                    android:id="@+id/view_6"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="0.5dp"-->
+                <!--                    android:background="#797979"/>-->
+                <TextView
+                    android:id="@+id/tv_open_hour_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/OPENINGHOUR"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="#1baec3"
+                    android:textSize="14sp"
+                    android:layout_marginTop="20.8dp"/>
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_sun_title"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:fontFamily="@font/roboto_medium"-->
+                <!--                    android:text="Sun"-->
+                <!--                    android:textSize="10.8sp"-->
+                <!--                    android:layout_below="@id/tv_open_hour_title"-->
+                <!--                    android:layout_marginTop="11.3dp"-->
+                <!--                    android:textColor="#797979"/>-->
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_sun_con"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="10 AM - 5 PM"-->
+                <!--                    android:layout_marginLeft="31.6dp"-->
+                <!--                    android:textSize="10.8sp"-->
+                <!--                    android:layout_alignTop="@id/tv_sun_title"-->
+                <!--                    android:fontFamily="@font/roboto"-->
+                <!--                    android:textColor="#797979"/>-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_mon_title"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Mon"-->
+                <!--                    android:textSize="10.8sp"-->
+                <!--                    android:layout_below="@id/tv_sun_title"-->
+                <!--                    android:fontFamily="@font/roboto_medium"-->
+                <!--                    android:layout_marginTop="11.3dp"-->
+                <!--                    android:textColor="#797979"/>-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_mon_con"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginLeft="31.6dp"-->
+                <!--                    android:text="10 AM - 5 PM"-->
+                <!--                    android:layout_alignTop="@id/tv_mon_title"-->
+                <!--                    android:textSize="10.8sp"-->
+                <!--                    android:fontFamily="@font/roboto"/>-->
+
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_tue_title"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Tue"-->
+                <!--                    android:textSize="10.8sp"-->
+                <!--                    android:layout_below="@id/tv_mon_title"-->
+                <!--                    android:fontFamily="@font/roboto_medium"-->
+                <!--                    android:layout_marginTop="11.3dp"-->
+                <!--                    android:textColor="#797979"/>-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_tue_con"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginLeft="31.6dp"-->
+                <!--                    android:text="10 AM - 5 PM"-->
+                <!--                    android:layout_alignTop="@id/tv_tue_title"-->
+                <!--                    android:textSize="10.8sp"-->
+                <!--                    android:fontFamily="@font/roboto"/>-->
+
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_wed_title"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Wed"-->
+                <!--                    android:textSize="10.8sp"-->
+                <!--                    android:layout_below="@id/tv_tue_title"-->
+                <!--                    android:fontFamily="@font/roboto_medium"-->
+                <!--                    android:layout_marginTop="11.3dp"-->
+                <!--                    android:textColor="#797979"-->
+                <!--                    tools:ignore="DuplicateIds" />-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_wed_con"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginLeft="31.6dp"-->
+                <!--                    android:text="10 AM - 5 PM"-->
+                <!--                    android:layout_alignTop="@id/tv_wed_title"-->
+                <!--                    android:textSize="10.8sp"-->
+                <!--                    android:fontFamily="@font/roboto"/>-->
+
+
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_thu_title"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Thu"-->
+                <!--                    android:textSize="10.8sp"-->
+                <!--                    android:layout_below="@id/tv_wed_title"-->
+                <!--                    android:fontFamily="@font/roboto_medium"-->
+                <!--                    android:layout_marginTop="11.3dp"-->
+                <!--                    android:textColor="#797979"-->
+                <!--                    tools:ignore="DuplicateIds" />-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_thu_con"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginLeft="31.6dp"-->
+                <!--                    android:text="10 AM - 5 PM"-->
+                <!--                    android:layout_alignTop="@id/tv_thu_title"-->
+                <!--                    android:textSize="10.8sp"-->
+                <!--                    android:fontFamily="@font/roboto"/>-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_fri_title"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Fri"-->
+                <!--                    android:textSize="10.8sp"-->
+                <!--                    android:layout_below="@id/tv_thu_title"-->
+                <!--                    android:fontFamily="@font/roboto_medium"-->
+                <!--                    android:layout_marginTop="11.3dp"-->
+                <!--                    android:textColor="#797979"-->
+                <!--                    tools:ignore="DuplicateIds" />-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_fri_con"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginLeft="31.6dp"-->
+                <!--                    android:text="Closed"-->
+                <!--                    android:layout_alignTop="@id/tv_fri_title"-->
+                <!--                    android:textSize="10.8sp"-->
+                <!--                    android:fontFamily="@font/roboto"/>-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_sat_title"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Sat"-->
+                <!--                    android:textSize="10.8sp"-->
+                <!--                    android:layout_below="@id/tv_fri_title"-->
+                <!--                    android:fontFamily="@font/roboto_medium"-->
+                <!--                    android:layout_marginTop="11.3dp"-->
+                <!--                    android:textColor="#797979"-->
+                <!--                    tools:ignore="DuplicateIds" />-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_sat_con"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginLeft="31.6dp"-->
+                <!--                    android:text="Closed"-->
+                <!--                    android:layout_alignTop="@id/tv_sat_title"-->
+                <!--                    android:textSize="10.8sp"-->
+                <!--                    android:fontFamily="@font/roboto"/>-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_working"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_open_hour_title"
+                    android:layout_marginTop="11.3dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+                <View
+                    android:id="@+id/view_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/rv_working"
+                    android:layout_marginTop="25.3dp"
+                    android:background="#797979"/>
+
+
+                <TextView
+                    android:id="@+id/tv_hashtag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:layout_below="@id/view_6"
+                    android:textColor="#1baec3"
+                    android:textSize="11sp"
+                    android:layout_marginTop="36.5dp"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
+
+</RelativeLayout>

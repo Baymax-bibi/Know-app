@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<!--    <TextView-->
+<!--        android:id="@+id/tv_grant_cash"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/grant_cash"-->
+<!--        android:textSize="@dimen/padding_margin_10"-->
+<!--        android:textColor="@color/white_text_color"/>-->
+<!--    <TextView-->
+<!--        android:id="@+id/tv_result_count"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="SHOWING 3 RESULTS"-->
+<!--        android:layout_marginTop="@dimen/padding_margin_5"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:textSize="@dimen/padding_margin_16"-->
+<!--        android:layout_below="@id/tv_grant_cash"/>-->
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/recyclerView_search_faq"-->
+<!--        android:scrollbars="vertical"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/padding_margin_5"-->
+<!--        android:layout_below="@id/tv_result_count"/>-->
+
+    <FrameLayout
+        android:id="@+id/fl_search_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_margin_30"
+            android:background="@drawable/roundbg_directory"/>
+    </FrameLayout>
+    <RelativeLayout
+        android:id="@+id/rl_search_view"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_marginTop="28.3dp"
+        android:layout_marginLeft="21.8dp"
+        android:layout_marginRight="9dp"
+        android:layout_toLeftOf="@id/img_search"
+        android:background="@drawable/bg_searchview"
+        android:visibility="visible">
+
+        <EditText
+            android:id="@+id/et_search_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12.8dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/roboto_italic"
+            android:hint="Country"
+            android:textColor="#1baec3"
+            android:textColorHint="#1baec3"
+            android:textSize="11sp" />
+
+        <ImageView
+            android:id="@+id/img_country_down"
+            android:layout_width="10.3dp"
+            android:layout_height="6.3dp"
+            android:layout_marginTop="@dimen/padding_margin_14"
+            android:layout_marginBottom="13.8dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="18.8dp"
+            android:src="@drawable/down_arrow"
+            android:tint="#1baec3"/>
+
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/img_search"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:src="@drawable/ic_search_round"
+
+        android:layout_marginTop="28.3dp"
+        android:layout_marginRight="21.5dp"
+        android:layout_alignParentEnd="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="18dp"
+        android:paddingTop="13.5dp"
+        android:paddingLeft="13dp"
+        android:layout_marginBottom="@dimen/padding_margin_20"
+        android:paddingRight="13dp"
+        android:layout_below="@id/rl_search_view"
+        android:background="@drawable/home_bg">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_faq_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+</RelativeLayout>

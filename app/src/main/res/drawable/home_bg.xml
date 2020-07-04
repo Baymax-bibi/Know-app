@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item><layer-list>
+        <item>
+            <shape>
+                <solid
+                    android:color="@color/light_nav">
+                </solid>
+
+                <corners android:topLeftRadius="@dimen/padding_margin_20"
+                    android:topRightRadius="@dimen/padding_margin_20"/>
+
+<!--                <padding-->
+<!--                    android:bottom="13.3dp"-->
+<!--                    android:left="13.3dp"-->
+<!--                    android:right="13.3dp"-->
+<!--                    android:top="13.3dp" />-->
+            </shape>
+        </item>
+<!--                <item >-->
+<!--                    <bitmap android:gravity="right"-->
+<!--                        android:src="@color/fire_color" />-->
+<!--                </item>-->
+    </layer-list></item>
+</selector>

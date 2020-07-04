@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
+    android:layout_marginBottom="@dimen/padding_margin_40">
+
+    <LinearLayout
+        android:id="@+id/ly_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_margin_30"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_where"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/img_saved"
+                android:layout_marginRight="@dimen/padding_margin_15"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/fire_color"
+                android:textSize="12sp"
+                android:fontFamily="@font/roboto"/>
+            <ImageView
+                android:id="@+id/img_saved"
+                android:layout_width="21.8dp"
+                android:layout_height="21.8dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="7.8dp"
+                android:layout_toLeftOf="@id/img_up"
+                android:src="@drawable/un_saved"
+                android:tint="@color/login_bg"/>
+            <ImageView
+                android:id="@+id/img_up"
+                android:layout_width="21.8dp"
+                android:layout_height="21.8dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="24dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/out"
+                android:tint="@color/login_bg"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <ScrollView
+        android:id="@+id/scrollview_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ly_top"
+        android:scrollbars="none"
+        android:layout_marginTop="@dimen/padding_margin_20">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/img_home_assistance_detail_top"
+                android:layout_width="match_parent"
+                android:layout_height="123dp"
+                android:layout_marginLeft="20.5dp"
+                android:layout_marginRight="20.8dp"
+                android:layout_marginTop="20.3dp"
+                app:riv_corner_radius="15dp"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_margin_14"
+                android:layout_marginLeft="27dp"
+                android:layout_marginRight="26.8dp"
+                android:layout_below="@id/img_home_assistance_detail_top"
+                android:fontFamily="@font/roboto"
+                android:textSize="10.8sp" />
+
+            <RelativeLayout
+                android:id="@+id/rl_ass_reg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_content"
+                android:orientation="horizontal"
+                android:paddingLeft="25.3dp"
+                android:paddingRight="25.3dp">
+
+                <TextView
+                    android:id="@+id/tv_hashtag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="#Assistance"
+                    android:fontFamily="@font/roboto"
+                    android:textSize="11sp"
+                    android:textColor="#1baec3"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_relatedContacts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_ass_reg"
+                android:layout_marginTop="33.8dp"
+                android:layout_marginLeft="13.5dp"
+                android:text="RELATED CONTACTS"
+                android:textSize="12sp"
+                android:textColor="@color/fire_color"/>
+
+            <GridView
+                android:numColumns="2"
+                android:id="@+id/related_contact_grid"
+                android:layout_marginTop="9dp"
+                android:layout_below="@id/tv_relatedContacts"
+                android:layout_width="fill_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_height="fill_parent"
+                android:verticalSpacing="10dp"
+                android:horizontalSpacing="10dp"
+                android:scrollbarStyle="outsideOverlay"
+                android:verticalScrollbarPosition="right"
+                android:scrollbars="vertical"/>
+        </RelativeLayout>
+    </ScrollView>
+
+    <View
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/padding_margin_30"
+        android:layout_alignTop="@id/scrollview_detail"
+        android:background="@drawable/roundbg_shadow"/>
+
+</RelativeLayout>
