@@ -1,6 +1,7 @@
 package com.refknowledgebase.refknowledgebase;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -35,11 +38,13 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.flipkart.youtubeview.YouTubePlayerView;
 import com.flipkart.youtubeview.models.ImageLoader;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.refknowledgebase.refknowledgebase.adapter.SearchMediaAdapter;
 import com.refknowledgebase.refknowledgebase.adapter.Swipe_Tab_Adapter;
 import com.refknowledgebase.refknowledgebase.adapter.ViewPagerAdapter;
 import com.refknowledgebase.refknowledgebase.buffer.mBuffer;
+import com.refknowledgebase.refknowledgebase.fragment.SearchFragment;
 import com.refknowledgebase.refknowledgebase.model.Search_Media_Model;
 import com.refknowledgebase.refknowledgebase.model.Search_Media_entities_Model;
 import com.refknowledgebase.refknowledgebase.model.Swipe_Tab_Model;
@@ -90,6 +95,7 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
     static RelativeLayout rl_165;
     static RelativeLayout rl_166;
     static RelativeLayout rl_167;
+    RelativeLayout rl_full;
     RelativeLayout rl_slide;
     YouTubePlayerView youTubePlayerView;
     int current_position = 1;
@@ -101,12 +107,16 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
     private int playerType;
     Fragment fragment;
     TextView tv_media;
+    ImageView img_search_icon;
+    EditText et_search_text;
 
     static boolean flag = true;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.landingpage_three, container, false);
+
+        et_search_text = (EditText) root.findViewById(R.id.et_search_text);
 
         sliderDotspanel = root.findViewById(R.id.SliderDots);
         youTubePlayerView = root.findViewById(R.id.video_landing);
@@ -178,6 +188,34 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
         rl_166.setOnClickListener(this);
         rl_167.setOnClickListener(this);
 
+        rl_full = (RelativeLayout) root.findViewById(R.id.rl_full);
+        rl_full.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            }
+        });
+        img_search_icon = (ImageView) root.findViewById(R.id.img_search_icon);
+        img_search_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (et_search_text.getText().toString().equals("")){
+                    InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    Snackbar.make(v, "Search key is empty.", Snackbar.LENGTH_LONG)
+                            .show();
+                }else {
+                    InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    mBuffer.To_where = "Search";
+                    mBuffer.Search_key = et_search_text.getText().toString();
+                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    getActivity().finish();
+                    Methods.showProgress(getContext());
+                }
+            }
+        });
 
 //        loadcategory();
 

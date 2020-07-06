@@ -135,6 +135,11 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
             fragment = new Home_Fragment();
         }else if (mBuffer.To_where.equals("Media")){
             fragment = new Media_Fragment();
+        }else if (mBuffer.To_where.equals("Search")){
+            rl_search_view.setVisibility(View.VISIBLE);
+            img_search.setVisibility(View.GONE);
+            fragment = new SearchFragment();
+            et_search_text.setText(mBuffer.Search_key);
         }
         loadFragment(fragment);
 

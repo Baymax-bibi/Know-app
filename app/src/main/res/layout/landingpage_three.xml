@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/rl_full"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
@@ -33,7 +34,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="11.3dp"
-                android:layout_marginRight="@dimen/padding_margin_10"
                 android:layout_toLeftOf="@id/img_search_icon"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/roboto_condensed_light_italic"
@@ -46,7 +46,7 @@
             <ImageView
                 android:id="@+id/img_search_icon"
                 android:layout_width="16.8dp"
-                android:layout_height="17dp"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="13dp"
