@@ -62,6 +62,7 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
     LoginButton login_button;
     private CallbackManager callbackManager;
     AccessTokenTracker accessTokenTracker;
+    Fragment fragment;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,7 +103,7 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
                 Log.e("FB_login", "getInstance");
 
                 startActivity(new Intent(Activity_login.this, Landing_three.class));
-                finish();
+//                finish();
 
 //                insertString(Constant.LOGINTYPE, "FB");
             }
@@ -138,9 +139,12 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
                 Log.e("FB_login", "onSuccess");
                 mBuffer.Access_Type = "FB";
                 insertString(Constant.LOGINTYPE, "FB");
-                startActivity(new Intent(Activity_login.this, Landing_three.class));
+//                startActivity(new Intent(Activity_login.this, Landing_three.class));
+
+                fragment = new LandingFragment();
+                loadFragment(fragment);
                 GraphLoginRequest(loginResult.getAccessToken());
-                finish();
+//                finish();
             }
 
             @Override
@@ -187,7 +191,7 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
 
         if (getString(Constant.LOGINTYPE).equals("WITHOUT")){
             img_profile.setImageDrawable(getDrawable(R.drawable.avatar));
-            tv_continue_name.setText("Continue as "+"Jhon Doe");
+            tv_continue_name.setText("");
         }
 //        new DownloadImageTask(img_profile).execute((Runnable) mBuffer.user_imgUrl);
 //        Glide.with(img_profile.getContext()).load(mBuffer.user_imgUrl).into(img_profile);
@@ -248,7 +252,7 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
 //                Intent intent_main_continue = new Intent(Activity_login.this, Landing_three.class);
 //                startActivity(intent_main_continue);
 //                finish();
-                Fragment fragment = new LandingFragment();
+                fragment = new LandingFragment();
                 loadFragment(fragment);
                 break;
 
@@ -272,8 +276,8 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
 ////                Intent intent_without_resigteration = new Intent(Activity_login.this, Landing_three.class);
 //                startActivity(intent_without_resigteration);
 //                finish();
-                Fragment fragment1 = new LandingFragment();
-                loadFragment(fragment1);
+                fragment = new LandingFragment();
+                loadFragment(fragment);
                 mBuffer.Access_Type = "WITHOUT";
                 insertString(Constant.LOGINTYPE, "WITHOUT");
                 break;
@@ -323,8 +327,11 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
                 insertString(Constant.LOGIN_PHOTO, String.valueOf(personePhoto));
             }
 
-            startActivity(new Intent(Activity_login.this, DashboardActivity.class));
-            finish();
+//            startActivity(new Intent(Activity_login.this, DashboardActivity.class));
+
+            fragment = new LandingFragment();
+            loadFragment(fragment);
+//            finish();
         }catch (ApiException e){
             Log.e("Google sign in error", "SignIResult: failed code "+ e);
         }

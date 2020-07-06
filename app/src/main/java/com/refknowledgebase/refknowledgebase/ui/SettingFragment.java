@@ -58,6 +58,7 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 import com.refknowledgebase.refknowledgebase.Activity_Sec;
 import com.refknowledgebase.refknowledgebase.BuildConfig;
+import com.refknowledgebase.refknowledgebase.DashboardActivity;
 import com.refknowledgebase.refknowledgebase.R;
 import com.refknowledgebase.refknowledgebase.buffer.mBuffer;
 import com.refknowledgebase.refknowledgebase.utils.Constant;
@@ -281,7 +282,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
                 double longi = locationGPS.getLongitude();
                 latitude = String.valueOf(lat);
                 longitude = String.valueOf(longi);
-                Toast.makeText(getContext(), "Your Location: " + "\n" + "Latitude: " + latitude + "\n" + "Longitude: " + longitude, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "Your Location: " + "\n" + "Latitude: " + latitude + "\n" + "Longitude: " + longitude, Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getContext(), "Unable to find location.", Toast.LENGTH_SHORT).show();
             }
@@ -393,8 +394,9 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
                 insertString(Constant.SELECTED_LANGUAGE, tv_sec_lanugage.getText().toString());
 
 //                Toast.makeText(getContext(), "Data Saved", Toast.LENGTH_SHORT).show();
-                Snackbar.make(v, "Setting saved", Snackbar.LENGTH_LONG)
-                        .show();
+//                Snackbar.make(v, "Setting saved", Snackbar.LENGTH_LONG)
+//                        .show();
+                startActivity(new Intent(getContext(), DashboardActivity.class));
                 break;
         }
 //        AlertDialog dialog = builder.create();

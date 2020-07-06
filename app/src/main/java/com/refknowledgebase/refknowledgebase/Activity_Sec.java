@@ -400,11 +400,14 @@ public class Activity_Sec extends AppCompatActivity implements View.OnClickListe
 
             case R.id.ly_without:
                 if (!(tv_sec_country.getText().equals(getResources().getString(R.string.spinner_country))) && !(tv_sec_lanugage.getText().equals(getResources().getString(R.string.spinner_language)))){
-                    Intent intent_without = new Intent(Activity_Sec.this, DashboardActivity.class);
-                    startActivity(intent_without);
+//                    Intent intent_without = new Intent(Activity_Sec.this, DashboardActivity.class);
+//                    startActivity(intent_without);
+
+                    Fragment fragment = new LandingFragment();
+                    loadFragment(fragment);
                     mBuffer.Access_Type = "WITHOUT";
                     insertBoolean(Constant.AFTERLANG, true);
-                    finish();
+//                    finish();
                 }else {
                     Snackbar.make(v, "Please select your country and language", Snackbar.LENGTH_LONG)
                             .show();

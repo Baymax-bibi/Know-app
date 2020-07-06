@@ -9,6 +9,7 @@
     android:orientation="vertical">
 
 
+
     <RelativeLayout
         android:id="@+id/rl_bar"
         android:layout_width="match_parent"
@@ -384,7 +385,6 @@
                 android:layout_centerHorizontal="true"
                 android:textSize="25sp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="John Doe"
                 android:textColor="@android:color/white"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:gravity="center_horizontal" />
@@ -525,5 +525,4 @@
             android:background="@drawable/vertical_shadow"/>
 
     </RelativeLayout>
-
 </RelativeLayout>

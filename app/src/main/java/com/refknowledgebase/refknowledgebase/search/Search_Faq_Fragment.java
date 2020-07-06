@@ -1,10 +1,17 @@
 package com.refknowledgebase.refknowledgebase.search;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -23,6 +30,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.refknowledgebase.refknowledgebase.R;
 import com.refknowledgebase.refknowledgebase.adapter.Home_Content_Adapter;
+import com.refknowledgebase.refknowledgebase.adapter.SearchFAQAdapter;
 import com.refknowledgebase.refknowledgebase.buffer.mBuffer;
 import com.refknowledgebase.refknowledgebase.home_tab.Assistance_detail;
 import com.refknowledgebase.refknowledgebase.model.Home_Content_Model;
@@ -30,7 +38,9 @@ import com.refknowledgebase.refknowledgebase.model.Home_Content_engitiesModel;
 import com.refknowledgebase.refknowledgebase.model.Swipe_Tab_Model;
 import com.refknowledgebase.refknowledgebase.model.Swipe_Tab_entitiesModel;
 import com.refknowledgebase.refknowledgebase.myinterface.HomeContentClickListner;
+import com.refknowledgebase.refknowledgebase.ui.SettingFragment;
 import com.refknowledgebase.refknowledgebase.utils.Constant;
+import com.refknowledgebase.refknowledgebase.utils.GeocodingLocation;
 import com.refknowledgebase.refknowledgebase.utils.Methods;
 import com.refknowledgebase.refknowledgebase.utils.PaginationScrollListener;
 
@@ -41,15 +51,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.parse.Parse.getApplicationContext;
+import static com.refknowledgebase.refknowledgebase.utils.Constant.countries;
+
 public class Search_Faq_Fragment extends Fragment {
     RecyclerView rv_faq_content;
     private List<Home_Content_engitiesModel> results_content;
     private Home_Content_Model homeContentModel;
-    private Home_Content_Adapter homeContentAdapter;
+    private SearchFAQAdapter homeContentAdapter;
     private boolean isLoading = false,  isLastPage = false, isLoading_content = false ;
     private static final int PAGE_START = 1;
     private int TOTAL_PAGES,  currentPage = PAGE_START, PER_PAGE = 5, LAST_PAGE, TOTAL_PAGES_content, PER_PAGE_content = 15, LAST_PAGE_content, service_category_ids = 107, currentPage_content;
     private LinearLayoutManager layoutManager_tab, layoutManager_content;
+    RelativeLayout rl_search_view;
+    TextView et_search_text;
+    ImageView img_search;
+    boolean is_country = false;
+    int Country_Id = 0;
+    RelativeLayout rl_full;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,7 +96,56 @@ public class Search_Faq_Fragment extends Fragment {
 //                loadFragment(fragment);
             }
         };
-        homeContentAdapter = new Home_Content_Adapter(getContext(), homeContentClickListner);
+        rl_full = (RelativeLayout) root.findViewById(R.id.rl_full);
+        rl_full.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            }
+        });
+
+        et_search_text = (TextView) root.findViewById(R.id.et_search_text);
+        rl_search_view = (RelativeLayout) root.findViewById(R.id.rl_search_view);
+        rl_search_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Select Country");
+                builder.setItems(countries, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        et_search_text.setText(countries[which]);
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            }
+        });
+        img_search = (ImageView) root.findViewById(R.id.img_search);
+        img_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Log.e("TAG", "search_faq " + Country_Id);
+                is_country = true;
+                if (et_search_text.getText().toString().equals("Libya"))
+                    Country_Id = 5;
+                if (et_search_text.getText().toString().equals("Egypt"))
+                    Country_Id = 6;
+                if (et_search_text.getText().toString().equals("Sudan"))
+                    Country_Id = 7;
+                homeContentAdapter.clear();
+                loading_content();
+
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            }
+        });
+
+        homeContentAdapter = new SearchFAQAdapter(getContext(), homeContentClickListner);
         rv_faq_content.setAdapter(homeContentAdapter);
         layoutManager_content = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rv_faq_content.setLayoutManager(layoutManager_content);
@@ -89,6 +157,7 @@ public class Search_Faq_Fragment extends Fragment {
                 isLoading_content = true;
                 Methods.showProgress(getContext());
                 loading_content();
+                Methods.showProgress(getContext());
             }
 
             @Override
@@ -127,7 +196,13 @@ public class Search_Faq_Fragment extends Fragment {
 
     private void loading_content() {
         RequestQueue queue = Volley.newRequestQueue(getContext());
-        String url = "http://api.project-info.gq/api/faq/es-search?keywords="+mBuffer.Search_key+"&lang=English";
+        String url = null;
+        if (is_country){
+            url = "http://api.project-info.gq/api/faq/es-search?keywords="+mBuffer.Search_key+"&countries[]="+Country_Id+"&lang=English";
+        }else {
+            url = "http://api.project-info.gq/api/faq/es-search?keywords="+mBuffer.Search_key+"&lang=English";
+        }
+
         Log.e("search_key", url);
 
         StringRequest sr = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -136,6 +211,7 @@ public class Search_Faq_Fragment extends Fragment {
 //                Log.e("response_content", response);
                 Methods.closeProgress();
                 Gson gson = new Gson();
+                Log.e("SEARCHRES", response);
                 homeContentModel = gson.fromJson(response, Home_Content_Model.class);
                 isLoading = false;
                 results_content = homeContentModel.getEntities();

@@ -1,5 +1,6 @@
 package com.refknowledgebase.refknowledgebase;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -13,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -37,6 +39,7 @@ import com.refknowledgebase.refknowledgebase.ui.SettingFragment;
 import com.refknowledgebase.refknowledgebase.ui.Submit_questionFragment;
 import com.refknowledgebase.refknowledgebase.ui.TSFragment;
 import com.refknowledgebase.refknowledgebase.utils.Constant;
+import com.refknowledgebase.refknowledgebase.utils.Methods;
 import com.squareup.picasso.Picasso;
 
 public class DashboardActivity extends AppCompatActivity  implements View.OnClickListener {
@@ -173,7 +176,7 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
 
         if (getString(Constant.LOGINTYPE).equals("WITHOUT")){
             img_profile.setImageDrawable(getDrawable(R.drawable.avatar));
-            tv_name.setText("Jhon Doe");
+            tv_name.setText("");
         }
     }
 
@@ -206,7 +209,14 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
 //                mBuffer.service_category_ids = 107;
 //                mBuffer.service_category_name = "Assistance";
                 mBuffer.is_search = false;
-                fragment = new Home_Fragment();
+                startActivity(new Intent(getApplicationContext(), BlankActivity.class));
+//                fragment = new Home_Fragment();
+//                Fragment fragment = new LandingFragment();
+////                loadFragment(fragment);
+//                getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.fl_full, fragment)
+//                        .commit();
                 break;
             case R.id.ly_directory_but:
                 img_home.setImageDrawable(getDrawable(R.drawable.img_home));
@@ -324,13 +334,14 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
                 spannableString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.light_nav)), 0, spannableString.length(), 0);
                 set_title(false,spannableString);
 
-                fragment = new Submit_questionFragment();
-
-                rl_search_view.setVisibility(View.GONE);
-                img_search.setVisibility(View.VISIBLE);
+//                fragment = new Submit_questionFragment();
+//                rl_search_view.setVisibility(View.GONE);
+//                img_search.setVisibility(View.VISIBLE);
                 rl_navigation.setVisibility(View.GONE);
                 ly_hide.setVisibility(View.GONE);
-                img_search.setVisibility(View.GONE);
+//                img_search.setVisibility(View.GONE);
+
+                img_search.performClick();
                 break;
             case R.id.ly_setting:
                 spannableString = new SpannableString(getResources().getText(R.string.setting));
@@ -363,9 +374,6 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
                 spannableString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.light_nav)), 0, spannableString.length(), 0);
                 set_title(false,spannableString);
 
-
-
-
                 fragment = new TSFragment();
 
                 rl_search_view.setVisibility(View.GONE);
@@ -391,6 +399,8 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
                 set_title(true, spannableString);
                 img_hamburger.setVisibility(View.VISIBLE);
                 img_back_assistance.setVisibility(View.GONE);
+
+                startActivity(new Intent(DashboardActivity.this, DashboardActivity.class));
                 break;
             case R.id.ly_logout:
 //                insertString(Constant.LOGINTYPE, "WITHOUT");

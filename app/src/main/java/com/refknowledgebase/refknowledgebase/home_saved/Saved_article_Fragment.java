@@ -135,7 +135,7 @@ public class Saved_article_Fragment extends Fragment {
 
                 for (int i = 0; i < saved_entitiesModelList.size(); i++){
                     if (saved_entitiesModelList.get(i).getFaqs() != null){
-                        Log.e("TAG", String.valueOf(saved_entitiesModelList.get(i).getFaqs()));
+//                        Log.e("TAG", String.valueOf(saved_entitiesModelList.get(i).getFaqs()));
                         homeContentModelList = new ArrayList<>(saved_entitiesModelList.get(i).getFaqs());
 
                         savedFaqAdapter.addAll_faq(homeContentModelList);

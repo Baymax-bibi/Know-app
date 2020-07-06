@@ -86,7 +86,7 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        spannableString = new SpannableString(getResources().getText(R.string.home_assistance));
+        spannableString = new SpannableString(mBuffer.service_category_name);
         spannableString.setSpan(new ForegroundColorSpan(getResources().getColor(light_nav)), 0, spannableString.length(), 0);
         DashboardActivity.set_title(false,spannableString);
 

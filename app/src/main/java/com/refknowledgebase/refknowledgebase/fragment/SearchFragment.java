@@ -1,5 +1,6 @@
 package com.refknowledgebase.refknowledgebase.fragment;
 
+import android.app.Activity;
 import android.graphics.Paint;
 import android.os.Bundle;
 
@@ -9,7 +10,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -53,6 +56,16 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
         rl_faq.setOnClickListener(this);
         rl_media.setOnClickListener(this);
         rl_dir.setOnClickListener(this);
+
+        LinearLayout rl_full;
+        rl_full = (LinearLayout) root.findViewById(R.id.rl_full);
+        rl_full.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            }
+        });
         return root;
     }
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {

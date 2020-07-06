@@ -75,6 +75,7 @@ public class Home_Fragment extends Fragment {
             @Override
             public void recyclerViewListClicked(View v, int position) {
             mBuffer.service_category_ids = swipeTabAdapter.getItem(position).getid();
+            mBuffer.service_category_name = swipeTabAdapter.getItem(position).getname();
             currentPage_content = 1;
             LAST_PAGE_content = 0;
             homeContentAdapter.clear();

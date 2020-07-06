@@ -77,8 +77,8 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
     private List<Swipe_Tab_entitiesModel> results;
     private Swipe_Tab_Adapter swipeTabAdapter;
     RecyclerViewClickListener recyclerViewClickListener;
-    static RelativeLayout rl_107;
-    static RelativeLayout rl_9;
+    private static RelativeLayout rl_107;
+    private static RelativeLayout rl_9;
     static RelativeLayout rl_18;
     static RelativeLayout rl_27;
     static RelativeLayout rl_42;

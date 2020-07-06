@@ -19,24 +19,37 @@ import com.refknowledgebase.refknowledgebase.R;
 public class Submit_questionFragment extends Fragment {
     Spinner spin_submit_question_category;
 
-    String [] categories = {"Category", "Category 1", "Category 2", "Category 3", "Category 4", "Category 5"};
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_submit_question, container, false);
+
+        String [] categories = {
+                getContext().getResources().getString(R.string.home_assistance), getContext().getResources().getString(R.string.home_childProtection),
+                getContext().getResources().getString(R.string.home_CommunityProtection), getContext().getResources().getString(R.string.home_education),
+                getContext().getResources().getString(R.string.home_HealthCare), getContext().getResources().getString(R.string.home_HowUncr),
+                getContext().getResources().getString(R.string.home_LegalAid), getContext().getResources().getString(R.string.home_Livelihoods),
+                getContext().getResources().getString(R.string.home_Protection), getContext().getResources().getString(R.string.home_Refugee),
+                getContext().getResources().getString(R.string.home_Registration), getContext().getResources().getString(R.string.home_Reporting),
+                getContext().getResources().getString(R.string.home_Resettlement), getContext().getResources().getString(R.string.home_Residncy),
+                getContext().getResources().getString(R.string.home_SGBV), getContext().getResources().getString(R.string.home_Covid),
+                getContext().getResources().getString(R.string.home_IrregularMove), getContext().getResources().getString(R.string.home_TellRealStory),
+
+        };
+
         spin_submit_question_category = root.findViewById(R.id.spin_submit_question_category);
         ArrayAdapter<String> adapter_category = new ArrayAdapter<String>(getContext(), R.layout.spinner_item, categories)
         {
             @Override
             public boolean isEnabled(int position){
-                if(position == 0)
-                {
-                    return false;
-                }
-                else
-                {
+//                if(position == 0)
+//                {
+//                    return false;
+//                }
+//                else
+//                {
                     return true;
-                }
+//                }
             }
             @SuppressLint("ResourceAsColor")
             @Override

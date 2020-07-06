@@ -35,7 +35,8 @@
     <string name="hello_content">Please choose \nyour country \nand language.</string>
 
     <!--    login in method-->
-    <string name="google_login">Continue\nwith\nGoogle</string>
+<!--    <string name="google_login">Continue\nwith\nGoogle</string>-->
+
     <string name="facebook_login">Continue\nwith\nFacebook</string>
     <string name="without_signup">Continue\nwithout\nLog in</string>
 
@@ -107,10 +108,26 @@
     <string name="spinner_radius"> km radius</string>
     <string name="directory_list_title">LIST</string>
     <string name="dirctory_map_title">MAP</string>
+<!--    category names-->
     <string name="home_assistance">Assistance</string>
+    <string name="home_childProtection">Child Protection</string>
+    <string name="home_CommunityProtection">Community-based Protection</string>
     <string name="home_education">Education</string>
-    <string name="home_health">Health</string>
-    <string name="home_legal">Legal</string>
+    <string name="home_HealthCare">Health Care</string>
+    <string name="home_HowUncr">How to Contact UNHCR</string>
+    <string name="home_LegalAid">Legal Aid</string>
+    <string name="home_Livelihoods">Livelihoods</string>
+    <string name="home_Protection">Protection</string>
+    <string name="home_Refugee">Refugee Status Determination</string>
+    <string name="home_Registration">Registration</string>
+    <string name="home_Reporting">Reporting Fraud and Corruption</string>
+    <string name="home_Resettlement">Resettlement</string>
+    <string name="home_Residncy">Residency</string>
+    <string name="home_SGBV">SGBV</string>
+    <string name="home_Covid">Covid-19</string>
+    <string name="home_IrregularMove">Irregular Movement</string>
+    <string name="home_TellRealStory">Telling the Real Story</string>
+<!--    category names end-->
     <string name="select_country">Select Country</string>
     <string name="select_radius">Select Radius</string>
     <string name="btn_save">Save</string>
@@ -151,4 +168,5 @@
     <string name="error_login">Some error occure during the FB login.</string>
     <string name="back4app_app_id">PASTE_YOUR_APPLICATION_ID_HERE</string>
     <string name="back4app_client_key">PASTE_YOUR_CLIENT_KEY_HERE</string>
+    <string name="google_login">Continue\nwith\nGoogle</string>
 </resources>
