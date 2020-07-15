@@ -30,6 +30,7 @@ import com.refknowledgebase.refknowledgebase.adapter.SearchMediaAdapter;
 import com.refknowledgebase.refknowledgebase.buffer.mBuffer;
 import com.refknowledgebase.refknowledgebase.model.Search_Media_Model;
 import com.refknowledgebase.refknowledgebase.model.Search_Media_entities_Model;
+import com.refknowledgebase.refknowledgebase.myinterface.HomeContentClickListner;
 import com.refknowledgebase.refknowledgebase.myinterface.SearchClickListner;
 import com.refknowledgebase.refknowledgebase.utils.Constant;
 import com.refknowledgebase.refknowledgebase.utils.Methods;
@@ -77,6 +78,7 @@ Context mContext;
         super.onViewCreated(view, savedInstanceState);
 
         tv_cari = view.findViewById(R.id.tv_cari);
+        tv_cari.setText(mBuffer.Search_key);
 
         filter_C = getString("SEARCH_KEY");
         Log.e("SEARCH_KEY", filter_C);
@@ -85,7 +87,13 @@ Context mContext;
         rv_search_media = view.findViewById(R.id.rv_search_media);
         fl_search_media = view.findViewById(R.id.fl_search_media);
 
-        searchMediaAdapter = new SearchMediaAdapter(this);
+        HomeContentClickListner homeContentClickListner = new HomeContentClickListner() {
+            @Override
+            public void Home_Content_ClickListner(View v, int position) {
+                Toast.makeText(getContext(), position, Toast.LENGTH_SHORT).show();
+            }
+        };
+        searchMediaAdapter = new SearchMediaAdapter(this, homeContentClickListner);
         rv_search_media.setAdapter(searchMediaAdapter);
 
 //        rv_search_media.setHasFixedSize(true);

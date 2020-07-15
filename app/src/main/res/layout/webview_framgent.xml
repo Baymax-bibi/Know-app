@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/rl_youtube"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.flipkart.youtubeview.YouTubePlayerView
+            android:id="@+id/video_landing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:scaleType="fitXY"
+            />
+<!--        <ImageView-->
+<!--            android:id="@+id/img_thum"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="300dp"-->
+<!--            android:layout_centerInParent="true"/>-->
+<!--        <ImageView-->
+<!--            android:id="@+id/img_media_start"-->
+<!--            android:layout_width="@dimen/padding_margin_40"-->
+<!--            android:layout_height="@dimen/padding_margin_40"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:src="@drawable/ic_media_start"/>-->
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/img_poster"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+</RelativeLayout>

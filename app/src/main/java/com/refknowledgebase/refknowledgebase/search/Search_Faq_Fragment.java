@@ -69,12 +69,19 @@ public class Search_Faq_Fragment extends Fragment {
     boolean is_country = false;
     int Country_Id = 0;
     RelativeLayout rl_full;
+    TextView tv_result_search_faq;
+    Fragment fragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_search_faq, container, false);
+
+        InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(root.getWindowToken(), 0);
+
+        tv_result_search_faq = (TextView) root.findViewById(R.id.tv_result_search_faq);
 
         rv_faq_content = root.findViewById(R.id.rv_faq_content);
         HomeContentClickListner homeContentClickListner = new HomeContentClickListner() {
@@ -92,8 +99,8 @@ public class Search_Faq_Fragment extends Fragment {
 //            mBuffer.SELECTED_CONTENT_nationality_ids = homeContentAdapter.getItem(position).getNationality_ids();
 //            mBuffer.SELECTED_CONTENT_hashtags = homeContentAdapter.getItem(position).getHashtags();
 
-//                fragment = new Assistance_detail();
-//                loadFragment(fragment);
+                fragment = new Assistance_detail();
+                loadFragment(fragment);
             }
         };
         rl_full = (RelativeLayout) root.findViewById(R.id.rl_full);
@@ -176,6 +183,8 @@ public class Search_Faq_Fragment extends Fragment {
             }
         });
 
+        tv_result_search_faq.setText("Results for searched word: " + mBuffer.Search_key);
+
         loading_content();
         Methods.showProgress(getContext());
         return root;
@@ -252,5 +261,15 @@ public class Search_Faq_Fragment extends Fragment {
             }
         };
         queue.add(sr);
+    }
+
+    private void loadFragment(Fragment fragment){
+        if (fragment != null){
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    //.replace(R.id.fragment_container, fragment)
+                    .replace(R.id.nav_host_fragment, fragment)
+                    .commit();
+        }
     }
 }

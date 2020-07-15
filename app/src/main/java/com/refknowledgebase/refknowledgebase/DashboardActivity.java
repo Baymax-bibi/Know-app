@@ -3,11 +3,14 @@ package com.refknowledgebase.refknowledgebase;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -42,6 +45,8 @@ import com.refknowledgebase.refknowledgebase.utils.Constant;
 import com.refknowledgebase.refknowledgebase.utils.Methods;
 import com.squareup.picasso.Picasso;
 
+import java.util.Locale;
+
 public class DashboardActivity extends AppCompatActivity  implements View.OnClickListener {
 
     Fragment fragment;
@@ -65,6 +70,12 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+//        if (getString(Constant.SELECTED_LANGUAGE).equals("English")){
+//            setAppLocal("en");
+//        }else if (getString(Constant.SELECTED_LANGUAGE).equals("عربى")){
+//            setAppLocal("ar");
+//        }
 
         ly_logout = findViewById(R.id.ly_logout);
         ly_logout.setOnClickListener(this);
@@ -210,6 +221,7 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
 //                mBuffer.service_category_name = "Assistance";
                 mBuffer.is_search = false;
                 startActivity(new Intent(getApplicationContext(), BlankActivity.class));
+                finish();
 //                fragment = new Home_Fragment();
 //                Fragment fragment = new LandingFragment();
 ////                loadFragment(fragment);
@@ -416,6 +428,9 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
 //                insertString("SEARCH_KEY", et_search_text.getText().toString());
 //                Search_Media_Fragment searchMediaFragment = new Search_Media_Fragment();
 //                searchMediaFragment.reloading(DashboardActivity.this, et_search_text.getText().toString());
+                InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
                 Log.e("searchkey", "???"+et_search_text.getText().toString());
                 if (et_search_text.getText().toString().equals("")){
                     Snackbar.make(v, "Search key is empty.", Snackbar.LENGTH_LONG)
@@ -484,5 +499,14 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
         SharedPreferences.Editor mEditor = mSharedPreferences.edit();
         mEditor.putString(key, value);
         mEditor.apply();
+    }
+
+    private void setAppLocal(String localCode){
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.setLocale(new Locale(localCode.toLowerCase()));
+
+        res.updateConfiguration(conf, dm);
     }
 }

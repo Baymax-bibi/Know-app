@@ -1,5 +1,6 @@
 package com.refknowledgebase.refknowledgebase.adapter;
 
+import android.app.Dialog;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,8 +23,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.flipkart.youtubeview.YouTubePlayerView;
 import com.flipkart.youtubeview.models.ImageLoader;
 import com.refknowledgebase.refknowledgebase.R;
+import com.refknowledgebase.refknowledgebase.buffer.mBuffer;
+import com.refknowledgebase.refknowledgebase.model.Home_Content_engitiesModel;
 import com.refknowledgebase.refknowledgebase.model.Search_Media_BaseModel;
 import com.refknowledgebase.refknowledgebase.model.Search_Media_entities_Model;
+import com.refknowledgebase.refknowledgebase.myinterface.HomeContentClickListner;
 import com.refknowledgebase.refknowledgebase.utils.Constant;
 import com.squareup.picasso.Picasso;
 
@@ -32,6 +36,7 @@ import java.util.List;
 
 public class SearchMediaAdapter extends RecyclerView.Adapter<SearchMediaAdapter.YouTubePlayerViewHolder>  {
     Fragment mConext;
+    private HomeContentClickListner mListener;
     private List<Search_Media_entities_Model> media_list;
 //    private List<Search_Media_entities_Model> media_list_filtered;
     private int playerType;
@@ -43,10 +48,11 @@ public class SearchMediaAdapter extends RecyclerView.Adapter<SearchMediaAdapter.
         }
     };
 
-    public SearchMediaAdapter(Fragment _context){
+    public SearchMediaAdapter(Fragment _context, HomeContentClickListner _mListner){
         mConext = _context;
         media_list = new ArrayList<>();
 //        media_list_filtered = new ArrayList<>();
+        mListener = _mListner;
     }
 
     @Override
@@ -62,7 +68,7 @@ public class SearchMediaAdapter extends RecyclerView.Adapter<SearchMediaAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final YouTubePlayerViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final YouTubePlayerViewHolder holder, final int position) {
         YouTubePlayerView playerView = holder.video_search;
 
         playerType = 2;
@@ -79,7 +85,7 @@ public class SearchMediaAdapter extends RecyclerView.Adapter<SearchMediaAdapter.
                 String videoId = videoUrl.substring(videoUrl.length()-11);
 //                Log.e("Video data", videoUrl);
 //                Log.e("VideoID", videoId);
-                playerView.initPlayer(Constant.API_KEY, videoId, "https://cdn.rawgit.com/flipkart-incubator/inline-youtube-view/60bae1a1/youtube-android/youtube_iframe_player.html", playerType, null, mConext, imageLoader);
+                holder.video_search.initPlayer(Constant.API_KEY, videoId, "https://cdn.rawgit.com/flipkart-incubator/inline-youtube-view/60bae1a1/youtube-android/youtube_iframe_player.html", playerType, null, mConext, imageLoader);
             }else if(videoUrl.contains("vimeo")){
                 holder.video_search.setVisibility(View.GONE);
                 holder.img_search_sub.setVisibility(View.GONE);
@@ -114,9 +120,21 @@ public class SearchMediaAdapter extends RecyclerView.Adapter<SearchMediaAdapter.
             holder.img_search_sub.setVisibility(View.VISIBLE);
 //            holder.rl_vimeo.setVisibility(View.GONE);
             Picasso.with(holder.img_search_sub.getContext()).load(videoUrl).fit().into(holder.img_search_sub);
+//            holder.img_search_sub.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                }
+//            });
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mListener.Home_Content_ClickListner(v, position);
+                    mBuffer.selected_media_id = videoUrl;
+                }
+            });
         }
     }
-
 
     @Override
     public int getItemViewType(int position) {

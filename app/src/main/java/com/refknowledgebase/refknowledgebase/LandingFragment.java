@@ -39,7 +39,9 @@ import com.android.volley.toolbox.Volley;
 import com.flipkart.youtubeview.YouTubePlayerView;
 import com.flipkart.youtubeview.models.ImageLoader;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
+import com.refknowledgebase.refknowledgebase.adapter.DashPagerAdapter;
 import com.refknowledgebase.refknowledgebase.adapter.SearchMediaAdapter;
 import com.refknowledgebase.refknowledgebase.adapter.Swipe_Tab_Adapter;
 import com.refknowledgebase.refknowledgebase.adapter.ViewPagerAdapter;
@@ -60,7 +62,7 @@ import java.util.Map;
 
 public class LandingFragment extends Fragment implements View.OnClickListener  {
     ViewPager viewPager;
-    LinearLayout sliderDotspanel;
+    LinearLayout sliderDotspanel, over_media;
     private int dotscount;
     private ImageView[] dots;
     static Animation animationslide_l2r;
@@ -68,7 +70,7 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
     static LinearLayout ly_one;
     static LinearLayout ly_two;
     LinearLayout ly_over;
-    OnSwipeTouchListener onSwipeTouchListener;
+//    OnSwipeTouchListener onSwipeTouchListener;
     static ImageView img_dot_one;
     static ImageView img_dot_two;
     //    GridView category_grid;
@@ -77,32 +79,32 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
     private List<Swipe_Tab_entitiesModel> results;
     private Swipe_Tab_Adapter swipeTabAdapter;
     RecyclerViewClickListener recyclerViewClickListener;
-    private static RelativeLayout rl_107;
-    private static RelativeLayout rl_9;
-    static RelativeLayout rl_18;
-    static RelativeLayout rl_27;
-    static RelativeLayout rl_42;
-    static RelativeLayout rl_81;
-    static RelativeLayout rl_84;
-    static RelativeLayout rl_96;
-    static RelativeLayout rl_119;
-    static RelativeLayout rl_129;
-    static RelativeLayout rl_131;
-    static RelativeLayout rl_135;
-    static RelativeLayout rl_136;
-    static RelativeLayout rl_137;
-    static RelativeLayout rl_138;
-    static RelativeLayout rl_165;
-    static RelativeLayout rl_166;
-    static RelativeLayout rl_167;
+//    private static RelativeLayout rl_107;
+//    private static RelativeLayout rl_9;
+//    static RelativeLayout rl_18;
+//    static RelativeLayout rl_27;
+//    static RelativeLayout rl_42;
+//    static RelativeLayout rl_81;
+//    static RelativeLayout rl_84;
+//    static RelativeLayout rl_96;
+//    static RelativeLayout rl_119;
+//    static RelativeLayout rl_129;
+//    static RelativeLayout rl_131;
+//    static RelativeLayout rl_135;
+//    static RelativeLayout rl_136;
+//    static RelativeLayout rl_137;
+//    static RelativeLayout rl_138;
+//    static RelativeLayout rl_165;
+//    static RelativeLayout rl_166;
+//    static RelativeLayout rl_167;
     RelativeLayout rl_full;
     RelativeLayout rl_slide;
     YouTubePlayerView youTubePlayerView;
+    ImageView img_poster;
     int current_position = 1;
     ImageView img_pre, img_next;
     Search_Media_Model search_media_model;
     SearchMediaAdapter searchMediaAdapter;
-    ImageView img_poster;
     private int Total_Media;
     private int playerType;
     Fragment fragment;
@@ -120,6 +122,8 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
 
         sliderDotspanel = root.findViewById(R.id.SliderDots);
         youTubePlayerView = root.findViewById(R.id.video_landing);
+        img_poster = root.findViewById(R.id.img_poster);
+
         img_pre = root.findViewById(R.id.img_pre);
         img_next = root.findViewById(R.id.img_next);
         img_poster = root.findViewById(R.id.img_poster);
@@ -129,6 +133,10 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
 
         playerType = 2;
         fragment = this;
+
+
+        img_dot_one = root.findViewById(R.id.img_dot_one);
+        img_dot_two = root.findViewById(R.id.img_dot_two);
 
         img_pre.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,46 +155,78 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
 
         loadVideoData();
 
-        rl_slide = root.findViewById(R.id.rl_slide);
+
+        final ViewPager viewPager = root.findViewById(R.id.dash_pager);
+        final DashPagerAdapter adapter = new DashPagerAdapter(getChildFragmentManager());
+        viewPager.setAdapter(adapter);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Log.e("SELECTEDDOT", String.valueOf(position));
+                if (position == 0){
+                img_dot_one.setImageResource(R.drawable.viewpager_dot);
+                img_dot_two.setImageResource(R.drawable.viewpager_nondot);
+                }else {
+                    img_dot_one.setImageResource(R.drawable.viewpager_nondot);
+                    img_dot_two.setImageResource(R.drawable.viewpager_dot);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+
+//        rl_slide = root.findViewById(R.id.rl_slide);
 //        ly_over = root.findViewById(R.id.ly_over);
-
-        rl_107 = (RelativeLayout) root.findViewById(R.id.rl_107);
-        rl_9 = (RelativeLayout) root.findViewById(R.id.rl_9);
-        rl_18 = (RelativeLayout) root.findViewById(R.id.rl_18);
-        rl_27 = (RelativeLayout) root.findViewById(R.id.rl_27);
-        rl_42 = (RelativeLayout) root.findViewById(R.id.rl_42);
-        rl_81 = (RelativeLayout) root.findViewById(R.id.rl_81);
-        rl_84 = (RelativeLayout) root.findViewById(R.id.rl_84);
-        rl_96 = (RelativeLayout) root.findViewById(R.id.rl_96);
-        rl_119 = (RelativeLayout) root.findViewById(R.id.rl_119);
-        rl_129 = (RelativeLayout) root.findViewById(R.id.rl_129);
-        rl_131 = (RelativeLayout) root.findViewById(R.id.rl_131);
-        rl_135 = (RelativeLayout) root.findViewById(R.id.rl_135);
-        rl_136 = (RelativeLayout) root.findViewById(R.id.rl_136);
-        rl_137 = (RelativeLayout) root.findViewById(R.id.rl_137);
-        rl_138 = (RelativeLayout) root.findViewById(R.id.rl_138);
-        rl_165 = (RelativeLayout) root.findViewById(R.id.rl_165);
-        rl_166 = (RelativeLayout) root.findViewById(R.id.rl_166);
-        rl_167 = (RelativeLayout) root.findViewById(R.id.rl_167);
-
-        rl_107.setOnClickListener(this);
-        rl_9.setOnClickListener(this);
-        rl_18.setOnClickListener(this);
-        rl_27.setOnClickListener(this);
-        rl_42.setOnClickListener(this);
-        rl_81.setOnClickListener(this);
-        rl_84.setOnClickListener(this);
-        rl_96.setOnClickListener(this);
-        rl_119.setOnClickListener(this);
-        rl_129.setOnClickListener(this);
-        rl_131.setOnClickListener(this);
-        rl_135.setOnClickListener(this);
-        rl_136.setOnClickListener(this);
-        rl_137.setOnClickListener(this);
-        rl_138.setOnClickListener(this);
-        rl_165.setOnClickListener(this);
-        rl_166.setOnClickListener(this);
-        rl_167.setOnClickListener(this);
+//
+//        rl_107 = (RelativeLayout) root.findViewById(R.id.rl_107);
+//        rl_9 = (RelativeLayout) root.findViewById(R.id.rl_9);
+//        rl_18 = (RelativeLayout) root.findViewById(R.id.rl_18);
+//        rl_27 = (RelativeLayout) root.findViewById(R.id.rl_27);
+//        rl_42 = (RelativeLayout) root.findViewById(R.id.rl_42);
+//        rl_81 = (RelativeLayout) root.findViewById(R.id.rl_81);
+//        rl_84 = (RelativeLayout) root.findViewById(R.id.rl_84);
+//        rl_96 = (RelativeLayout) root.findViewById(R.id.rl_96);
+//        rl_119 = (RelativeLayout) root.findViewById(R.id.rl_119);
+//        rl_129 = (RelativeLayout) root.findViewById(R.id.rl_129);
+//        rl_131 = (RelativeLayout) root.findViewById(R.id.rl_131);
+//        rl_135 = (RelativeLayout) root.findViewById(R.id.rl_135);
+//        rl_136 = (RelativeLayout) root.findViewById(R.id.rl_136);
+//        rl_137 = (RelativeLayout) root.findViewById(R.id.rl_137);
+//        rl_138 = (RelativeLayout) root.findViewById(R.id.rl_138);
+//        rl_165 = (RelativeLayout) root.findViewById(R.id.rl_165);
+//        rl_166 = (RelativeLayout) root.findViewById(R.id.rl_166);
+//        rl_167 = (RelativeLayout) root.findViewById(R.id.rl_167);
+//
+//        rl_107.setOnClickListener(this);
+//        rl_9.setOnClickListener(this);
+//        rl_18.setOnClickListener(this);
+//        rl_27.setOnClickListener(this);
+//        rl_42.setOnClickListener(this);
+//        rl_81.setOnClickListener(this);
+//        rl_84.setOnClickListener(this);
+//        rl_96.setOnClickListener(this);
+//        rl_119.setOnClickListener(this);
+//        rl_129.setOnClickListener(this);
+//        rl_131.setOnClickListener(this);
+//        rl_135.setOnClickListener(this);
+//        rl_136.setOnClickListener(this);
+//        rl_137.setOnClickListener(this);
+//        rl_138.setOnClickListener(this);
+//        rl_165.setOnClickListener(this);
+//        rl_166.setOnClickListener(this);
+//        rl_167.setOnClickListener(this);
+        over_media = root.findViewById(R.id.over_media);
+        over_media.setOnClickListener(this);
 
         rl_full = (RelativeLayout) root.findViewById(R.id.rl_full);
         rl_full.setOnClickListener(new View.OnClickListener() {
@@ -227,16 +267,14 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
         };
         swipeTabAdapter = new Swipe_Tab_Adapter(getContext(), recyclerViewClickListener);
 
-        ly_one = root.findViewById(R.id.ly_one);
-        ly_two = root.findViewById(R.id.ly_two);
+//        ly_one = root.findViewById(R.id.ly_one);
+//        ly_two = root.findViewById(R.id.ly_two);
 
         animationslide_l2r = AnimationUtils.loadAnimation(getContext(), R.anim.slide_right_left);
         animationslide_r2l = AnimationUtils.loadAnimation(getContext(), R.anim.slide_left_right);
 
-        img_dot_one = root.findViewById(R.id.img_dot_one);
-        img_dot_two = root.findViewById(R.id.img_dot_two);
 
-        onSwipeTouchListener = new OnSwipeTouchListener(getContext(), root.findViewById(R.id.rl_slide));
+//        onSwipeTouchListener = new OnSwipeTouchListener(getContext(), root.findViewById(R.id.ly_over));
 
         return root;
     }
@@ -274,15 +312,22 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
                     if (videoUrl.contains("youtube")){
 //                    Log.e("Video_url", videoUrl);
                     String videoId = videoUrl.substring(videoUrl.length()-11);
+
                     youTubePlayerView.initPlayer(Constant.API_KEY, videoId, "https://cdn.rawgit.com/flipkart-incubator/inline-youtube-view/60bae1a1/youtube-android/youtube_iframe_player.html", playerType, null, fragment, imageLoader);
+
+                    mBuffer.selected_media = videoId;
 
                     }else if(videoUrl.contains("vimeo")){
                     }
+                    mBuffer.selected_media_type = "VIDEO";
                 }else if(results.get(0).getcontent_type().equals("POSTER")){
                     youTubePlayerView.setVisibility(View.GONE);
                     img_poster.setVisibility(View.VISIBLE);
                     Picasso.with(img_poster.getContext()).load(videoUrl).fit().into(img_poster);
+                    mBuffer.selected_media_type = "POSTER";
+                    mBuffer.selected_media = videoUrl;
                 }
+//                startActivity(new Intent(getContext(), WebViewActivity.class));
             }
         }, new Response.ErrorListener() {
             @Override
@@ -312,290 +357,323 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.rl_107:
-                if (flag){
-                    mBuffer.service_category_ids = 107;
-                    mBuffer.service_category_name = "Assistance";
-                    mBuffer.selectedItem = 0;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                    Methods.showProgress(getContext());
-                }
+            case R.id.img_poster:
+                startActivity(new Intent(getContext(), WebViewActivity.class));
+                Log.e("TAG", "img poster");
                 break;
-            case R.id.rl_9:
-                if (flag){
-                    mBuffer.service_category_ids = 9;
-                    mBuffer.service_category_name = "Education";
-                    mBuffer.selectedItem = 3;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                    Methods.showProgress(getContext());
-                }
-
+            case R.id.video_landing:
+                startActivity(new Intent(getContext(), WebViewActivity.class));
+                Log.e("TAG", "video_landing");
                 break;
-            case R.id.rl_18:
-                if (flag){
-                    mBuffer.service_category_ids = 18;
-                    mBuffer.service_category_name = "Health Care";
-                    mBuffer.selectedItem = 4;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
+            case R.id.over_media:
+                startActivity(new Intent(getContext(), WebViewActivity.class));
+                Log.e("TAG", "over_media");
                 break;
-            case R.id.rl_27:
-                if (flag){
-                    mBuffer.service_category_ids = 27;
-                    mBuffer.service_category_name = "Protection";
-                    mBuffer.selectedItem = 8;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
-                break;
-            case R.id.rl_42:
-                if (flag){
-                    mBuffer.service_category_ids = 42;
-                    mBuffer.service_category_name = "Refugee Status Determination";
-                    mBuffer.selectedItem = 9;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
-                break;
-            case R.id.rl_81:
-                if (flag){
-                    mBuffer.service_category_ids = 81;
-                    mBuffer.service_category_name = "Resettlement";
-                    mBuffer.selectedItem = 12;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
-                break;
-            case R.id.rl_84:
-                if (flag){
-                    mBuffer.service_category_ids = 84;
-                    mBuffer.service_category_name = "Livelihoods";
-                    mBuffer.selectedItem = 7;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
-                break;
-            case R.id.rl_96:
-                if (flag){
-                    mBuffer.service_category_ids = 96;
-                    mBuffer.service_category_name = "How to Contact UNHCR";
-                    mBuffer.selectedItem = 5;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
-                break;
-            case R.id.rl_119:
-                if (flag){
-                    mBuffer.service_category_ids = 119;
-                    mBuffer.service_category_name = "Residency";
-                    mBuffer.selectedItem = 13;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
-                break;
-            case R.id.rl_129:
-                if (flag){
-                    mBuffer.service_category_ids = 129;
-                    mBuffer.service_category_name = "Legal Aid";
-                    mBuffer.selectedItem = 6;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
-                break;
-//                second page
-            case R.id.rl_131:
-                if (!flag){
-                    mBuffer.service_category_ids = 131;
-                    mBuffer.service_category_name = "Child Protection";
-                    mBuffer.selectedItem = 1;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
-                break;
-            case R.id.rl_135:
-                if (!flag){
-                    mBuffer.service_category_ids = 135;
-                    mBuffer.service_category_name = "SGBV";
-                    mBuffer.selectedItem = 14;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
-
-                break;
-            case R.id.rl_136:
-                if (!flag){
-                    mBuffer.service_category_ids = 136;
-                    mBuffer.service_category_name = "Community-based Protection";
-                    mBuffer.selectedItem = 2;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
-
-                break;
-            case R.id.rl_137:
-                if (!flag){
-                    mBuffer.service_category_ids = 137;
-                    mBuffer.service_category_name = "Registration";
-                    mBuffer.selectedItem = 10;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
-
-                break;
-            case R.id.rl_138:
-                if (!flag){
-                    mBuffer.service_category_ids = 138;
-                    mBuffer.service_category_name = "Reporting Fraud and Corruption";
-                    mBuffer.selectedItem = 11;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
-
-                break;
-            case R.id.rl_165:
-                if (!flag){
-                    mBuffer.service_category_ids = 165;
-                    mBuffer.service_category_name = "Irregular Movements";
-                    mBuffer.selectedItem = 16;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
-
-                break;
-            case R.id.rl_166:
-                if (!flag){
-                    mBuffer.service_category_ids = 166;
-                    mBuffer.service_category_name = "Telling the Real Story";
-                    mBuffer.selectedItem = 17;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
-
-                break;
-            case R.id.rl_167:
-                if (!flag){
-                    mBuffer.service_category_ids = 167;
-                    mBuffer.service_category_name = "Covid-19";
-                    mBuffer.selectedItem = 15;
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
-                    getActivity().finish();
-                }
-                break;
-            case R.id.tv_media:
-                mBuffer.To_where = "Media";
-                startActivity(new Intent(getActivity(), DashboardActivity.class));
-                getActivity().finish();
 
         }
+//        switch (v.getId()){
+//            case R.id.rl_107:
+//                if (flag){
+//                    mBuffer.service_category_ids = 107;
+//                    mBuffer.service_category_name = "Assistance";
+//                    mBuffer.selectedItem = 0;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                    Methods.showProgress(getContext());
+//                }
+//                break;
+//            case R.id.rl_9:
+//                if (flag){
+//                    mBuffer.service_category_ids = 9;
+//                    mBuffer.service_category_name = "Education";
+//                    mBuffer.selectedItem = 3;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                    Methods.showProgress(getContext());
+//                }
+//
+//                break;
+//            case R.id.rl_18:
+//                if (flag){
+//                    mBuffer.service_category_ids = 18;
+//                    mBuffer.service_category_name = "Health Care";
+//                    mBuffer.selectedItem = 4;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//                break;
+//            case R.id.rl_27:
+//                if (flag){
+//                    mBuffer.service_category_ids = 27;
+//                    mBuffer.service_category_name = "Protection";
+//                    mBuffer.selectedItem = 8;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//                break;
+//            case R.id.rl_42:
+//                if (flag){
+//                    mBuffer.service_category_ids = 42;
+//                    mBuffer.service_category_name = "Refugee Status Determination";
+//                    mBuffer.selectedItem = 9;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//                break;
+//            case R.id.rl_81:
+//                if (flag){
+//                    mBuffer.service_category_ids = 81;
+//                    mBuffer.service_category_name = "Resettlement";
+//                    mBuffer.selectedItem = 12;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//                break;
+//            case R.id.rl_84:
+//                if (flag){
+//                    mBuffer.service_category_ids = 84;
+//                    mBuffer.service_category_name = "Livelihoods";
+//                    mBuffer.selectedItem = 7;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//                break;
+//            case R.id.rl_96:
+//                if (flag){
+//                    mBuffer.service_category_ids = 96;
+//                    mBuffer.service_category_name = "How to Contact UNHCR";
+//                    mBuffer.selectedItem = 5;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//                break;
+//            case R.id.rl_119:
+//                if (flag){
+//                    mBuffer.service_category_ids = 119;
+//                    mBuffer.service_category_name = "Residency";
+//                    mBuffer.selectedItem = 13;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//                break;
+//            case R.id.rl_129:
+//                if (flag){
+//                    mBuffer.service_category_ids = 129;
+//                    mBuffer.service_category_name = "Legal Aid";
+//                    mBuffer.selectedItem = 6;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//                break;
+////                second page
+//            case R.id.rl_131:
+//                if (!flag){
+//                    mBuffer.service_category_ids = 131;
+//                    mBuffer.service_category_name = "Child Protection";
+//                    mBuffer.selectedItem = 1;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//                break;
+//            case R.id.rl_135:
+//                if (!flag){
+//                    mBuffer.service_category_ids = 135;
+//                    mBuffer.service_category_name = "SGBV";
+//                    mBuffer.selectedItem = 14;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//
+//                break;
+//            case R.id.rl_136:
+//                if (!flag){
+//                    mBuffer.service_category_ids = 136;
+//                    mBuffer.service_category_name = "Community-based Protection";
+//                    mBuffer.selectedItem = 2;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//
+//                break;
+//            case R.id.rl_137:
+//                if (!flag){
+//                    mBuffer.service_category_ids = 137;
+//                    mBuffer.service_category_name = "Registration";
+//                    mBuffer.selectedItem = 10;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//
+//                break;
+//            case R.id.rl_138:
+//                if (!flag){
+//                    mBuffer.service_category_ids = 138;
+//                    mBuffer.service_category_name = "Reporting Fraud and Corruption";
+//                    mBuffer.selectedItem = 11;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//
+//                break;
+//            case R.id.rl_165:
+//                if (!flag){
+//                    mBuffer.service_category_ids = 165;
+//                    mBuffer.service_category_name = "Irregular Movements";
+//                    mBuffer.selectedItem = 16;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//
+//                break;
+//            case R.id.rl_166:
+//                if (!flag){
+//                    mBuffer.service_category_ids = 166;
+//                    mBuffer.service_category_name = "Telling the Real Story";
+//                    mBuffer.selectedItem = 17;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//
+//                break;
+//            case R.id.rl_167:
+//                if (!flag){
+//                    mBuffer.service_category_ids = 167;
+//                    mBuffer.service_category_name = "Covid-19";
+//                    mBuffer.selectedItem = 15;
+//                    mBuffer.To_where = "Home";
+//                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                    getActivity().finish();
+//                }
+//                break;
+//            case R.id.tv_media:
+//                mBuffer.To_where = "Media";
+//                startActivity(new Intent(getActivity(), DashboardActivity.class));
+//                getActivity().finish();
+//
+//        }
 
 
-        Constant.SELECTED_CATEGORY = mBuffer.service_category_name;
-        Constant.SELECTED_CATEGORY_ID = mBuffer.service_category_ids;
+//        Constant.SELECTED_CATEGORY = mBuffer.service_category_name;
+//        Constant.SELECTED_CATEGORY_ID = mBuffer.service_category_ids;
     }
 
-    public static class OnSwipeTouchListener implements View.OnTouchListener {
-
-        private final GestureDetector gestureDetector;
-        Context context;
-        OnSwipeTouchListener(Context ctx, View mainView) {
-            gestureDetector = new GestureDetector(ctx, new OnSwipeTouchListener.GestureListener());
-            mainView.setOnTouchListener(this);
-            context = ctx;
-        }
-
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            return gestureDetector.onTouchEvent(event);
-        }
-
-        public class GestureListener extends
-                GestureDetector.SimpleOnGestureListener {
-            private static final int SWIPE_THRESHOLD = 100;
-            private static final int SWIPE_VELOCITY_THRESHOLD = 100;
-            @Override
-            public boolean onDown(MotionEvent e) {
-                return true;
-            }
-            @Override
-            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                boolean result = false;
-                try {
-                    float diffY = e2.getY() - e1.getY();
-                    float diffX = e2.getX() - e1.getX();
-                    if (Math.abs(diffX) > Math.abs(diffY)) {
-                        if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
-                            if (diffX > 0) {
-                                onSwipeLeft();
-                            } else {
-                                onSwipeRight();
-                            }
-                            result = true;
-                        }
-                    }
-                    else if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
-                        if (diffY > 0) {
-//                            onSwipeBottom();
-                        } else {
-//                            onSwipeTop();
-                        }
-                        result = true;
-                    }
-                }
-                catch (Exception exception) {
-                    exception.printStackTrace();
-                }
-                return result;
-            }
-        }
-        void onSwipeRight() {
-            if (flag){
-                ly_one.startAnimation(animationslide_r2l);
-                ly_one.setVisibility(View.GONE);
-                ly_two.startAnimation(animationslide_l2r);
-                ly_two.setVisibility(View.VISIBLE);
-                img_dot_one.setImageResource(R.drawable.viewpager_nondot);
-                img_dot_two.setImageResource(R.drawable.viewpager_dot);
-                flag = false;
-                this.onSwipe.swipeRight();
-
-            }else {
-
-            }
-        }
-        void onSwipeLeft() {
-            if (!flag){
-                ly_one.startAnimation(animationslide_l2r);
-                ly_two.setVisibility(View.GONE);
-                ly_one.setVisibility(View.VISIBLE);
-                ly_two.startAnimation(animationslide_r2l);
-                img_dot_one.setImageResource(R.drawable.viewpager_dot);
-                img_dot_two.setImageResource(R.drawable.viewpager_nondot);
-                flag = true;
-                this.onSwipe.swipeLeft();
-
-            }else {
-
-            }
-        }
-//        void onSwipeTop() {
-//            Toast.makeText(context, "Swiped Up", Toast.LENGTH_SHORT).show();
-//            this.onSwipe.swipeTop();
+//    public static class OnSwipeTouchListener implements View.OnTouchListener {
+//
+//        private final GestureDetector gestureDetector;
+//        Context context;
+//        OnSwipeTouchListener(Context ctx, View mainView) {
+//            gestureDetector = new GestureDetector(ctx, new OnSwipeTouchListener.GestureListener());
+//            mainView.setOnTouchListener(this);
+//            context = ctx;
 //        }
-//        void onSwipeBottom() {
-//            Toast.makeText(context, "Swiped Down", Toast.LENGTH_SHORT).show();
-//            this.onSwipe.swipeBottom();
+//
+//        @Override
+//        public boolean onTouch(View v, MotionEvent event) {
+//            return gestureDetector.onTouchEvent(event);
 //        }
-        interface onSwipeListener {
-            void swipeRight();
-//            void swipeTop();
-//            void swipeBottom();
-            void swipeLeft();
-        }
-        OnSwipeTouchListener.onSwipeListener onSwipe;
-    }
+//
+//        public class GestureListener extends
+//                GestureDetector.SimpleOnGestureListener {
+//            private static final int SWIPE_THRESHOLD = 100;
+//            private static final int SWIPE_VELOCITY_THRESHOLD = 100;
+//            @Override
+//            public boolean onDown(MotionEvent e) {
+//                return true;
+//            }
+//            @Override
+//            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+//                boolean result = false;
+//                try {
+//                    float diffY = e2.getY() - e1.getY();
+//                    float diffX = e2.getX() - e1.getX();
+//                    if (Math.abs(diffX) > Math.abs(diffY)) {
+//                        if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+//                            if (diffX > 0) {
+//                                onSwipeLeft();
+//                            } else {
+//                                onSwipeRight();
+//                            }
+//                            result = true;
+//                        }
+//                    }
+//                    else if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
+//                        if (diffY > 0) {
+////                            onSwipeBottom();
+//                        } else {
+////                            onSwipeTop();
+//                        }
+//                        result = true;
+//                    }
+//                }
+//                catch (Exception exception) {
+//                    exception.printStackTrace();
+//                }
+//                return result;
+//            }
+//        }
+//        void onSwipeRight() {
+//            if (flag){
+//                ly_one.startAnimation(animationslide_r2l);
+//                ly_one.setVisibility(View.GONE);
+//                ly_two.startAnimation(animationslide_l2r);
+//                ly_two.setVisibility(View.VISIBLE);
+//                img_dot_one.setImageResource(R.drawable.viewpager_nondot);
+//                img_dot_two.setImageResource(R.drawable.viewpager_dot);
+//                flag = false;
+//                this.onSwipe.swipeRight();
+//
+//            }else {
+//
+//            }
+//        }
+//        void onSwipeLeft() {
+//            if (!flag){
+//                ly_one.startAnimation(animationslide_l2r);
+//                ly_two.setVisibility(View.GONE);
+//                ly_one.setVisibility(View.VISIBLE);
+//                ly_two.startAnimation(animationslide_r2l);
+//                img_dot_one.setImageResource(R.drawable.viewpager_dot);
+//                img_dot_two.setImageResource(R.drawable.viewpager_nondot);
+//                flag = true;
+//                this.onSwipe.swipeLeft();
+//
+//            }else {
+//
+//            }
+//        }
+////        void onSwipeTop() {
+////            Toast.makeText(context, "Swiped Up", Toast.LENGTH_SHORT).show();
+////            this.onSwipe.swipeTop();
+////        }
+////        void onSwipeBottom() {
+////            Toast.makeText(context, "Swiped Down", Toast.LENGTH_SHORT).show();
+////            this.onSwipe.swipeBottom();
+////        }
+//        interface onSwipeListener {
+//            void swipeRight();
+////            void swipeTop();
+////            void swipeBottom();
+//            void swipeLeft();
+//        }
+//        OnSwipeTouchListener.onSwipeListener onSwipe;
+//    }
 
 //    private void loadcategory() {
 //        RequestQueue queue = Volley.newRequestQueue(getContext());

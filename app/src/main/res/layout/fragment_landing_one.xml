@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:id="@+id/ly_one"
+        android:layout_width="247.5dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:layout_centerHorizontal="true">
+
+        <RelativeLayout
+            android:id="@+id/rl_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_107"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_assistance"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_support"/>
+                <TextView
+                    android:id="@+id/tv_support"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_assistance"
+                    android:layout_alignEnd="@id/img_assistance"
+                    android:textAlignment="center"
+                    android:text="Assistance"
+                    android:textSize="9.5sp"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_below="@id/img_assistance"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/rl_107"
+                android:layout_marginLeft="7.5dp">
+                <ImageView
+                    android:id="@+id/img_education"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_education"/>
+                <TextView
+                    android:id="@+id/tv_notebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_education"
+                    android:layout_alignEnd="@id/img_education"
+                    android:textAlignment="center"
+                    android:text="Education"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_education"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/rl_9"
+                android:layout_marginLeft="7.5dp">
+                <ImageView
+                    android:id="@+id/img_health_care"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_health_care"/>
+                <TextView
+                    android:id="@+id/tv_medicine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_health_care"
+                    android:layout_alignEnd="@id/img_health_care"
+                    android:textAlignment="center"
+                    android:text="Health Care"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_health_care"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/rl_18"
+                android:layout_marginLeft="7.5dp">
+                <ImageView
+                    android:id="@+id/img_protection"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_protection"/>
+                <TextView
+                    android:id="@+id/tv_legal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_protection"
+                    android:layout_alignEnd="@id/img_protection"
+                    android:textAlignment="center"
+                    android:text="Protection"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_protection"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/rl_27"
+                android:layout_marginLeft="7.5dp">
+                <ImageView
+                    android:id="@+id/img_refugee_status_determination"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_refugee_status_determination"/>
+                <TextView
+                    android:id="@+id/tv_groups"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_refugee_status_determination"
+                    android:layout_alignEnd="@id/img_refugee_status_determination"
+                    android:textAlignment="center"
+                    android:text="Refugee Status Determination"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_refugee_status_determination"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_below="@id/rl_one">
+
+            <RelativeLayout
+                android:id="@+id/rl_81"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_resettlement"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_resettlement"/>
+                <TextView
+                    android:id="@+id/tv_care"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_resettlement"
+                    android:layout_alignEnd="@id/img_resettlement"
+                    android:textAlignment="center"
+                    android:text="Resettlement"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_resettlement"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_84"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/rl_81"
+                android:layout_marginLeft="7.5dp">
+                <ImageView
+                    android:id="@+id/img_livelihoods"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_livelihoods"/>
+                <TextView
+                    android:id="@+id/tv_benefits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_livelihoods"
+                    android:layout_alignEnd="@id/img_livelihoods"
+                    android:textAlignment="center"
+                    android:text="Livelihoods"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_livelihoods"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_96"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/rl_84"
+                android:layout_marginLeft="7.5dp">
+                <ImageView
+                    android:id="@+id/img_how_to_contact_unhcr"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_how_to_contact_unhcr"/>
+                <TextView
+                    android:id="@+id/tv_water"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_how_to_contact_unhcr"
+                    android:layout_alignEnd="@id/img_how_to_contact_unhcr"
+                    android:textAlignment="center"
+                    android:text="How to Contact UNHCR"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_how_to_contact_unhcr"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_119"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/rl_96"
+                android:layout_marginLeft="7.5dp">
+                <ImageView
+                    android:id="@+id/img_residency"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_residency"/>
+                <TextView
+                    android:id="@+id/tv_childcare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_residency"
+                    android:layout_alignEnd="@id/img_residency"
+                    android:text="Residency"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_residency"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_129"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/rl_119"
+                android:layout_marginLeft="7.5dp">
+                <ImageView
+                    android:id="@+id/img_legal_aid"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_legal_aid"/>
+                <TextView
+                    android:id="@+id/tv_notes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_legal_aid"
+                    android:layout_alignEnd="@id/img_legal_aid"
+                    android:textAlignment="center"
+                    android:text="Legal Aid"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_legal_aid"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

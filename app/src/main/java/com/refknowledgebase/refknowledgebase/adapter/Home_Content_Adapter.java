@@ -53,7 +53,8 @@ public class Home_Content_Adapter extends RecyclerView.Adapter<Home_Content_Adap
         holder.tv_title.setText(homeContentBaseModel.getQuestion());
         holder.tv_content.setText(Html.fromHtml(homeContentBaseModel.getAnswer()));
 
-        switch (Constant.SELECTED_CATEGORY_ID){
+//        switch (Constant.SELECTED_CATEGORY_ID){
+        switch (mBuffer.service_category_ids){
             case 9:
                 holder.one_sysmbol.setImageDrawable(mContext.getDrawable(R.drawable.education));
                 break;
@@ -110,8 +111,8 @@ public class Home_Content_Adapter extends RecyclerView.Adapter<Home_Content_Adap
                 break;
         }
 
-        holder.tv_category.setText(Constant.SELECTED_CATEGORY);
-
+//        holder.tv_category.setText(Constant.SELECTED_CATEGORY);
+        holder.tv_category.setText(mBuffer.service_category_name);
         if (mBuffer.is_search){
             switch (homeContentBaseModel.getService_category_ids()[0]){
                 case 9:

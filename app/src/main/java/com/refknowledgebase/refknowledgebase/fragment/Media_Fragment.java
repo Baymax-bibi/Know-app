@@ -1,10 +1,17 @@
 package com.refknowledgebase.refknowledgebase.fragment;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,14 +29,18 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.refknowledgebase.refknowledgebase.Activity_login;
 import com.refknowledgebase.refknowledgebase.R;
 import com.refknowledgebase.refknowledgebase.adapter.SearchMediaAdapter;
 import com.refknowledgebase.refknowledgebase.buffer.mBuffer;
+import com.refknowledgebase.refknowledgebase.home_tab.Assistance_detail;
 import com.refknowledgebase.refknowledgebase.model.Search_Media_Model;
 import com.refknowledgebase.refknowledgebase.model.Search_Media_entities_Model;
+import com.refknowledgebase.refknowledgebase.myinterface.HomeContentClickListner;
 import com.refknowledgebase.refknowledgebase.utils.Constant;
 import com.refknowledgebase.refknowledgebase.utils.Methods;
 import com.refknowledgebase.refknowledgebase.utils.PaginationScrollListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.List;
@@ -66,8 +77,33 @@ public class Media_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         rv_search_media = view.findViewById(R.id.rv_search_media);
 
+        HomeContentClickListner homeContentClickListner = new HomeContentClickListner() {
+            @Override
+            public void Home_Content_ClickListner(View v, int position) {
 
-        searchMediaAdapter = new SearchMediaAdapter(this);
+                final Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.show_image);
+
+                // set the custom dialog components - text, image and button
+                ImageView image = (ImageView) dialog.findViewById(R.id.img_media);
+                Picasso.with(getContext()).load(Uri.parse(mBuffer.selected_media_id)).into(image);
+
+                Button dialogButton = (Button) dialog.findViewById(R.id.btn_close_img);
+                // if button is clicked, close the custom dialog
+                dialogButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
+            }
+
+
+
+        };
+        searchMediaAdapter = new SearchMediaAdapter(this, homeContentClickListner);
         rv_search_media.setAdapter(searchMediaAdapter);
 
 //        rv_search_media.setHasFixedSize(true);

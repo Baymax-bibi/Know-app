@@ -72,4 +72,7 @@ public class mBuffer {
     public static String To_where = "Home";
     public static boolean is_search = false;
     public static String type_search = "faq";
+    public static String selected_media = "";
+    public static String selected_media_type = "";
+    public static String selected_media_id = "";
 }

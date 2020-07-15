@@ -146,7 +146,6 @@ public class Activity_Sec extends AppCompatActivity implements View.OnClickListe
 
                 TextView textView = (TextView) view.findViewById(R.id.tv_country_name);
                 String selected_country = textView.getText().toString();
-                Log.e("Selected", selected_country);
                 country_lv.setVisibility(View.GONE);
                 tv_sec_country.setText(selected_country);
 
@@ -170,6 +169,8 @@ public class Activity_Sec extends AppCompatActivity implements View.OnClickListe
                 lan_lv.setVisibility(View.GONE);
                 tv_sec_lanugage.setText(selected_language);
                 insertString(Constant.SELECTED_LANGUAGE, selected_language);
+
+                Log.e("SELECTEDLANG", selected_language);
             }
         });
 //Adding callback manager

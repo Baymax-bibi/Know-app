@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.android.volley.Request;
@@ -177,9 +179,11 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
         switch (v.getId()){
             case R.id.img_saved:
                 if (!saved_flag){
+                    Methods.showProgress(getContext());
                     saveFaq();
                 }else {
                     deleteFaq();
+                    Methods.showProgress(getContext());
                 }
                     
                 break;
@@ -194,6 +198,7 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
             @Override
             public void onResponse(String response) {
                 Methods.closeProgress();
+                Methods.closeProgress();
 //                Gson gson = new Gson();
 //                FAQ_SavedModel faq_savedModel  = gson.fromJson(response, FAQ_SavedModel.class);
 //                saved_faq_id = faq_savedModel.getId();
@@ -205,6 +210,7 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
             public void onErrorResponse(VolleyError error) {
                 Methods.closeProgress();
                 Log.e("Service category","Service category failed" + error.toString());
+                Toast.makeText(getContext(), "Some error Occured", Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
@@ -238,6 +244,7 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
                 FAQ_SavedModel faq_savedModel  = gson.fromJson(response, FAQ_SavedModel.class);
                 saved_faq_id = faq_savedModel.getId();
                 img_saved.setImageDrawable(getResources().getDrawable(R.drawable.detail_saved));
+                Methods.closeProgress();
 //                Log.e("saved_faq_id", String.valueOf(saved_faq_id));
                 saved_flag = true;
             }

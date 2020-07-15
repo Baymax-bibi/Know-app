@@ -1,6 +1,7 @@
 package com.refknowledgebase.refknowledgebase.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,6 +62,7 @@ public class Home_Fragment extends Fragment {
     private Home_Content_Model homeContentModel;
     private List<Home_Content_engitiesModel> results_content;
     Fragment fragment;
+    int toPosition = 0;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -68,8 +70,15 @@ public class Home_Fragment extends Fragment {
 
         home_pager = root.findViewById(R.id.home_pager);
         layoutManager_tab = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+
         rv_tab_bar = root.findViewById(R.id.rv_tab_bar);
         rv_tab_bar.setLayoutManager(layoutManager_tab);
+//
+//        int totalVisibleItems = layoutManager_tab.findLastVisibleItemPosition() - layoutManager_tab.findFirstVisibleItemPosition();
+//        int centeredItemPosition = totalVisibleItems / 2;
+//        rv_tab_bar.smoothScrollToPosition(5);
+//        rv_tab_bar.setScrollX(centeredItemPosition);
+//        Log.e("TAG",layoutManager_tab.findLastVisibleItemPosition()+" | " + layoutManager_tab.findFirstVisibleItemPosition() + " | " + String.valueOf(centeredItemPosition));
 
         recyclerViewClickListener = new RecyclerViewClickListener() {
             @Override
@@ -277,6 +286,7 @@ public class Home_Fragment extends Fragment {
                 TOTAL_PAGES = swipeTabModel.getLast_page();
                 LAST_PAGE = swipeTabModel.getLast_page();
 
+                iJustWant();
                 if (currentPage >= LAST_PAGE){
                     isLoading = true;
                 }
@@ -304,6 +314,92 @@ public class Home_Fragment extends Fragment {
         queue.add(sr);
     }
 
+    private void iJustWant() {
+
+        // Delay of 2 seconds
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                switch (mBuffer.service_category_ids){
+                    case 9:
+                        toPosition = 0;
+                        rv_tab_bar.smoothScrollToPosition(3);
+                        break;
+                    case 18:
+                        toPosition = 1;
+                        rv_tab_bar.smoothScrollToPosition(4);
+                        break;
+                    case 27:
+                        toPosition = 2;
+                        rv_tab_bar.smoothScrollToPosition(8);
+                        break;
+                    case 42:
+                        toPosition = 3;
+                        rv_tab_bar.smoothScrollToPosition(9);
+                        break;
+                    case 81:
+                        toPosition = 4;
+                        rv_tab_bar.smoothScrollToPosition(12);
+                        break;
+                    case 84:
+                        toPosition = 5;
+                        rv_tab_bar.smoothScrollToPosition(7);
+                        break;
+                    case 96:
+                        toPosition = 6;
+                        rv_tab_bar.smoothScrollToPosition(5);
+                        break;
+                    case 107:
+                        toPosition = 7;
+                        rv_tab_bar.smoothScrollToPosition(0);
+                        break;
+                    case 119:
+                        toPosition = 8;
+                        rv_tab_bar.smoothScrollToPosition(13);
+                        break;
+                    case 129:
+                        toPosition = 9;
+                        rv_tab_bar.smoothScrollToPosition(6);
+                        break;
+                    case 131:
+                        toPosition = 10;
+                        rv_tab_bar.smoothScrollToPosition(1);
+                        break;
+                    case 135:
+                        toPosition = 11;
+                        rv_tab_bar.smoothScrollToPosition(14);
+                        break;
+                    case 136:
+                        toPosition = 12;
+                        rv_tab_bar.smoothScrollToPosition(2);
+                        break;
+                    case 137:
+                        toPosition = 13;
+                        rv_tab_bar.smoothScrollToPosition(10);
+                        break;
+                    case 138:
+                        toPosition = 14;
+                        rv_tab_bar.smoothScrollToPosition(11);
+                        break;
+                    case 165:
+                        toPosition = 15;
+                        rv_tab_bar.smoothScrollToPosition(16);
+                        break;
+                    case 166:
+                        toPosition = 16;
+                        rv_tab_bar.smoothScrollToPosition(17);
+                        break;
+                    case 167:
+                        toPosition = 17;
+                        rv_tab_bar.smoothScrollToPosition(15);
+                        break;
+                }
+//                rv_tab_bar.smoothScrollToPosition(6);
+            }
+        }, 200);
+
+    }
+
     private void loadnextpage() {
         RequestQueue queue = Volley.newRequestQueue(getContext());
         String loadNext_url = Constant.URL+Constant.API_SERVICE_CATEGORY + "?page=" + currentPage + "&per_page=" + PER_PAGE;
@@ -325,6 +421,8 @@ public class Home_Fragment extends Fragment {
 
                 TOTAL_PAGES = swipeTabModel.getLast_page();
                 LAST_PAGE = swipeTabModel.getLast_page();
+
+                iJustWant();
 
                 if (currentPage >= LAST_PAGE){
                     isLoading = true;

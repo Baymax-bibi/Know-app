@@ -3,11 +3,14 @@ package com.refknowledgebase.refknowledgebase;
 import android.accounts.Account;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -46,6 +49,7 @@ import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Locale;
 import java.util.Set;
 
 public class Activity_login extends AppCompatActivity implements View.OnClickListener{
@@ -70,6 +74,12 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+//        if (getString(Constant.SELECTED_LANGUAGE).equals("English")){
+//            setAppLocal("en");
+//        }else if (getString(Constant.SELECTED_LANGUAGE).equals("عربى")){
+//            setAppLocal("ar");
+//        }
 
         rl_continue_acount = findViewById(R.id.rl_continue_acount);
         rl_continue_acount.setOnClickListener(this);
@@ -359,5 +369,14 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
             return true;
         }
         return false;
+    }
+
+    private void setAppLocal(String localCode){
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.setLocale(new Locale(localCode.toLowerCase()));
+
+        res.updateConfiguration(conf, dm);
     }
 }

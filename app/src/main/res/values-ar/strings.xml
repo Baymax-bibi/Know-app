@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RefKnowledgebase</string>
+    <string name="spinner_country" translatable="false">بلد</string>
+    <string name="spinner_language" translatable="false">لغة</string>
+    <string name="mode" translatable="false">وضع الظلام / الفاتح</string>
+    <string name="notification" translatable="false">إشعار الدفع</string>
+    <string name="location" translatable="false">موقع الوصول</string>
+    <string name="submit_question" translatable="false">أرسل سؤالاً</string>
+    <string name="help" translatable="false">كيفية استخدام التطبيق</string>
+    <string name="setting" translatable="false">الإعدادات</string>
+    <string name="about" translatable="false">حول</string>
+    <string name="legal" translatable="false">قانوني</string>
+    <string name="log_in_out" translatable="false">الخروج</string>
+    <string name="dashboard" translatable="false">لوحة القيادة</string>
+    <string name="load" translatable="false">جار التحميل...</string>
+    <string name="sign_facebook" translatable="false">تواصل مع Facebook</string>
+    <string name="sign_google" translatable="false">تابع مع Google</string>
+    <string name="facebook_login" translatable="false">استمر\nمع\nFacebook</string>
+    <string name="without_signup" translatable="false">استمر\nبدون\nتسجيل الدخول</string>
+    <string name="search_hint" translatable="false">كيف يمكننا مساعدتك؟</string>
+    <string name="account" translatable="false">الحساب</string>
+    <string name="darkmode" translatable="false">الوضع الداكن</string>
+    <string name="general" translatable="false">جنرال لواء</string>
+    <string name="map" translatable="false">خريطة</string>
+    <string name="list" translatable="false">قائمة</string>
+    <string name="name" translatable="false">اسم</string>
+    <string name="phone" translatable="false">هاتف</string>
+    <string name="email" translatable="false">البريد الإلكتروني</string>
+    <string name="website" translatable="false">موقع الكتروني</string>
+    <string name="address" translatable="false">عنوان</string>
+    <string name="save_contact" translatable="false">+ حفظ جهة الاتصال</string>
+    <string name="legal_title_one" translatable="false">ما هو لورم إبسوم؟</string>
+    <string name="lorem_ipsum" translatable="false">Lorem Ipsum هو ببساطة نص وهمي لصناعة الطباعة والتنضيد. كان لوريم إيبسوم النص الوهمي القياسي للصناعة منذ القرن الخامس عشر ، عندما أخذت طابعة غير معروفة مجموعة من الأنواع وخلطتها لعمل كتاب من نوع العينة. لقد نجا ليس فقط من خمسة قرون ، ولكن أيضًا قفزة في التنضيد الإلكتروني ، وبقي دون تغيير بشكل أساسي. تم تعميمه في الستينيات مع إصدار أوراق Letraset التي تحتوي على مقاطع Lorem Ipsum ، ومؤخرًا مع برامج النشر المكتبي مثل Aldus PageMaker بما في ذلك إصدارات Lorem Ipsum.</string>
+    <string name="com" translatable="false">www.unhcr.org</string>
+    <string name="help_1" translatable="false">لوريم إبسوم الجزر.</string>
+    <string name="home" translatable="false">الصفحة الرئيسية</string>
+    <string name="direcotry" translatable="false">الدليل</string>
+    <string name="saved" translatable="false">تم الحفظ</string>
+    <string name="media" translatable="false">وسائل الإعلام</string>
+    <string name="noti" translatable="false">إشعارات</string>
+    <string name="add_contact" translatable="false">+ إضافة جهة اتصال</string>
+    <string name="submit" translatable="false">إرسال</string>
+    <string name="grant_cash" translatable="false">جرانت | النقدية | منحة</string>
+    <string name="near" translatable="false">عرض النتائج بالقرب منك</string>
+    <string name="close" translatable="false">قريب</string>
+    <string name="loading" translatable="false">جار التحميل...</string>
+    <string name="loading_ar" translatable="false">جار التحميل...</string>
+    <string name="google_maps_key" translatable="false">AIzaSyBaMjRv_vstNebbrGsQoTbnlTtx6uRxSZA</string>
+    <string name="login_login" translatable="false">تسجيل الدخول</string>
+    <string name="login_login_ar" translatable="false">تسجيل الدخول</string>
+    <string name="switch_account" translatable="false">تبديل الحساب</string>
+    <string name="or" translatable="false">أو</string>
+    <string name="signup_facebook" translatable="false">تسجيل الدخول باستخدام الفيسبوك</string>
+    <string name="signup_without_registration" translatable="false">تواصل بدون تسجيل</string>
+    <string name="tab" translatable="false">\\u0009\\u0009\\u0009\\u0009</string>
+    <string name="dash_refknowledge" translatable="false">قاعدة المعرفة</string>
+    <string name="dash_directory" translatable="false">الدليل</string>
+    <string name="dash_saved" translatable="false">البيانات المحفوظة</string>
+    <string name="dash_media" translatable="false">وسائل الإعلام</string>
+    <string name="dash_notification" translatable="false">تنبيه</string>
+    <string name="exit" translatable="false">اضغط مرة أخرى للخروج</string>
+    <string name="spinner_radius" translatable="false">نصف القطر</string>
+    <string name="directory_list_title" translatable="false">قائمة</string>
+    <string name="dirctory_map_title" translatable="false">خريطة</string>
+    <string name="home_assistance" translatable="false">مساعدة</string>
+    <string name="home_childProtection" translatable="false">حماية الطفل</string>
+    <string name="home_CommunityProtection" translatable="false">الحماية المجتمعية</string>
+    <string name="home_education" translatable="false">التعليم</string>
+    <string name="home_HealthCare" translatable="false">رعاية صحية</string>
+    <string name="home_HowUncr" translatable="false">كيفية الاتصال بالمفوضية</string>
+    <string name="home_LegalAid" translatable="false">مساعدة قانونية</string>
+    <string name="home_Livelihoods" translatable="false">سبل العيش</string>
+    <string name="home_SGBV" translatable="false">العنف الجنسي و العنف القائم على نوع الجنس</string>
+    <string name="home_Covid" translatable="false">كوفيد -19</string>
+    <string name="facebook_app_id">2957892500993795</string>
+    <string name="fb_login_protocol_scheme">2957892500993795</string>
+    <string name="back4app_app_id" translatable="false">PASTE_YOUR_APPLICATION_ID_HERE</string>
+    <string name="back4app_client_key" translatable="false">PASTE_YOUR_APPLICATION_ID_HERE</string>
+    <string name="google_login" translatable="false">استمر\nمع\nجوجل</string>
+    <string name="error_login" translatable="false">يحدث بعض الأخطاء أثناء تسجيل الدخول إلى FB.</string>
+    <string name="cancel_login" translatable="false">يقوم المستخدم بإلغاء تسجيل الدخول.</string>
+    <string name="loading_data" translatable="false">تحميل البيانات...</string>
+    <string name="error_network_check" translatable="false">يرجى التحقق من اتصال شبكة البيانات</string>
+    <string name="OPENINGHOUR" translatable="false">ساعات العمل</string>
+    <string name="PLUSCODE" translatable="false">رمز الموقع المفتوح</string>
+    <string name="NEARESTMETRO" translatable="false">أقرب مترو</string>
+    <string name="home_Protection" translatable="false">الحماية</string>
+    <string name="home_Refugee" translatable="false">تحديد وضع اللاجئ</string>
+    <string name="home_Registration" translatable="false">التسجيل</string>
+    <string name="home_Reporting" translatable="false">الإبلاغ عن الاحتيال والفساد</string>
+    <string name="home_Resettlement" translatable="false">إعادة التوطين</string>
+    <string name="home_Residncy" translatable="false">الإقامة</string>
+    <string name="home_IrregularMove" translatable="false">حركة غير منتظمة</string>
+    <string name="home_TellRealStory" translatable="false">تحكي القصة الحقيقية</string>
+    <string name="select_country" translatable="false">حدد الدولة</string>
+    <string name="select_radius" translatable="false">حدد نصف القطر</string>
+    <string name="btn_save" translatable="false">حفظ</string>
+    <string name="hint_question" translatable="false">اكتب سؤالك هنا ...</string>
+    <string name="signup_google" translatable="false">تسجيل الدخول عبر جوجل</string>
+    <string name="cd_item_delete_button" translatable="false">حذف العنصر</string>
+    <string name="ts" translatable="false">الأحكام والشروط</string>
+    <string name="pref" translatable="false">التفضيلات</string>
+    <string name="ts_and" translatable="false">البنود و الظروف</string>
+    <string name="search" translatable="false">بحث</string>
+    <string name="NUMBER" translatable="false">رقم</string>
+    <string name="EMAIL" translatable="false">البريد الإلكتروني</string>
+    <string name="LANDMARK" translatable="false">معلم معروف</string>
+</resources>

@@ -59,10 +59,10 @@ public class Activity_Loading  extends AppCompatActivity implements View.OnClick
         }).start();
 //        language setting
 
-        if (getString(Constant.LANGUAGE).equals("English")){
-        }else if (getString(Constant.LANGUAGE).equals("Arabic")){
-            tv_loading.setText(getResources().getText(R.string.loading_ar));
-        }
+//        if (getString(Constant.SELECTED_LANGUAGE).equals("English")){
+//        }else if (getString(Constant.SELECTED_LANGUAGE).equals("Arabic")){
+//            tv_loading.setText(getResources().getText(R.string.loading_ar));
+//        }
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.refknowledgebase.refknowledgebase;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         StringRequest sr = new StringRequest(Request.Method.POST,Constant.URL+Constant.OAuth, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
+                Log.e("TAG", "getAutoTocken");
                 Methods.closeProgress();
                 Gson gson = new Gson();
                 oAuth_model = gson.fromJson(response, oAuth_Model.class);

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:id="@+id/ly_two"
+        android:layout_width="247.5dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_one_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_131"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_child_protection"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_child_protection"/>
+                <TextView
+                    android:id="@+id/tv_support_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_child_protection"
+                    android:layout_alignEnd="@id/img_child_protection"
+                    android:textAlignment="center"
+                    android:text="Child Protection"
+                    android:textSize="9.5sp"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_below="@id/img_child_protection"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_135"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/rl_131"
+                android:layout_marginLeft="7.5dp">
+                <ImageView
+                    android:id="@+id/img_sgbv"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_sgbv"/>
+                <TextView
+                    android:id="@+id/tv_notebook_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_sgbv"
+                    android:layout_alignEnd="@id/img_sgbv"
+                    android:textAlignment="center"
+                    android:text="SGBV"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_sgbv"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_136"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/rl_135"
+                android:layout_marginLeft="7.5dp">
+                <ImageView
+                    android:id="@+id/img_community_based_protection"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_community_based_protection"/>
+                <TextView
+                    android:id="@+id/tv_medicine_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_community_based_protection"
+                    android:layout_alignEnd="@id/img_community_based_protection"
+                    android:textAlignment="center"
+                    android:text="Community-based Protection"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_community_based_protection"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_137"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/rl_136"
+                android:layout_marginLeft="7.5dp">
+                <ImageView
+                    android:id="@+id/img_registration"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_registration"/>
+                <TextView
+                    android:id="@+id/tv_legal_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_registration"
+                    android:layout_alignEnd="@id/img_registration"
+                    android:textAlignment="center"
+                    android:text="Registration"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_registration"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_138"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/rl_137"
+                android:layout_marginLeft="7.5dp">
+                <ImageView
+                    android:id="@+id/img_reporting_fraud_and_corruption"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_reporting_fraud_and_corruption"/>
+                <TextView
+                    android:id="@+id/tv_groups_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_reporting_fraud_and_corruption"
+                    android:layout_alignEnd="@id/img_reporting_fraud_and_corruption"
+                    android:textAlignment="center"
+                    android:text="Reporting Fraud and Corruption"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_reporting_fraud_and_corruption"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_two_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_below="@id/rl_one">
+
+            <RelativeLayout
+                android:id="@+id/rl_165"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_care_1"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_irregular_movements"/>
+                <TextView
+                    android:id="@+id/tv_care_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_care_1"
+                    android:layout_alignEnd="@id/img_care_1"
+                    android:textAlignment="center"
+                    android:text="Irregular Movements"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_care_1"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_166"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/rl_165"
+                android:layout_marginLeft="7.5dp">
+                <ImageView
+                    android:id="@+id/img_benefits_1"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_telling_the_real_story"/>
+                <TextView
+                    android:id="@+id/tv_benefits_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_benefits_1"
+                    android:layout_alignEnd="@id/img_benefits_1"
+                    android:textAlignment="center"
+                    android:text="Telling the Real Story"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_benefits_1"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_167"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/rl_166"
+                android:layout_marginLeft="7.5dp">
+                <ImageView
+                    android:id="@+id/img_Covid_19"
+                    android:layout_width="43.5dp"
+                    android:layout_height="43.5dp"
+                    android:src="@drawable/circle_covid_19"/>
+                <TextView
+                    android:id="@+id/tv_Covid-19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/img_Covid_19"
+                    android:layout_alignEnd="@id/img_Covid_19"
+                    android:textAlignment="center"
+                    android:text="Covid-19"
+                    android:textSize="9.5sp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="5.3dp"
+                    android:layout_below="@id/img_Covid_19"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

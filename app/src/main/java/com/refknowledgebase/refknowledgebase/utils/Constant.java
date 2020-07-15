@@ -13,8 +13,6 @@ public class Constant {
     public static final String YOUTUBE_VIDEO_CODE = "_oEA18Y8gM0";
 
     public static final String PREF = "StringPrefs";
-    public static final String LANGUAGE = "language";
-    public static final String LOCATION = "location";
 
     public static final String USERLOGIN_NAME = "userlogin_name";
     public static final String USERLOGIN_PHOTO = "userlogin_photo";
@@ -67,4 +65,5 @@ public class Constant {
 
     public static String SELECTED_CATEGORY = "Assistance";
     public static int SELECTED_CATEGORY_ID = 107;
+
 }
