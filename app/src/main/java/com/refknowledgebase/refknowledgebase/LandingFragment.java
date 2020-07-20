@@ -143,6 +143,7 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
             public void onClick(View v) {
                 --current_position;
                 loadVideoData();
+                Methods.showProgress(getContext());
             }
         });
         img_next.setOnClickListener(new View.OnClickListener() {
@@ -150,10 +151,12 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
             public void onClick(View v) {
                 ++current_position;
                 loadVideoData();
+                Methods.showProgress(getContext());
             }
         });
 
         loadVideoData();
+        Methods.showProgress(getContext());
 
 
         final ViewPager viewPager = root.findViewById(R.id.dash_pager);
@@ -304,8 +307,9 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
 
                 Total_Media = search_media_model.getTotal();
 
-
                 String videoUrl = results.get(0).geturl();
+                videoUrl = videoUrl.replace("http", "https");
+
                 if (results.get(0).getcontent_type().equals("VIDEO")){
                     youTubePlayerView.setVisibility(View.VISIBLE);
                     img_poster.setVisibility(View.GONE);
@@ -321,6 +325,7 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
                     }
                     mBuffer.selected_media_type = "VIDEO";
                 }else if(results.get(0).getcontent_type().equals("POSTER")){
+                    Log.e("Fragment_img", videoUrl);
                     youTubePlayerView.setVisibility(View.GONE);
                     img_poster.setVisibility(View.VISIBLE);
                     Picasso.with(img_poster.getContext()).load(videoUrl).fit().into(img_poster);

@@ -83,6 +83,7 @@ public class Media_Fragment extends Fragment {
 
                 final Dialog dialog = new Dialog(getContext());
                 dialog.setContentView(R.layout.show_image);
+                Log.e("SELECT_img_", mBuffer.selected_media_id);
 
                 // set the custom dialog components - text, image and button
                 ImageView image = (ImageView) dialog.findViewById(R.id.img_media);

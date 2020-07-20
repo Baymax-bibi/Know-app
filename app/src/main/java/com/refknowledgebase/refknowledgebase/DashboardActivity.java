@@ -398,6 +398,7 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
                 rl_search_view.setVisibility(View.VISIBLE);
                 img_search.setVisibility(View.GONE);
 
+                mBuffer.To_where = "Search";
                 et_search_text.setText("");
                 mBuffer.is_search = true;
                 set_title(false,spannableString);

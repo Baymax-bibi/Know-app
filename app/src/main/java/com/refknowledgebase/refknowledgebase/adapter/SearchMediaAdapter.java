@@ -74,7 +74,9 @@ public class SearchMediaAdapter extends RecyclerView.Adapter<SearchMediaAdapter.
         playerType = 2;
         final Search_Media_BaseModel search_media_baseModel = media_list.get(position);
 
-        final String videoUrl = search_media_baseModel.geturl();
+        String videoUrl = search_media_baseModel.geturl();
+
+        videoUrl = videoUrl.replace("http", "https");
         holder.tv_content.setText(Html.fromHtml(search_media_baseModel.getdescription()));
 
         if (search_media_baseModel.getcontent_type().equals("VIDEO")){
@@ -93,12 +95,13 @@ public class SearchMediaAdapter extends RecyclerView.Adapter<SearchMediaAdapter.
 
                 Log.e("VIMEO data", videoUrl);
                 Log.e("This is ", "VIMEO");
+                final String finalVideoUrl1 = videoUrl;
                 holder.img_vimeo_start.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 //                        vimeovideo(videoUrl);
                         holder.img_vimeo_start.setVisibility(View.GONE);
-                        String vimeoVideo = "<html><body><iframe src=\""+videoUrl+"\" frameborder=\"0\" ></iframe></body></html>";
+                        String vimeoVideo = "<html><body><iframe src=\""+ finalVideoUrl1 +"\" frameborder=\"0\" ></iframe></body></html>";
                         holder.vv_vimeo.setWebViewClient(new WebViewClient() {
                             @Override
                             public boolean shouldOverrideUrlLoading(WebView webView, WebResourceRequest request) {
@@ -126,11 +129,13 @@ public class SearchMediaAdapter extends RecyclerView.Adapter<SearchMediaAdapter.
 //
 //                }
 //            });
+            final String finalVideoUrl = videoUrl;
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    mBuffer.selected_media_id = finalVideoUrl;
                     mListener.Home_Content_ClickListner(v, position);
-                    mBuffer.selected_media_id = videoUrl;
+                    Log.e("SELECT_img", finalVideoUrl);
                 }
             });
         }

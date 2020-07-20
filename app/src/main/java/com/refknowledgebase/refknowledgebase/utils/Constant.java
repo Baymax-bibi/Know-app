@@ -34,7 +34,7 @@ public class Constant {
 
 
     public static final String AFTERLANG = "afterlang";
-    public static final String URL = "http://api.project-info.gq/";
+    public static final String URL = "https://api.project-info.gq/";
     public static final String OAuth = "oauth/token";
     public static final String Category = "api/service-category?with[0]=createdBy&with[1]=children&conditions[parent_id]=&&&&sorting[id]=desc&sorting[updated_at]=desc&paginate=0";
     public static final String COUNTRY = "api/country";

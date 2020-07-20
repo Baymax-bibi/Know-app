@@ -118,7 +118,8 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
                     assistanceDetailAdapter.addAll(directory_list_entitiesModels_list);
                     if (directory_list_entitiesModels_list.get(0).getimage() != null){
                         Uri img_home_assistance_detail_top_uri = Uri.parse(directory_list_entitiesModels_list.get(0).getimage());
-                        Picasso.with(getContext()).load(img_home_assistance_detail_top_uri).fit().into(img_home_assistance_detail_top);
+                        String img_url = String.valueOf(img_home_assistance_detail_top_uri).replace("http", "https");
+                        Picasso.with(getContext()).load(img_url).fit().into(img_home_assistance_detail_top);
                     }else {
                         img_home_assistance_detail_top.setVisibility(View.GONE);
                     }
@@ -185,7 +186,6 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
                     deleteFaq();
                     Methods.showProgress(getContext());
                 }
-                    
                 break;
         }
     }
@@ -197,7 +197,6 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
             @SuppressLint("LongLogTag")
             @Override
             public void onResponse(String response) {
-                Methods.closeProgress();
                 Methods.closeProgress();
 //                Gson gson = new Gson();
 //                FAQ_SavedModel faq_savedModel  = gson.fromJson(response, FAQ_SavedModel.class);
@@ -244,7 +243,6 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
                 FAQ_SavedModel faq_savedModel  = gson.fromJson(response, FAQ_SavedModel.class);
                 saved_faq_id = faq_savedModel.getId();
                 img_saved.setImageDrawable(getResources().getDrawable(R.drawable.detail_saved));
-                Methods.closeProgress();
 //                Log.e("saved_faq_id", String.valueOf(saved_faq_id));
                 saved_flag = true;
             }

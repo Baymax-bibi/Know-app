@@ -207,9 +207,9 @@ public class Search_Faq_Fragment extends Fragment {
         RequestQueue queue = Volley.newRequestQueue(getContext());
         String url = null;
         if (is_country){
-            url = "http://api.project-info.gq/api/faq/es-search?keywords="+mBuffer.Search_key+"&countries[]="+Country_Id+"&lang=English";
+            url = "https://api.project-info.gq/api/faq/es-search?keywords="+mBuffer.Search_key+"&countries[]="+Country_Id+"&lang=English";
         }else {
-            url = "http://api.project-info.gq/api/faq/es-search?keywords="+mBuffer.Search_key+"&lang=English";
+            url = "https://api.project-info.gq/api/faq/es-search?keywords="+mBuffer.Search_key+"&lang=English";
         }
 
         Log.e("search_key", url);
