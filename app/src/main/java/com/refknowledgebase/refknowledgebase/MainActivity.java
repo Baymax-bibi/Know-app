@@ -46,29 +46,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
 
-                Log.e("TAG", "getAutoTocken");
+                Log.e("TAG", "getAutoTocken\n" + response);
                 Methods.closeProgress();
                 Gson gson = new Gson();
                 oAuth_model = gson.fromJson(response, oAuth_Model.class);
                 if (oAuth_model != null){
                     String token_type = oAuth_model.getToken_type();
-                    String expires_in = oAuth_model.getExpires_in();
                     String access_token = oAuth_model.getAccess_token();
-                    String refresh_token = oAuth_model.getRefresh_token();
 
                     mBuffer.oAuth_token = access_token;
                     mBuffer.token_type = token_type;
 
                     if (!mBuffer.oAuth_token.equals("") && !mBuffer.token_type.equals("")){
                         if (getBoolean(Constant.AFTERLANG)){
-//                            Intent intent = new Intent(MainActivity.this, Landing_three.class);
-//                            startActivity(intent);
-//                            finish();
                             Fragment fragment = new LandingFragment();
                             loadFragment(fragment);
 
                         }else {
                             Intent intent = new Intent(MainActivity.this, Activity_Sec.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                             startActivity(intent);
                             finish();
                         }

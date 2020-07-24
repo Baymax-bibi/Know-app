@@ -110,9 +110,9 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onSuccess(LoginResult loginResult) {
                 // App code
-                Log.e("FB_login", "getInstance");
+//                Log.e("FB_login", "getInstance");
 
-                startActivity(new Intent(Activity_login.this, Landing_three.class));
+//                startActivity(new Intent(Activity_login.this, Landing_three.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
 //                finish();
 
 //                insertString(Constant.LOGINTYPE, "FB");
@@ -146,7 +146,7 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onSuccess(LoginResult loginResult) {
 //                goMainScreen();
-                Log.e("FB_login", "onSuccess");
+//                Log.e("FB_login", "onSuccess");
                 mBuffer.Access_Type = "FB";
                 insertString(Constant.LOGINTYPE, "FB");
 //                startActivity(new Intent(Activity_login.this, Landing_three.class));
@@ -179,10 +179,10 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
 
         profilePictureView = (ProfilePictureView) findViewById(R.id.profilePic);
 
-        Log.e("Login_type_sec", getString(Constant.LOGINTYPE));
+//        Log.e("Login_type_sec", getString(Constant.LOGINTYPE));
         if (getString(Constant.LOGINTYPE).equals("GOOGLE")){
-            Log.e("AccessTokenGp", getString(Constant.LOGIN_PHOTO));
-            Log.e("AccessTokenGn", getString(Constant.LOGIN_NAME));
+//            Log.e("AccessTokenGp", getString(Constant.LOGIN_PHOTO));
+//            Log.e("AccessTokenGn", getString(Constant.LOGIN_NAME));
 
             String google_photo = getString(Constant.LOGIN_PHOTO);
             String google_name = getString(Constant.LOGIN_NAME);
@@ -191,7 +191,7 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
         }
         if (getString(Constant.LOGINTYPE).equals("FB")){
 //            Log.e("AccessToken", "FB");
-            Log.e("AccessFBNAME", getString(Constant.LOGIN_FB_NAME));
+//            Log.e("AccessFBNAME", getString(Constant.LOGIN_FB_NAME));
 
             String fb_photo = getString(Constant.LOGIN_FB_PHOTO);
             String fb_name = getString(Constant.LOGIN_FB_NAME);
@@ -224,7 +224,7 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
                     mBuffer.fb_user_id = fb_id;
                     mBuffer.fb_user_email = fb_email;
 
-                    Log.e("fb_name", fb_name);
+//                    Log.e("fb_name", fb_name);
                     Log.e("fb_id", fb_id);
                     Log.e("fb_user_email", fb_email);
 

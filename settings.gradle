@@ -1,3 +1,4 @@
+include ':actrans'
 rootProject.name='RefKnowledgebase'
 
-include ':app', ':inline-youtube-view', ':paginatedrecyclerview'
+include ':app',  ':paginatedrecyclerview'

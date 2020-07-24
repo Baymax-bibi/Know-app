@@ -1,6 +1,7 @@
 package com.refknowledgebase.refknowledgebase.home_tab;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
@@ -58,7 +59,7 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
     Assistance_detail_Adapter assistanceDetailAdapter;
     Home_Content_DetailModel homeContentDetailModel;
     GridView related_contact_grid;
-    ImageView img_saved;
+    ImageView img_saved, img_share;
     boolean saved_flag = false;
     int saved_faq_id;
 
@@ -75,6 +76,7 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
         related_contact_grid = root.findViewById(R.id.related_contact_grid);
         tv_relatedContacts = root.findViewById(R.id.tv_relatedContacts);
         img_saved = root.findViewById(R.id.img_saved);
+        img_share = root.findViewById(R.id.img_share);
 
         init();
         return root;
@@ -96,6 +98,7 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
         Methods.showProgress(getContext());
 
         img_saved.setOnClickListener(this);
+        img_share.setOnClickListener(this);
         loadAssistanceDetail();
     }
 
@@ -106,6 +109,7 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
             @SuppressLint("LongLogTag")
             @Override
             public void onResponse(String response) {
+                Log.e("ASSDEtail", response);
                 Methods.closeProgress();
                 Gson gson = new Gson();
                 homeContentDetailModel = gson.fromJson(response, Home_Content_DetailModel.class);//draw data
@@ -187,11 +191,25 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
                     Methods.showProgress(getContext());
                 }
                 break;
+            case R.id.img_share:
+                Intent shareIntent =   new Intent(android.content.Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT,"Insert Subject here");
+                String app_url = "";
+                if (directory_list_entitiesModels_list.get(0).getimage() != null){
+                    app_url = directory_list_entitiesModels_list.get(0).getimage() + "\n\n";
+                }
+                String app_tile = homeContentDetailModel.getQuestion() + "\n\n";
+                String app_content = String.valueOf(Html.fromHtml(homeContentDetailModel.getAnswer()));
+                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT,app_tile + app_url + app_content);
+                getContext().startActivity(Intent.createChooser(shareIntent, "Share via"));
+                break;
         }
     }
 
     private void deleteFaq() {
         final RequestQueue queue = Volley.newRequestQueue(getContext());
+        Log.e("SAVEDFAQID", String.valueOf(saved_faq_id));
 
         StringRequest sr = new StringRequest(Request.Method.DELETE, Constant.URL+Constant.API_SAVED_FAQ + "/" + saved_faq_id, new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
@@ -203,6 +221,7 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
 //                saved_faq_id = faq_savedModel.getId();
                 Log.e("deleted", response);
                 img_saved.setImageDrawable(getResources().getDrawable(R.drawable.un_saved));
+                saved_flag = !saved_flag;
             }
         }, new Response.ErrorListener() {
             @Override
@@ -238,13 +257,14 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
             @SuppressLint("LongLogTag")
             @Override
             public void onResponse(String response) {
+                Log.e("saveASSDEtail", response);
                 Methods.closeProgress();
                 Gson gson = new Gson();
                 FAQ_SavedModel faq_savedModel  = gson.fromJson(response, FAQ_SavedModel.class);
                 saved_faq_id = faq_savedModel.getId();
                 img_saved.setImageDrawable(getResources().getDrawable(R.drawable.detail_saved));
 //                Log.e("saved_faq_id", String.valueOf(saved_faq_id));
-                saved_flag = true;
+                saved_flag = !saved_flag;
             }
         }, new Response.ErrorListener() {
             @Override

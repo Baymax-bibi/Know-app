@@ -1,6 +1,7 @@
 package com.refknowledgebase.refknowledgebase.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,7 +49,7 @@ public class Home_Content_Adapter extends RecyclerView.Adapter<Home_Content_Adap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        Home_Content_BaseModel homeContentBaseModel = content_list.get(position);
+        final Home_Content_BaseModel homeContentBaseModel = content_list.get(position);
 
         holder.tv_title.setText(homeContentBaseModel.getQuestion());
         holder.tv_content.setText(Html.fromHtml(homeContentBaseModel.getAnswer()));
@@ -190,6 +191,19 @@ public class Home_Content_Adapter extends RecyclerView.Adapter<Home_Content_Adap
             }
             holder.tv_category.setText(Category_name);
         }
+        holder.rl_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent shareIntent =   new Intent(android.content.Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT,"Insert Subject here");
+//                String app_url = " https://play.google.com/store/apps/details?id=my.example.javatpoint";
+                String app_tile = homeContentBaseModel.getQuestion() + "\n\n";
+                String app_content = String.valueOf(Html.fromHtml(homeContentBaseModel.getAnswer()));
+                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT,app_tile + app_content);
+                mContext.startActivity(Intent.createChooser(shareIntent, "Share via"));
+            }
+        });
 
     }
 
@@ -230,7 +244,7 @@ public class Home_Content_Adapter extends RecyclerView.Adapter<Home_Content_Adap
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView tv_title, tv_content, tv_category;
-        public RelativeLayout item_rl_assistance;
+        public RelativeLayout item_rl_assistance, rl_share;
         ImageView one_sysmbol;
 
         ViewHolder(@NonNull View itemView) {
@@ -241,6 +255,7 @@ public class Home_Content_Adapter extends RecyclerView.Adapter<Home_Content_Adap
             this.tv_category = (TextView) itemView.findViewById(R.id.tv_category);
             this.one_sysmbol = (ImageView) itemView.findViewById(R.id.one_sysmbol);
             item_rl_assistance = (RelativeLayout)itemView.findViewById(R.id.item_rl_assistance);
+            this.rl_share = (RelativeLayout) itemView.findViewById(R.id.rl_share);
         }
 
         @Override

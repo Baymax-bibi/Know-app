@@ -71,7 +71,6 @@ public class Map_Fragment extends Fragment implements GoogleMap.OnMarkerClickLis
     LinearLayout ly_map_radius, ly_map_country;
     TextView tv_map_radius, tv_map_country;
 
-    RecyclerView mRecyclerView, rv_index;
     Directory_List_Model directoryListModel;
     RecyclerViewAdapter recyclerViewAdapter;
     LinearLayoutManager layoutManager;
@@ -94,7 +93,7 @@ public class Map_Fragment extends Fragment implements GoogleMap.OnMarkerClickLis
         View root = inflater.inflate(R.layout.fragment_map, container, false);
 
         PERTH = new LatLng(Double.parseDouble(mBuffer.map_lat), Double.parseDouble(mBuffer.map_long));
-        Log.e("LATLong", mBuffer.map_lat + " : " + mBuffer.map_long);
+//        Log.e("LATLong", mBuffer.map_lat + " : " + mBuffer.map_long);
         mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -193,73 +192,73 @@ public class Map_Fragment extends Fragment implements GoogleMap.OnMarkerClickLis
         dialog.show();
     }
 
-    private void loading_content() {
-        RequestQueue queue = Volley.newRequestQueue(getContext());
-
-        final String requestBody = "{\"with\":[\"translations\"],\n" +
-                "\"with_conditions\":{},\n" +
-                "\"conditions\":\"\",\n" +
-                "\"filter_by_first_char\":\""+INDEX_FILTER+"\",\n" +
-                "\"lang\":\"English\",\n" +
-                "\"per_page\":"+PER_PAGE+",\n" +
-                "\"page\":"+CURRENTPAGE+"}";
-
-        String get_url = Constant.URL+Constant.API_DIRCTORY_LIST;
-        StringRequest sr = new StringRequest(Request.Method.POST, get_url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Methods.closeProgress();
-                Gson gson = new Gson();
-                directoryListModel = gson.fromJson(response, Directory_List_Model.class);
-
-                results = directoryListModel.getEntities();
-                LASTPAGE = directoryListModel.getLast_page();
-
-                recyclerViewAdapter.addAll(results);
-
-                for (int i = 0 ; i < results.size(); i ++){
-                    if (results.get(i).getservice_categories() != null){
-                        mServiceArray = new ArrayList<>(results.get(i).getservice_categories());
-                    }
-                    recyclerViewAdapter.addServiceAll(mServiceArray);
-                }
-
-                if (CURRENTPAGE >= LASTPAGE){
-                    isLoading = true;
-                }else {
-                    isLoading = false;
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Methods.closeProgress();
-            }
-        }){
-            @Override
-            public String getBodyContentType() {
-                return "application/json; charset=utf-8";
-            }
-
-            @Override
-            public byte[] getBody() throws AuthFailureError {
-                try {
-                    return requestBody == null ? null : requestBody.getBytes("utf-8");
-                } catch (UnsupportedEncodingException uee) {
-                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
-                    return null;
-                }
-            }
-            @Override
-            public Map<String, String> getHeaders() {
-                Map<String,String> params = new HashMap<String, String>();
-                params.put("Content-Type","application/json");
-                params.put("Authorization", mBuffer.token_type + " " + mBuffer.oAuth_token);
-                return params;
-            }
-        };
-        queue.add(sr);
-    }
+//    private void loading_content() {
+//        RequestQueue queue = Volley.newRequestQueue(getContext());
+//
+//        final String requestBody = "{\"with\":[\"translations\"],\n" +
+//                "\"with_conditions\":{},\n" +
+//                "\"conditions\":\"\",\n" +
+//                "\"filter_by_first_char\":\""+INDEX_FILTER+"\",\n" +
+//                "\"lang\":\"English\",\n" +
+//                "\"per_page\":"+PER_PAGE+",\n" +
+//                "\"page\":"+CURRENTPAGE+"}";
+//
+//        String get_url = Constant.URL+Constant.API_DIRCTORY_LIST;
+//        StringRequest sr = new StringRequest(Request.Method.POST, get_url, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                Methods.closeProgress();
+//                Gson gson = new Gson();
+//                directoryListModel = gson.fromJson(response, Directory_List_Model.class);
+//
+//                results = directoryListModel.getEntities();
+//                LASTPAGE = directoryListModel.getLast_page();
+//
+//                recyclerViewAdapter.addAll(results);
+//
+//                for (int i = 0 ; i < results.size(); i ++){
+//                    if (results.get(i).getservice_categories() != null){
+//                        mServiceArray = new ArrayList<>(results.get(i).getservice_categories());
+//                    }
+//                    recyclerViewAdapter.addServiceAll(mServiceArray);
+//                }
+//
+//                if (CURRENTPAGE >= LASTPAGE){
+//                    isLoading = true;
+//                }else {
+//                    isLoading = false;
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Methods.closeProgress();
+//            }
+//        }){
+//            @Override
+//            public String getBodyContentType() {
+//                return "application/json; charset=utf-8";
+//            }
+//
+//            @Override
+//            public byte[] getBody() throws AuthFailureError {
+//                try {
+//                    return requestBody == null ? null : requestBody.getBytes("utf-8");
+//                } catch (UnsupportedEncodingException uee) {
+//                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
+//                    return null;
+//                }
+//            }
+//            @Override
+//            public Map<String, String> getHeaders() {
+//                Map<String,String> params = new HashMap<String, String>();
+//                params.put("Content-Type","application/json");
+//                params.put("Authorization", mBuffer.token_type + " " + mBuffer.oAuth_token);
+//                return params;
+//            }
+//        };
+//        queue.add(sr);
+//    }
 
     private class GeocoderHandler extends Handler {
         @Override

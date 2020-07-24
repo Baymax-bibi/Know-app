@@ -1,6 +1,8 @@
 package com.refknowledgebase.refknowledgebase.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,9 @@ public class CountryLVAdapter  extends ArrayAdapter<Country_BaseModel> {
 //                lbl.setTextColor(Color.parseColor("#ff7a1b"));
 //            }
 //        });
+
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+        getContext().startActivity(browserIntent);
         return convertView;
     }
 }

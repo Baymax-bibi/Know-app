@@ -43,12 +43,12 @@ public class RV_Search_MediaAdapter extends RecyclerView.Adapter<RV_Search_Media
         final Search_Media_Model_temp assistancemodel = listdata[position];
 
         MediaController mediaController= new MediaController(mConext);
-        mediaController.setAnchorView(holder.video_search);
+//        mediaController.setAnchorView(holder.video_search);
 
         holder.tv_title.setText(listdata[position].getTitle());
         holder.tv_content.setText(listdata[position].getSearch_content());
-        holder.video_search.setVideoURI(Uri.parse(listdata[position].getVideoId()));
-        holder.video_search.requestFocus();
+//        holder.video_search.setVideoURI(Uri.parse(listdata[position].getVideoId()));
+//        holder.video_search.requestFocus();
 
 //        holder.media_start.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -63,7 +63,7 @@ public class RV_Search_MediaAdapter extends RecyclerView.Adapter<RV_Search_Media
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 Fragment myFragment = new Assistance_detail();
-                Log.e("RV_Search_MediaAdapter", ""+position);
+//                Log.e("RV_Search_MediaAdapter", ""+position);
 //                activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, myFragment).addToBackStack(null).commit();
             }
         });
@@ -77,7 +77,7 @@ public class RV_Search_MediaAdapter extends RecyclerView.Adapter<RV_Search_Media
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public VideoView video_search;
+//        public VideoView video_search;
         public TextView tv_title;
         public TextView tv_content;
 //        public ImageView media_start;
@@ -86,7 +86,7 @@ public class RV_Search_MediaAdapter extends RecyclerView.Adapter<RV_Search_Media
         public ViewHolder(View itemView) {
             super(itemView);
 //            this.media_start = (ImageView) itemView.findViewById(R.id.media_start);
-            this.video_search = (VideoView) itemView.findViewById(R.id.video_search);
+//            this.video_search = (VideoView) itemView.findViewById(R.id.video_search);
             this.tv_title = (TextView) itemView.findViewById(R.id.tv_title);
             this.tv_content = (TextView) itemView.findViewById(R.id.tv_content);
             relativeLayout = (RelativeLayout)itemView.findViewById(R.id.relativeLayout);

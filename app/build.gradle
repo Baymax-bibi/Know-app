@@ -100,7 +100,7 @@ dependencies {
     implementation 'com.google.apis:google-api-services-youtube:v3-rev183-1.22.0'
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
 
-    implementation project(':inline-youtube-view')
+//    implementation project(':inline-youtube-view')
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
     //noinspection GradleCompatible
@@ -132,5 +132,7 @@ dependencies {
     implementation 'com.facebook.fresco:fresco:1.10.0'
 
     androidTestImplementation 'com.google.code.findbugs:jsr305:1.3.9'
+
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
 
 }

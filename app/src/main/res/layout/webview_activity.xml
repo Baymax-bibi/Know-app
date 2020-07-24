@@ -15,6 +15,29 @@
 <!--        android:layout_height="match_parent"-->
 <!--        android:layout_below="@id/close_nav"-->
 <!--        android:visibility="gone"/>-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        >
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="com.google.android.youtube.player.YouTubePlayerView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft ="true"
+            android:id="@+id/youtubePlay" />
+
+        <Button
+            android:id="@+id/playbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PLAY VIDEO"
+            android:layout_below="@+id/youtubePlay"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
     <ImageView
         android:id="@+id/close_nav"
         android:layout_width="29.8dp"

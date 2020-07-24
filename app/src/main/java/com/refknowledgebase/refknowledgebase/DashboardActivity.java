@@ -220,7 +220,7 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
 //                mBuffer.service_category_ids = 107;
 //                mBuffer.service_category_name = "Assistance";
                 mBuffer.is_search = false;
-                startActivity(new Intent(getApplicationContext(), BlankActivity.class));
+                startActivity(new Intent(getApplicationContext(), BlankActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                 finish();
 //                fragment = new Home_Fragment();
 //                Fragment fragment = new LandingFragment();
@@ -413,7 +413,9 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
                 img_hamburger.setVisibility(View.VISIBLE);
                 img_back_assistance.setVisibility(View.GONE);
 
-                startActivity(new Intent(DashboardActivity.this, DashboardActivity.class));
+                startActivity(new Intent(DashboardActivity.this, DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+
+
                 break;
             case R.id.ly_logout:
 //                insertString(Constant.LOGINTYPE, "WITHOUT");
@@ -422,7 +424,10 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
 //                editor.clear();
 //                editor.apply();
 //                finish();
-                startActivity(new Intent(DashboardActivity.this, Activity_login.class));
+//                startActivity(new Intent(DashboardActivity.this, Activity_login.class));
+                Intent intent = new Intent(DashboardActivity.this, Activity_login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
                 finish();
                 break;
             case R.id.img_search_icon:

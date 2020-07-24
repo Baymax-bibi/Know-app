@@ -660,21 +660,33 @@
             android:foreground="@drawable/img_radius_white"
             android:layout_centerInParent="true"
             android:padding="@dimen/padding_margin_8">
-            <com.flipkart.youtubeview.YouTubePlayerView
-                android:id="@+id/video_landing"
+
+            <RelativeLayout
+                android:id="@+id/rl_video_landing"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"/>
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/img_first_screen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"/>
+
+                <ImageView
+                    android:id="@+id/img_start_video"
+                    android:layout_width="@dimen/padding_margin_40"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_media_start"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    />
+            </RelativeLayout>
             <ImageView
                 android:id="@+id/img_poster"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"/>
-            <LinearLayout
-                android:id="@+id/over_media"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal" />
         </RelativeLayout>
 
         <ImageView

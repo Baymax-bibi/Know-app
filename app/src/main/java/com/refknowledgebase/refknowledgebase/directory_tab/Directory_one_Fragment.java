@@ -189,6 +189,7 @@ TextView tv_number_con, tv_mail_con, tv_website_con, tv_address_con, tv_landmark
                 if (contactFormEntitiesModelList.get(0).getLat() != null && contactFormEntitiesModelList.get(0).getLng() != null){
                     mBuffer.map_lat = contactFormEntitiesModelList.get(0).getLat();
                     mBuffer.map_long = contactFormEntitiesModelList.get(0).getLng();
+                    Log.e("LAT_LOMG", mBuffer.map_lat + " : " + mBuffer.map_long);
                 }else {
                     mBuffer.map_lat = "0.0";
                     mBuffer.map_long = "0.0";

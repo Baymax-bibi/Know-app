@@ -6,7 +6,7 @@ public class Constant {
     public static final String[] radius = {"5", "10", "15"};
 
     // Developer key
-    public static final String DEVELOPER_KEY = "AIzaSyDZtE10od_hXM5aXYEh6Zn7c6brV9ZjKuk";
+    public static final String DEVELOPER_KEY = "AIzaSyDRuCIyj3J3oiX5p9z-V1oyl2BLVGtzMiQ";
 
     public static final String API_KEY = "your_api_key";
     // YouTube video id

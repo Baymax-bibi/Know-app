@@ -259,7 +259,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         builder.setMessage("Enable GPS").setCancelable(false).setPositiveButton("Yes", new  DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
             }
         }).setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
@@ -396,7 +396,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
 //                Toast.makeText(getContext(), "Data Saved", Toast.LENGTH_SHORT).show();
 //                Snackbar.make(v, "Setting saved", Snackbar.LENGTH_LONG)
 //                        .show();
-                startActivity(new Intent(getContext(), DashboardActivity.class));
+                startActivity(new Intent(getContext(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                 break;
         }
 //        AlertDialog dialog = builder.create();
@@ -420,6 +420,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         Uri uri = Uri.fromParts("package", BuildConfig.APPLICATION_ID, null);
         intent.setData(uri);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }
 

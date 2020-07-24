@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/sign_bg"
@@ -18,18 +17,36 @@
             android:foreground="@drawable/img_radius_white"
             android:layout_centerInParent="true"
             android:padding="@dimen/padding_margin_8">
-                <com.flipkart.youtubeview.YouTubePlayerView
-                    android:id="@+id/video_search"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    />
+
+            <RelativeLayout
+                android:id="@+id/rl_video_landing"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
                 <ImageView
-                    android:id="@+id/img_search_sub"
+                    android:id="@+id/img_first_screen"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_dir_saved"
-                    android:visibility="gone"/>
+                    android:scaleType="fitXY"/>
+
+                <ImageView
+                    android:id="@+id/img_start_video"
+                    android:layout_width="@dimen/padding_margin_40"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_media_start"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/img_search_sub"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_dir_saved"
+                android:visibility="gone"/>
+
             <RelativeLayout
                 android:id="@+id/rl_vimeo"
                 android:layout_width="match_parent"
@@ -37,15 +54,15 @@
                 android:background="@color/colorPrimaryDark"
                 android:visibility="gone">
 
-                <WebView
+                <VideoView
                     android:id="@+id/vv_vimeo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     />
                 <ImageView
                     android:id="@+id/img_vimeo_start"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="@dimen/padding_margin_40"
+                    android:layout_height="wrap_content"
                     android:src="@drawable/ic_media_start"
                     android:layout_centerInParent="true"/>
             </RelativeLayout>

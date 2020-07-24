@@ -10,8 +10,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/actrans" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/inline-youtube-view" />
             <option value="$PROJECT_DIR$/paginatedrecyclerview" />
           </set>
         </option>

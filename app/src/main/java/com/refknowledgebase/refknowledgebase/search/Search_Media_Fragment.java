@@ -1,13 +1,17 @@
 package com.refknowledgebase.refknowledgebase.search;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +39,7 @@ import com.refknowledgebase.refknowledgebase.myinterface.SearchClickListner;
 import com.refknowledgebase.refknowledgebase.utils.Constant;
 import com.refknowledgebase.refknowledgebase.utils.Methods;
 import com.refknowledgebase.refknowledgebase.utils.PaginationScrollListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -90,10 +95,22 @@ Context mContext;
         HomeContentClickListner homeContentClickListner = new HomeContentClickListner() {
             @Override
             public void Home_Content_ClickListner(View v, int position) {
-                Toast.makeText(getContext(), position, Toast.LENGTH_SHORT).show();
+                final Dialog dialog = new Dialog(requireContext());
+                dialog.setContentView(R.layout.show_image);
+                ImageView image = (ImageView) dialog.findViewById(R.id.img_media);
+                Picasso.with(getContext()).load(Uri.parse(mBuffer.selected_media_id)).into(image);
+                Button dialogButton = (Button) dialog.findViewById(R.id.btn_close_img);
+                // if button is clicked, close the custom dialog
+                dialogButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
             }
         };
-        searchMediaAdapter = new SearchMediaAdapter(this, homeContentClickListner);
+        searchMediaAdapter = new SearchMediaAdapter(getContext(), homeContentClickListner);
         rv_search_media.setAdapter(searchMediaAdapter);
 
 //        rv_search_media.setHasFixedSize(true);
@@ -110,9 +127,6 @@ Context mContext;
                 Log.e("media","media load more");
 
                 loadPage(mContext, "a");
-//                if (TOTAL_PAGES / 10 < currentPage){
-//                    Toast.makeText(getContext(), "End of Scroll", Toast.LENGTH_SHORT).show();
-//                }
             }
 
             @Override
@@ -138,7 +152,7 @@ Context mContext;
     private void loadPage(Context mContext, String searchIndex) {
         RequestQueue queue = Volley.newRequestQueue(mContext);
 
-        String url = "http://api.project-info.gq/api/media/es-search?page=1&per_page=5&keywords="+mBuffer.Search_key+"&lang=English";
+        String url = "https://api.project-info.gq/api/media/es-search?page=1&per_page=5&keywords="+mBuffer.Search_key+"&lang=English";
         Log.e("URL", url);
         StringRequest sr = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -148,8 +162,6 @@ Context mContext;
                 search_media_model = gson.fromJson(response, Search_Media_Model.class);
                 List<Search_Media_entities_Model> results = search_media_model.getEntities();
                 searchMediaAdapter.addAll(results);
-
-//                TOTAL_PAGES = search_media_model.getTotal();
 
                 tv_1.setText("SHOWING "+search_media_model.getTotal()+" RESULTS FOR ");
                 LASTPAGE = search_media_model.getLast_page();
@@ -189,20 +201,6 @@ Context mContext;
         SharedPreferences mSharedPreferences = mContext.getSharedPreferences(Constant.PREF, MODE_PRIVATE);
         String  selected =  mSharedPreferences.getString(key, "");
         return selected;
-    }
-
-    public void reloading(DashboardActivity dashboardActivity, String _searchIndex){
-//        mContext = dashboardActivity.getApplicationContext();
-//        searchMediaAdapter = new SearchMediaAdapter(this);
-////        tv_1 = mContext
-//        if (mContext != null){
-//            loadPage(mContext, _searchIndex);
-//        }else {
-//            Log.e("getActivity", "null");
-//        }
-
-//        tv_cari = getActivity().findViewById(R.id.tv_cari);
-//        tv_cari.setText("cacacaca");
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.refknowledgebase.refknowledgebase.fragment;
 
+import android.content.Intent;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.refknowledgebase.refknowledgebase.DashboardActivity;
 import com.refknowledgebase.refknowledgebase.R;
 import com.refknowledgebase.refknowledgebase.directory_tab.List_Fragment;
 import com.refknowledgebase.refknowledgebase.directory_tab.Map_Fragment;
@@ -45,6 +48,8 @@ public class Directory_Fragment extends Fragment implements View.OnClickListener
 
         fragment = new List_Fragment();
         loadFragment(fragment);
+//        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+//        getContext().startActivity(browserIntent);
     }
 
     @Override

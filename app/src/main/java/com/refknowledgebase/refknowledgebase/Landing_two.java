@@ -103,7 +103,7 @@ public class Landing_two  extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Child Protection";
                     mBuffer.selectedItem = 1;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                 }
                 break;
@@ -113,7 +113,7 @@ public class Landing_two  extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "SGBV";
                     mBuffer.selectedItem = 14;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                 }
 
@@ -124,7 +124,7 @@ public class Landing_two  extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Community-based Protection";
                     mBuffer.selectedItem = 2;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                 }
 
@@ -135,7 +135,7 @@ public class Landing_two  extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Registration";
                     mBuffer.selectedItem = 10;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                 }
 
@@ -146,7 +146,7 @@ public class Landing_two  extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Reporting Fraud and Corruption";
                     mBuffer.selectedItem = 11;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                 }
 
@@ -157,7 +157,7 @@ public class Landing_two  extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Irregular Movements";
                     mBuffer.selectedItem = 16;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                 }
 
@@ -168,7 +168,7 @@ public class Landing_two  extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Telling the Real Story";
                     mBuffer.selectedItem = 17;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                 }
 
@@ -179,7 +179,7 @@ public class Landing_two  extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Covid-19";
                     mBuffer.selectedItem = 15;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                 }
                 break;

@@ -45,9 +45,9 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Media_Fragment extends Fragment {
-
 
     RecyclerView rv_search_media;
     LinearLayoutManager layoutManager;
@@ -81,14 +81,10 @@ public class Media_Fragment extends Fragment {
             @Override
             public void Home_Content_ClickListner(View v, int position) {
 
-                final Dialog dialog = new Dialog(getContext());
+                final Dialog dialog = new Dialog(requireContext());
                 dialog.setContentView(R.layout.show_image);
-                Log.e("SELECT_img_", mBuffer.selected_media_id);
-
-                // set the custom dialog components - text, image and button
                 ImageView image = (ImageView) dialog.findViewById(R.id.img_media);
                 Picasso.with(getContext()).load(Uri.parse(mBuffer.selected_media_id)).into(image);
-
                 Button dialogButton = (Button) dialog.findViewById(R.id.btn_close_img);
                 // if button is clicked, close the custom dialog
                 dialogButton.setOnClickListener(new View.OnClickListener() {
@@ -97,17 +93,12 @@ public class Media_Fragment extends Fragment {
                         dialog.dismiss();
                     }
                 });
-
                 dialog.show();
             }
-
-
-
         };
-        searchMediaAdapter = new SearchMediaAdapter(this, homeContentClickListner);
+        searchMediaAdapter = new SearchMediaAdapter(getContext(), homeContentClickListner);
         rv_search_media.setAdapter(searchMediaAdapter);
 
-//        rv_search_media.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rv_search_media.setLayoutManager(layoutManager);
         rv_search_media.setItemAnimator(new DefaultItemAnimator());
@@ -148,15 +139,15 @@ public class Media_Fragment extends Fragment {
         StringRequest sr = new StringRequest(Request.Method.GET, Constant.URL+Constant.API_MEDIA + "?page=" + currentPage +"&per_page=" + PER_PAGE, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
+                Log.e("response_media", response);
                 Methods.closeProgress();
                 Gson gson = new Gson();
                 search_media_model = gson.fromJson(response, Search_Media_Model.class);
                 List<Search_Media_entities_Model> results = search_media_model.getEntities();
                 searchMediaAdapter.addAll(results);
 
-//                TOTAL_PAGES = search_media_model.getTotal();
-
-                tv_1.setText("SHOWING "+search_media_model.getTotal()+" RESULTS FOR ");
+                tv_1.setText("SHOWING "+search_media_model.getTotal()+" RESULTS");
                 LASTPAGE = search_media_model.getLast_page();
 
                 if (currentPage >= LASTPAGE){
@@ -164,6 +155,8 @@ public class Media_Fragment extends Fragment {
                 }else {
                     isLoading = false;
                 }
+
+
             }
         }, new Response.ErrorListener() {
             @Override

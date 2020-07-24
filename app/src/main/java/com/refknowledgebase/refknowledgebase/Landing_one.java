@@ -142,7 +142,7 @@ public class Landing_one extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Assistance";
                     mBuffer.selectedItem = 0;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                     Methods.showProgress(getContext());
                 }
@@ -153,7 +153,7 @@ public class Landing_one extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Education";
                     mBuffer.selectedItem = 3;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                     Methods.showProgress(getContext());
                 }
@@ -165,7 +165,7 @@ public class Landing_one extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Health Care";
                     mBuffer.selectedItem = 4;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                     Methods.showProgress(getContext());
                 }
@@ -176,7 +176,7 @@ public class Landing_one extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Protection";
                     mBuffer.selectedItem = 8;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                 }
                 break;
@@ -186,7 +186,7 @@ public class Landing_one extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Refugee Status Determination";
                     mBuffer.selectedItem = 9;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                 }
                 break;
@@ -196,7 +196,7 @@ public class Landing_one extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Resettlement";
                     mBuffer.selectedItem = 12;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                 }
                 break;
@@ -206,7 +206,7 @@ public class Landing_one extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Livelihoods";
                     mBuffer.selectedItem = 7;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                 }
                 break;
@@ -216,7 +216,7 @@ public class Landing_one extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "How to Contact UNHCR";
                     mBuffer.selectedItem = 5;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                 }
                 break;
@@ -226,7 +226,7 @@ public class Landing_one extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Residency";
                     mBuffer.selectedItem = 13;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                 }
                 break;
@@ -236,7 +236,7 @@ public class Landing_one extends Fragment implements View.OnClickListener {
                     mBuffer.service_category_name = "Legal Aid";
                     mBuffer.selectedItem = 6;
                     mBuffer.To_where = "Home";
-                    startActivity(new Intent(getActivity(), DashboardActivity.class));
+                    startActivity(new Intent(getActivity(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                     getActivity().finish();
                 }
                 break;
