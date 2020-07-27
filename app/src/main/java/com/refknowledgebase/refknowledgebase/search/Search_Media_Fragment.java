@@ -79,35 +79,7 @@ public class Search_Media_Fragment  extends Fragment implements SearchClickListn
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_search_media, container, false);
 
-//        tv_search_directory_country.setText(getString("MAPCOUNTRY").replace(" ", ""));
 
-//        ly_search_direcotry_country = root.findViewById(R.id.ly_search_direcotry_country);
-//        ly_search_direcotry_country.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-//                builder.setTitle("Select Country");
-//                builder.setItems(countries, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        tv_search_directory_country.setText(countries[which]);
-//                        switch (countries[which]){
-//                            case "Libya":
-//                                CountryId = 5;
-//                                break;
-//                            case "Egypt":
-//                                CountryId = 6;
-//                                break;
-//                            case "Sudan":
-//                                CountryId = 7;
-//                                break;
-//                        }
-//                    }
-//                });
-//                AlertDialog dialog = builder.create();
-//                dialog.show();
-//            }
-//        });
         tv_1 = root.findViewById(R.id.tv_1);
         mContext = getContext();
         return root;

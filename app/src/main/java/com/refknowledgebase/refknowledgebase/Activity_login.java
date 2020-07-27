@@ -75,21 +75,11 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-//        if (getString(Constant.SELECTED_LANGUAGE).equals("English")){
-//            setAppLocal("en");
-//        }else if (getString(Constant.SELECTED_LANGUAGE).equals("عربى")){
-//            setAppLocal("ar");
-//        }
-
         rl_continue_acount = findViewById(R.id.rl_continue_acount);
         rl_continue_acount.setOnClickListener(this);
         tv_continue_name = findViewById(R.id.tv_continue_acount);
-//        tv_signup_facebook = findViewById(R.id.tv_signup_facebook);
-//        tv_signup_resigteration = findViewById(R.id.tv_signup_resigteration);
         tv_login = findViewById(R.id.tv_login);
         img_profile = findViewById(R.id.img_avater);
-//        tv_signup_facebook.setOnClickListener(this);
-//        tv_signup_resigteration.setOnClickListener(this);
         rl_without_reg = findViewById(R.id.rl_without_reg);
         rl_without_reg.setOnClickListener(this);
 
@@ -109,12 +99,7 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                // App code
 
-//                startActivity(new Intent(Activity_login.this, Landing_three.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-//                finish();
-
-//                insertString(Constant.LOGINTYPE, "FB");
             }
 
             @Override
@@ -131,27 +116,14 @@ public class Activity_login extends AppCompatActivity implements View.OnClickLis
         login_button = findViewById(R.id.login_button);
         login_button.setReadPermissions("email");
 
-//        Checking the Access Token
-//        if (AccessToken.getCurrentAccessToken() != null){
-//            GraphLoginRequest(AccessToken.getCurrentAccessToken());
-////            Toast.makeText(Activity_login.this,"Already logged in",Toast.LENGTH_SHORT).show();
-//        }else {
-//
-//            // If not login in then show the Toast.
-////            Toast.makeText(Activity_login.this,"User not logged in",Toast.LENGTH_SHORT).show();
-//        }
-
         login_button.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 mBuffer.Access_Type = "FB";
                 insertString(Constant.LOGINTYPE, "FB");
-//                startActivity(new Intent(Activity_login.this, Landing_three.class));
-
                 fragment = new LandingFragment();
                 loadFragment(fragment);
                 GraphLoginRequest(loginResult.getAccessToken());
-//                finish();
             }
 
             @Override
