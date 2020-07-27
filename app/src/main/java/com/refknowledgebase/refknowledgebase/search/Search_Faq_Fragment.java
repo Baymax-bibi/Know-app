@@ -3,6 +3,7 @@ package com.refknowledgebase.refknowledgebase.search;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.refknowledgebase.refknowledgebase.DashboardActivity;
 import com.refknowledgebase.refknowledgebase.R;
 import com.refknowledgebase.refknowledgebase.adapter.Home_Content_Adapter;
 import com.refknowledgebase.refknowledgebase.adapter.SearchFAQAdapter;
@@ -51,6 +53,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.parse.Parse.getApplicationContext;
 import static com.refknowledgebase.refknowledgebase.utils.Constant.countries;
 
@@ -75,7 +78,6 @@ public class Search_Faq_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_search_faq, container, false);
 
         InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -88,16 +90,6 @@ public class Search_Faq_Fragment extends Fragment {
             @Override
             public void Home_Content_ClickListner(View v, int position) {
                 mBuffer.SELECTED_CONTENT_id = homeContentAdapter.getItem(position).getid();
-//            mBuffer.SELECTED_CONTENT_question = homeContentAdapter.getItem(position).getQuestion();
-//            mBuffer.SELECTED_CONTENT_question_normalize = homeContentAdapter.getItem(position).getQuestion_normalize();
-//            mBuffer.SELECTED_CONTENT_answer = homeContentAdapter.getItem(position).getAnswer();
-//            mBuffer.SELECTED_CONTENT_status = homeContentAdapter.getItem(position).getStatus();
-//            mBuffer.SELECTED_CONTENT_created_by = homeContentAdapter.getItem(position).getCreated_by();
-//            mBuffer.SELECTED_CONTENT_visible = homeContentAdapter.getItem(position).getVisible();
-//            mBuffer.SELECTED_CONTENT_service_category_ids = homeContentAdapter.getItem(position).getService_category_ids();
-//            mBuffer.SELECTED_CONTENT_country_ids = homeContentAdapter.getItem(position).getCountry_ids();
-//            mBuffer.SELECTED_CONTENT_nationality_ids = homeContentAdapter.getItem(position).getNationality_ids();
-//            mBuffer.SELECTED_CONTENT_hashtags = homeContentAdapter.getItem(position).getHashtags();
 
                 fragment = new Assistance_detail();
                 loadFragment(fragment);
@@ -113,6 +105,8 @@ public class Search_Faq_Fragment extends Fragment {
         });
 
         et_search_text = (TextView) root.findViewById(R.id.et_search_text);
+        et_search_text.setText(getString("MAPCOUNTRY").replace(" ", ""));
+
         rl_search_view = (RelativeLayout) root.findViewById(R.id.rl_search_view);
         rl_search_view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,7 +130,6 @@ public class Search_Faq_Fragment extends Fragment {
         img_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Log.e("TAG", "search_faq " + Country_Id);
                 is_country = true;
                 if (et_search_text.getText().toString().equals("Libya"))
                     Country_Id = 5;
@@ -144,6 +137,8 @@ public class Search_Faq_Fragment extends Fragment {
                     Country_Id = 6;
                 if (et_search_text.getText().toString().equals("Sudan"))
                     Country_Id = 7;
+
+                tv_result_search_faq.setText("Results for searched word: " + mBuffer.Search_key);
                 homeContentAdapter.clear();
                 loading_content();
 
@@ -192,14 +187,6 @@ public class Search_Faq_Fragment extends Fragment {
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-//        recyclerView_search_faq.setHasFixedSize(true);
-//        layoutManager = new LinearLayoutManager(getContext());
-//        recyclerView_search_faq.setLayoutManager(layoutManager);
-//        recyclerView_search_faq.setItemAnimator(new DefaultItemAnimator());
-//
-//        Search_Faq_adapter adapter = new Search_Faq_adapter(myListData);
-//        recyclerView_search_faq.setAdapter(adapter);
         loading_content();
     }
 
@@ -211,25 +198,14 @@ public class Search_Faq_Fragment extends Fragment {
         }else {
             url = "https://api.project-info.gq/api/faq/es-search?keywords="+mBuffer.Search_key+"&lang=English";
         }
-
-        Log.e("search_key", url);
-
         StringRequest sr = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-//                Log.e("response_content", response);
                 Methods.closeProgress();
                 Gson gson = new Gson();
-                Log.e("SEARCHRES", response);
                 homeContentModel = gson.fromJson(response, Home_Content_Model.class);
                 isLoading = false;
                 results_content = homeContentModel.getEntities();
-//                Collections.sort(results, new Comparator<Swipe_Tab_entitiesModel>() {
-//                    @Override
-//                    public int compare(Swipe_Tab_entitiesModel o1, Swipe_Tab_entitiesModel o2) {
-//                        return o1.getname().compareTo(o2.getname());
-//                    }
-//                });
                 homeContentAdapter.addAll(results_content);
                 TOTAL_PAGES = homeContentModel.getLast_page();
                 LAST_PAGE = homeContentModel.getLast_page();
@@ -266,10 +242,14 @@ public class Search_Faq_Fragment extends Fragment {
     private void loadFragment(Fragment fragment){
         if (fragment != null){
             getActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    //.replace(R.id.fragment_container, fragment)
-                    .replace(R.id.nav_host_fragment, fragment)
-                    .commit();
+                .beginTransaction()
+                .replace(R.id.nav_host_fragment, fragment)
+                .commit();
         }
+    }
+
+    public String getString(String key) {
+        SharedPreferences mSharedPreferences = getContext().getSharedPreferences(Constant.PREF, MODE_PRIVATE);
+        return mSharedPreferences.getString(key, "");
     }
 }

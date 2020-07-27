@@ -4,10 +4,6 @@ apply plugin: 'kotlin-android-extensions'
 final ANDROIDX = '1.0.0'
 final BUTTERKNIFE = '10.1.0'
 android {
-//    compileOptions{
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
-//    }
     lintOptions {
         checkReleaseBuilds false
     }
@@ -50,40 +46,20 @@ dependencies {
 
 //bottom navigation bar
     //noinspection GradleCompatible
-    implementation 'com.android.support:appcompat-v7:23.1.1' // appcompat library
+    implementation 'com.android.support:appcompat-v7:23.1.1'
 //circle image
     implementation 'com.mikhaellopez:circularimageview:4.0.1'
-    //map
-
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'//design support library
-
+//map
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 //circle seekbar
     implementation 'me.tankery.lib:circularSeekBar:1.1.5'
-
-    //google login
+//google login
     implementation 'com.google.android.gms:play-services-auth:18.0.0'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
-//    annotationProcessor 'com.github.bumptech.glide:compiler:2.8.0'
-
-    //switch design
-
 //    implementation 'com.github.GwonHyeok:StickySwitch:0.0.16'
     implementation 'com.github.zcweng:switch-button:0.0.3@aar'
-    //permission get
+//permission get
     implementation 'com.karumi:dexter:6.0.1'
-    // AppCompat version
-//    implementation 'com.github.myinnos:AlphabetIndex-Fast-Scroll-RecyclerView:1.0.95'
-//    // AndroidX version
-//    implementation 'com.github.myinnos:AlphabetIndex-Fast-Scroll-RecyclerView:1.0.95'
-//    implementation project(path: ':alphabetsindexfastscrollrecyclerLibrary')
-//
-//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.71"
-//
-//    implementation "com.jakewharton:butterknife:${BUTTERKNIFE}"
-//    annotationProcessor "com.jakewharton:butterknife-compiler:${BUTTERKNIFE}"
-
-    // AndroidX version
-//    implementation 'com.github.myinnos:AlphabetIndex-Fast-Scroll-RecyclerView:1.0.95'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation "androidx.core:core-ktx:1.3.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -96,11 +72,9 @@ dependencies {
 //    oAuth2
     implementation 'ca.mimic:oauth2library:2.4.2'
 //    youtube play api
-//    implementation files('libs/YouTubeAndroidPlayerApi.jar')
     implementation 'com.google.apis:google-api-services-youtube:v3-rev183-1.22.0'
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
 
-//    implementation project(':inline-youtube-view')
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
     //noinspection GradleCompatible
@@ -126,13 +100,11 @@ dependencies {
     implementation 'com.karumi:dexter:6.0.1'
 
     // ButterKnife view binding
-//    implementation 'com.jakewharton:butterknife:10.1.0'
-//    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
-
     implementation 'com.facebook.fresco:fresco:1.10.0'
 
     androidTestImplementation 'com.google.code.findbugs:jsr305:1.3.9'
 
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
-
+//    round fb icon
+    implementation 'com.facebook.fresco:fresco:2.3.0'
 }

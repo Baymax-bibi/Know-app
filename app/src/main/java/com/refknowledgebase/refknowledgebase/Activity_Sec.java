@@ -4,7 +4,6 @@ import android.accounts.Account;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.session.MediaSession;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -45,7 +43,6 @@ import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.facebook.login.widget.ProfilePictureView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -66,10 +63,8 @@ import com.refknowledgebase.refknowledgebase.model.oAuth_Model;
 import com.refknowledgebase.refknowledgebase.utils.Constant;
 import com.refknowledgebase.refknowledgebase.utils.GeocodingLocation;
 import com.refknowledgebase.refknowledgebase.utils.Methods;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -154,7 +149,6 @@ public class Activity_Sec extends AppCompatActivity implements View.OnClickListe
                 GeocodingLocation locationAddress = new GeocodingLocation();
                 locationAddress.getAddressFromLocation(selected_country,
                         getApplicationContext(), new GeocoderHandler());
-
                 insertString(Constant.SELECTED_COUNTRY, selected_country);
             }
         });
@@ -165,12 +159,9 @@ public class Activity_Sec extends AppCompatActivity implements View.OnClickListe
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView textView = (TextView) view.findViewById(R.id.tv_lang_name);
                 String selected_language = textView.getText().toString();
-                Log.e("Selected", selected_language);
                 lan_lv.setVisibility(View.GONE);
                 tv_sec_lanugage.setText(selected_language);
                 insertString(Constant.SELECTED_LANGUAGE, selected_language);
-
-                Log.e("SELECTEDLANG", selected_language);
             }
         });
 //Adding callback manager
@@ -182,7 +173,6 @@ public class Activity_Sec extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onSuccess(LoginResult loginResult) {
                 // App code
-                Log.e("FB_login", "getInstance");
 
 //                startActivity(new Intent(Activity_Sec.this, Landing_three.class));
 //                finish();
@@ -205,7 +195,6 @@ public class Activity_Sec extends AppCompatActivity implements View.OnClickListe
         login_button.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.e("FB_login1", "onSuccess");
                 insertBoolean(Constant.AFTERLANG, true);
                 insertString(Constant.LOGINTYPE, "FB");
                 mBuffer.Access_Type = "FB";
@@ -398,34 +387,27 @@ public class Activity_Sec extends AppCompatActivity implements View.OnClickListe
                             .show();
                 }
                 break;
-
             case R.id.ly_without:
                 if (!(tv_sec_country.getText().equals(getResources().getString(R.string.spinner_country))) && !(tv_sec_lanugage.getText().equals(getResources().getString(R.string.spinner_language)))){
-//                    Intent intent_without = new Intent(Activity_Sec.this, DashboardActivity.class);
-//                    startActivity(intent_without);
-
                     Fragment fragment = new LandingFragment();
                     loadFragment(fragment);
                     mBuffer.Access_Type = "WITHOUT";
                     insertBoolean(Constant.AFTERLANG, true);
-//                    finish();
                 }else {
                     Snackbar.make(v, "Please select your country and language", Snackbar.LENGTH_LONG)
                             .show();
                 }
-
                 break;
             case R.id.rl_sec_country:
-
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                rl_sec_language.setBackgroundDrawable(getDrawable(R.drawable.bg_radius_line));
-                rl_sec_country.setBackgroundDrawable(getDrawable(R.drawable.bg_radius_white));
-                tv_sec_country.setTextColor(getColor(R.color.txt_dark));
-                img_country_down.setColorFilter(getColor(R.color.txt_dark));
-                tv_sec_lanugage.setTextColor(getColor(R.color.white));
-                img_lan_down.setColorFilter(getColor(R.color.white));
-                country_lv.setVisibility(View.VISIBLE);
-                lan_lv.setVisibility(View.GONE);
+                    rl_sec_language.setBackgroundDrawable(getDrawable(R.drawable.bg_radius_line));
+                    rl_sec_country.setBackgroundDrawable(getDrawable(R.drawable.bg_radius_white));
+                    tv_sec_country.setTextColor(getColor(R.color.txt_dark));
+                    img_country_down.setColorFilter(getColor(R.color.txt_dark));
+                    tv_sec_lanugage.setTextColor(getColor(R.color.white));
+                    img_lan_down.setColorFilter(getColor(R.color.white));
+                    country_lv.setVisibility(View.VISIBLE);
+                    lan_lv.setVisibility(View.GONE);
                 }
                 break;
             case R.id.rl_sec_language:
@@ -443,7 +425,6 @@ public class Activity_Sec extends AppCompatActivity implements View.OnClickListe
             case R.id.tv_sec_country_lv:
                 country_lv.setVisibility(View.GONE);
                 break;
-
             case R.id.tv_sec_lan_lv:
                 lan_lv.setVisibility(View.GONE);
                 break;

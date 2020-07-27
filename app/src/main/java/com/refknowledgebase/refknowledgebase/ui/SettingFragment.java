@@ -133,7 +133,6 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
             }
         };
 
-
         restoreValuesFromBundle(savedInstanceState);
 
         init();
@@ -161,13 +160,9 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onResume() {
         super.onResume();
-
-        // Resuming location updates depending on button state and
-        // allowed permissions
         if (mRequestingLocationUpdates && checkPermissions()) {
             startLocationUpdates();
         }
-
         updateLocationUI();
     }
 
@@ -190,7 +185,6 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
             if (savedInstanceState.containsKey("last_updated_on")) {
             }
         }
-
         updateLocationUI();
     }
 
@@ -202,7 +196,6 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
             points.add(latlng);
         }
     }
-
 
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
@@ -216,42 +209,38 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onCheckedChanged(CompoundButton toggleButton, boolean isChecked)
             {
-                if(isChecked){
-                    Dexter.withActivity(getActivity())
-                        .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-                        .withListener(new PermissionListener() {
-                            @Override
-                            public void onPermissionGranted(PermissionGrantedResponse response) {
-//                                startLocationUpdates();
-                                locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
-                                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-                                    OnGPS();
-                                }else {
-                                    getLocation();
-                                }
+            if(isChecked){
+                Dexter.withActivity(getActivity())
+                    .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                    .withListener(new PermissionListener() {
+                        @Override
+                        public void onPermissionGranted(PermissionGrantedResponse response) {
+                            locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
+                            if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+                                OnGPS();
+                            }else {
+                                getLocation();
                             }
+                        }
 
-                            @Override
-                            public void onPermissionDenied(PermissionDeniedResponse response) {
-                                if (response.isPermanentlyDenied()) {
-                                    // open device settings when the permission is
-                                    // denied permanently
-                                    openSettings();
-                                }
+                        @Override
+                        public void onPermissionDenied(PermissionDeniedResponse response) {
+                            if (response.isPermanentlyDenied()) {
+                                openSettings();
                             }
+                        }
 
-                            @Override
-                            public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
-                                token.continuePermissionRequest();
-                            }
-                        }).check();
-                }
-                else{
-                    stopLocationUpdates();
-                }
+                        @Override
+                        public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                            token.continuePermissionRequest();
+                        }
+                    }).check();
+            }
+            else{
+                stopLocationUpdates();
+            }
             }
         });
-
     }
 
     private void OnGPS() {
@@ -282,7 +271,6 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
                 double longi = locationGPS.getLongitude();
                 latitude = String.valueOf(lat);
                 longitude = String.valueOf(longi);
-//                Toast.makeText(getContext(), "Your Location: " + "\n" + "Latitude: " + latitude + "\n" + "Longitude: " + longitude, Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getContext(), "Unable to find location.", Toast.LENGTH_SHORT).show();
             }
@@ -291,55 +279,50 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
 
     private void startLocationUpdates() {
         mSettingsClient
-                .checkLocationSettings(mLocationSettingsRequest)
-                .addOnSuccessListener(getActivity(), new OnSuccessListener<LocationSettingsResponse>() {
-                    @SuppressLint("MissingPermission")
-                    @Override
-                    public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
-                        Log.i(TAG, "All location settings are satisfied.");
+            .checkLocationSettings(mLocationSettingsRequest)
+            .addOnSuccessListener(getActivity(), new OnSuccessListener<LocationSettingsResponse>() {
+                @SuppressLint("MissingPermission")
+                @Override
+                public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
+                    Log.i(TAG, "All location settings are satisfied.");
 
-                        Toast.makeText(getApplicationContext(), "Started location updates!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Started location updates!", Toast.LENGTH_SHORT).show();
+                    mFusedLocationClient.requestLocationUpdates(mLocationRequest,
+                            mLocationCallback, Looper.myLooper());
+                    updateLocationUI();
+                }
+            })
+            .addOnFailureListener(getActivity(), new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    int statusCode = ((ApiException) e).getStatusCode();
+                    switch (statusCode) {
+                        case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                            Log.i(TAG, "Location settings are not satisfied. Attempting to upgrade " +
+                                    "location settings ");
+                            try {
+                                // Show the dialog by calling startResolutionForResult(), and check the
+                                // result in onActivityResult().
+                                ResolvableApiException rae = (ResolvableApiException) e;
+                                rae.startResolutionForResult(getActivity(), REQUEST_CHECK_SETTINGS);
+                            } catch (IntentSender.SendIntentException sie) {
+                                Log.i(TAG, "PendingIntent unable to execute request.");
+                            }
+                            break;
+                        case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                            String errorMessage = "Location settings are inadequate, and cannot be " +
+                                    "fixed here. Fix in Settings.";
 
-                        //noinspection MissingPermission
-                        mFusedLocationClient.requestLocationUpdates(mLocationRequest,
-                                mLocationCallback, Looper.myLooper());
-
-                        updateLocationUI();
+                            Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
+                            break;
                     }
-                })
-                .addOnFailureListener(getActivity(), new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        int statusCode = ((ApiException) e).getStatusCode();
-                        switch (statusCode) {
-                            case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
-                                Log.i(TAG, "Location settings are not satisfied. Attempting to upgrade " +
-                                        "location settings ");
-                                try {
-                                    // Show the dialog by calling startResolutionForResult(), and check the
-                                    // result in onActivityResult().
-                                    ResolvableApiException rae = (ResolvableApiException) e;
-                                    rae.startResolutionForResult(getActivity(), REQUEST_CHECK_SETTINGS);
-                                } catch (IntentSender.SendIntentException sie) {
-                                    Log.i(TAG, "PendingIntent unable to execute request.");
-                                }
-                                break;
-                            case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
-                                String errorMessage = "Location settings are inadequate, and cannot be " +
-                                        "fixed here. Fix in Settings.";
-                                Log.e(TAG, errorMessage);
-
-                                Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
-                        }
-
-                        updateLocationUI();
-                    }
-                });
+                    updateLocationUI();
+                }
+            });
     }
 
     @Override
     public void onClick(View v) {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         switch (v.getId()){
             case R.id.rl_sec_country:
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -352,7 +335,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
                     insertString("MAPCOUNTRY",countries[which]);
                     GeocodingLocation locationAddress = new GeocodingLocation();
                     locationAddress.getAddressFromLocation(countries[which],
-                            getApplicationContext(), new GeocoderHandler());
+                            getContext(), new GeocoderHandler());
                     }
                 });
                 AlertDialog dialog = builder.create();
@@ -377,30 +360,21 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
                 }else {
                     insertBoolean(Constant.SET_LOCATION, false);
                 }
-
                 if (switch_dark_mode.isChecked()){
                     insertBoolean(Constant.SET_DARK, true);
                 }else {
                     insertBoolean(Constant.SET_DARK, false);
                 }
-
                 if (switch_notification.isChecked()){
                     insertBoolean(Constant.SET_PUSH, true);
                 }else {
                     insertBoolean(Constant.SET_PUSH, false);
                 }
-
                 insertString(Constant.SELECTED_COUNTRY, tv_sec_country.getText().toString());
                 insertString(Constant.SELECTED_LANGUAGE, tv_sec_lanugage.getText().toString());
-
-//                Toast.makeText(getContext(), "Data Saved", Toast.LENGTH_SHORT).show();
-//                Snackbar.make(v, "Setting saved", Snackbar.LENGTH_LONG)
-//                        .show();
                 startActivity(new Intent(getContext(), DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                 break;
         }
-//        AlertDialog dialog = builder.create();
-//        dialog.show();
     }
 
     private void stopLocationUpdates() {
@@ -439,15 +413,11 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
-            // Check for the integer request code originally supplied to startResolutionForResult().
             case REQUEST_CHECK_SETTINGS:
                 switch (resultCode) {
                     case Activity.RESULT_OK:
-                        Log.e(TAG, "User agreed to make required location settings changes.");
-                        // Nothing to do. startLocationupdates() gets called in onResume again.
                         break;
                     case Activity.RESULT_CANCELED:
-                        Log.e(TAG, "User chose not to make required location settings changes.");
                         mRequestingLocationUpdates = false;
                         break;
                 }
@@ -467,7 +437,6 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         mEditor.apply();
     }
 
-
     private class GeocoderHandler extends Handler {
         @Override
         public void handleMessage(Message message) {
@@ -485,8 +454,6 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
             mBuffer.map_long = location[1];
             insertString("MAPLAT", location[0]);
             insertString("MAPLONG", location[1]);
-
-            Log.e("MAPLAT + MAPLONG", location[0] + " : " + location[1]);
         }
     }
 }

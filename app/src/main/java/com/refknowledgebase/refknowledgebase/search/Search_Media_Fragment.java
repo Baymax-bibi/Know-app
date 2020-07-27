@@ -1,7 +1,9 @@
 package com.refknowledgebase.refknowledgebase.search;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +50,7 @@ import java.util.List;
 import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.refknowledgebase.refknowledgebase.utils.Constant.countries;
 
 public class Search_Media_Fragment  extends Fragment implements SearchClickListner {
 
@@ -57,23 +61,53 @@ public class Search_Media_Fragment  extends Fragment implements SearchClickListn
     private static final int PAGE_START = 1;
     private boolean isLoading = false;
     private boolean isLastPage = false;
-    // limiting to 5 for this tutorial, since total pages in actual API is very large. Feel free to modify.
     private int TOTAL_PAGES;
     private int currentPage = PAGE_START;
-    private int PER_PAGE = 5;
     FrameLayout fl_search_media;
-
     private int LASTPAGE;
     TextView tv_1;
     String filter_C;
+    int CountryId = 0;
 
+//    LinearLayout ly_search_direcotry_country;
+    TextView tv_result_count, tv_search_directory_country;
     TextView tv_cari;
-Context mContext;
+    Context mContext;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_search_media, container, false);
+
+//        tv_search_directory_country.setText(getString("MAPCOUNTRY").replace(" ", ""));
+
+//        ly_search_direcotry_country = root.findViewById(R.id.ly_search_direcotry_country);
+//        ly_search_direcotry_country.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//                builder.setTitle("Select Country");
+//                builder.setItems(countries, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        tv_search_directory_country.setText(countries[which]);
+//                        switch (countries[which]){
+//                            case "Libya":
+//                                CountryId = 5;
+//                                break;
+//                            case "Egypt":
+//                                CountryId = 6;
+//                                break;
+//                            case "Sudan":
+//                                CountryId = 7;
+//                                break;
+//                        }
+//                    }
+//                });
+//                AlertDialog dialog = builder.create();
+//                dialog.show();
+//            }
+//        });
         tv_1 = root.findViewById(R.id.tv_1);
         mContext = getContext();
         return root;
@@ -85,9 +119,8 @@ Context mContext;
         tv_cari = view.findViewById(R.id.tv_cari);
         tv_cari.setText(mBuffer.Search_key);
 
-        filter_C = getString("SEARCH_KEY");
-        Log.e("SEARCH_KEY", filter_C);
-//        getMediaData();
+//        filter_C = getString("SEARCH_KEY");
+
 
         rv_search_media = view.findViewById(R.id.rv_search_media);
         fl_search_media = view.findViewById(R.id.fl_search_media);
@@ -100,7 +133,7 @@ Context mContext;
                 ImageView image = (ImageView) dialog.findViewById(R.id.img_media);
                 Picasso.with(getContext()).load(Uri.parse(mBuffer.selected_media_id)).into(image);
                 Button dialogButton = (Button) dialog.findViewById(R.id.btn_close_img);
-                // if button is clicked, close the custom dialog
+
                 dialogButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -113,7 +146,6 @@ Context mContext;
         searchMediaAdapter = new SearchMediaAdapter(getContext(), homeContentClickListner);
         rv_search_media.setAdapter(searchMediaAdapter);
 
-//        rv_search_media.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         rv_search_media.setLayoutManager(layoutManager);
         rv_search_media.setItemAnimator(new DefaultItemAnimator());
@@ -124,8 +156,6 @@ Context mContext;
             protected void loadMoreItems() {
                 isLoading = true;
                 currentPage += 1;
-                Log.e("media","media load more");
-
                 loadPage(mContext, "a");
             }
 
@@ -153,7 +183,6 @@ Context mContext;
         RequestQueue queue = Volley.newRequestQueue(mContext);
 
         String url = "https://api.project-info.gq/api/media/es-search?page=1&per_page=5&keywords="+mBuffer.Search_key+"&lang=English";
-        Log.e("URL", url);
         StringRequest sr = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -176,7 +205,6 @@ Context mContext;
             @Override
             public void onErrorResponse(VolleyError error) {
                 Methods.closeProgress();
-                Log.e("Country","Country failed" + error.toString());
             }
         }){
             @Override
@@ -205,6 +233,5 @@ Context mContext;
 
     @Override
     public void myAction(String search) {
-        Log.e("OMG ", search);
     }
 }

@@ -27,11 +27,9 @@ public class Methods {
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
             return true;
         } else
-//            showLongToast(context.getString(R.string.error_network_check), context);
             Toast.makeText(context, context.getString(R.string.error_network_check), Toast.LENGTH_SHORT).show();
         return false;
     }
-
     public static void showProgress(Context context) {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
@@ -42,7 +40,6 @@ public class Methods {
         mProgressDialog.setCancelable(true);
         mProgressDialog.show();
     }
-
     public static void showProgress_data(Context context) {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
@@ -53,14 +50,12 @@ public class Methods {
         mProgressDialog.setCancelable(true);
         mProgressDialog.show();
     }
-
     public static void closeProgress() {
         if (mProgressDialog != null) {
             mProgressDialog.dismiss();
             mProgressDialog = null;
         }
     }
-
     public static void showAlertDialog(String msg, Context context) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(context);
         dialog.setMessage(msg);
@@ -72,54 +67,4 @@ public class Methods {
         });
         dialog.create().show();
     }
-
-//    private static Dialog dialog;
-//    private static int pStatus = 0;
-//    static final Handler handler = new Handler();
-//
-//    public static void showProgress (Context context){
-//        if (dialog != null && dialog.isShowing()){
-//            dialog.dismiss();
-//            dialog = null;
-//        }
-//        dialog = new Dialog(context);
-//        dialog.setContentView(R.layout.activity_loading);
-//
-//
-//        final CircularSeekBar circularSeekBar = dialog.findViewById(R.id.circle_bar);
-//        final TextView tv_percent = dialog.findViewById(R.id.tv_percent);
-//
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                pStatus = 0;
-//                while (pStatus <= 100) {
-//                    handler.post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            circularSeekBar.setProgress(pStatus);
-//                            tv_percent.setText(pStatus + " %");
-//                        }
-//                    });
-//                    try {
-//                        Thread.sleep(100);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    pStatus++;
-//                }
-////                Intent intent_google = new Intent(Activity_Loading.this, DashboardActivity.class);
-////                startActivity(intent_google);
-//            }
-//        }).start();
-//        dialog.setCancelable(true);
-//        dialog.show();
-//    }
-//
-//    public static void closeProgress() {
-//        if (dialog != null) {
-//            dialog.dismiss();
-//            dialog = null;
-//        }
-//    }
 }

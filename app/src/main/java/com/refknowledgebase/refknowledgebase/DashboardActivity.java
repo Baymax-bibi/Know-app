@@ -8,7 +8,9 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -26,6 +28,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.facebook.login.widget.ProfilePictureView;
 import com.google.android.material.snackbar.Snackbar;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.refknowledgebase.refknowledgebase.buffer.mBuffer;
@@ -36,16 +40,15 @@ import com.refknowledgebase.refknowledgebase.fragment.Notification_Fragment;
 import com.refknowledgebase.refknowledgebase.fragment.Saved_Fragment;
 import com.refknowledgebase.refknowledgebase.fragment.SearchFragment;
 import com.refknowledgebase.refknowledgebase.myinterface.SearchClickListner;
-import com.refknowledgebase.refknowledgebase.search.Search_Media_Fragment;
 import com.refknowledgebase.refknowledgebase.ui.HelpFragment;
 import com.refknowledgebase.refknowledgebase.ui.SettingFragment;
-import com.refknowledgebase.refknowledgebase.ui.Submit_questionFragment;
 import com.refknowledgebase.refknowledgebase.ui.TSFragment;
 import com.refknowledgebase.refknowledgebase.utils.Constant;
-import com.refknowledgebase.refknowledgebase.utils.Methods;
 import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 public class DashboardActivity extends AppCompatActivity  implements View.OnClickListener {
 
@@ -60,6 +63,7 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
     Animation animationsShow;
     boolean doublePressedBackToExit = false;
     CircularImageView img_profile;
+//    SimpleDraweeView friendProfilePicture;
 
     SearchClickListner searchClickListner;
 
@@ -76,6 +80,7 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
 //        }else if (getString(Constant.SELECTED_LANGUAGE).equals("عربى")){
 //            setAppLocal("ar");
 //        }
+//        friendProfilePicture = findViewById(R.id.friendProfilePicture);
 
         ly_logout = findViewById(R.id.ly_logout);
         ly_logout.setOnClickListener(this);
@@ -97,6 +102,22 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
         img_search_icon.setOnClickListener(this);
 
         et_search_text = findViewById(R.id.et_search_text);
+        et_search_text.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mBuffer.Search_key = et_search_text.getText().toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 //        end of search view
 
         img_hamburger = findViewById(R.id.img_hamburger);
@@ -168,24 +189,23 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
     private void init() {
 //        Toast.makeText(DashboardActivity.this, "AccessType" + getString(Constant.LOGINTYPE), Toast.LENGTH_SHORT).show();
         if (getString(Constant.LOGINTYPE).equals("GOOGLE")){
+
+//            img_profile.setVisibility(View.VISIBLE);
+//            friendProfilePicture.setVisibility(View.INVISIBLE);
             String google_photo = getString(Constant.LOGIN_PHOTO);
             String google_name = getString(Constant.LOGIN_NAME);
             Picasso.with(DashboardActivity.this).load(Uri.parse(google_photo)).into(img_profile);
             tv_name.setText(google_name);
         }
         if (getString(Constant.LOGINTYPE).equals("FB")){
-            Log.e("AccessToken", "FB");
-            Log.e("AccessFBNAME", getString(Constant.LOGIN_FB_NAME));
-            Log.e("AccessFBID", getString(Constant.LOGIN_FB_PHOTO));
-            Log.e("AccessFBEMAIL", getString(Constant.LOGIN_EMAIL));
+            Picasso.with(DashboardActivity.this).load("https://graph.facebook.com/" +  getString(Constant.LOGIN_FB_PHOTO) + "/picture?type=large").into(img_profile);
 
-//            String fb_photo = getString(Constant.LOGIN_FB_PHOTO);
-//            profilePictureView.setProfileId(fb_photo);
-            Picasso.with(DashboardActivity.this).load("https://miro.medium.com/max/256/1*d69DKqFDwBZn_23mizMWcQ.png").into(img_profile);
             tv_name.setText(getString(Constant.LOGIN_FB_NAME));
         }
 
         if (getString(Constant.LOGINTYPE).equals("WITHOUT")){
+//            img_profile.setVisibility(View.VISIBLE);
+//            friendProfilePicture.setVisibility(View.INVISIBLE);
             img_profile.setImageDrawable(getDrawable(R.drawable.avatar));
             tv_name.setText("");
         }
@@ -415,29 +435,17 @@ public class DashboardActivity extends AppCompatActivity  implements View.OnClic
 
                 startActivity(new Intent(DashboardActivity.this, DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
 
-
                 break;
             case R.id.ly_logout:
-//                insertString(Constant.LOGINTYPE, "WITHOUT");
-//                SharedPreferences preferences =getSharedPreferences(Constant.PREF,Context.MODE_PRIVATE);
-//                SharedPreferences.Editor editor = preferences.edit();
-//                editor.clear();
-//                editor.apply();
-//                finish();
-//                startActivity(new Intent(DashboardActivity.this, Activity_login.class));
                 Intent intent = new Intent(DashboardActivity.this, Activity_login.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
                 finish();
                 break;
             case R.id.img_search_icon:
-//                insertString("SEARCH_KEY", et_search_text.getText().toString());
-//                Search_Media_Fragment searchMediaFragment = new Search_Media_Fragment();
-//                searchMediaFragment.reloading(DashboardActivity.this, et_search_text.getText().toString());
                 InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
-                Log.e("searchkey", "???"+et_search_text.getText().toString());
                 if (et_search_text.getText().toString().equals("")){
                     Snackbar.make(v, "Search key is empty.", Snackbar.LENGTH_LONG)
                             .show();

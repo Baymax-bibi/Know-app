@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
 
-                Log.e("TAG", "getAutoTocken\n" + response);
                 Methods.closeProgress();
                 Gson gson = new Gson();
                 oAuth_model = gson.fromJson(response, oAuth_Model.class);

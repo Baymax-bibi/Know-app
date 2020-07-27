@@ -384,7 +384,6 @@ public class YouTubePlayerWebView extends WebView {
             try {
                 time = Double.parseDouble(seconds) * MULTIPLIER;
             } catch (NumberFormatException ignored) {
-                Log.e(TAG, ignored.getMessage());
             }
         }
         return (int) time;

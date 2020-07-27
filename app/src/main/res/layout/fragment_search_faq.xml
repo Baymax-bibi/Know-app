@@ -3,30 +3,6 @@
     android:id="@+id/rl_full"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
-<!--    <TextView-->
-<!--        android:id="@+id/tv_grant_cash"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/grant_cash"-->
-<!--        android:textSize="@dimen/padding_margin_10"-->
-<!--        android:textColor="@color/white_text_color"/>-->
-<!--    <TextView-->
-<!--        android:id="@+id/tv_result_count"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="SHOWING 3 RESULTS"-->
-<!--        android:layout_marginTop="@dimen/padding_margin_5"-->
-<!--        android:textColor="@android:color/white"-->
-<!--        android:textSize="@dimen/padding_margin_16"-->
-<!--        android:layout_below="@id/tv_grant_cash"/>-->
-
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/recyclerView_search_faq"-->
-<!--        android:scrollbars="vertical"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="@dimen/padding_margin_5"-->
-<!--        android:layout_below="@id/tv_result_count"/>-->
 
     <FrameLayout
         android:id="@+id/fl_search_content"

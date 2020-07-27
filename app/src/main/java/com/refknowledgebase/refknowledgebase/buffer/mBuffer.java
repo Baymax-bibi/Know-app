@@ -9,13 +9,10 @@ import java.util.List;
 public class mBuffer {
 
     public static String Access_Type = "";
-
     public static String oAuth_token = "";
     public static String token_type = "";
     public static Uri user_imgUrl;
     public static String user_name = "";
-
-
     public static String fb_user_name = "";
     public static String fb_user_id = "";
     public static String fb_user_email = "";
@@ -44,20 +41,6 @@ public class mBuffer {
     public static String Directory_City;
     public static String Directory_Country;
 
-//    public static String Directory_Sunday_From;
-//    public static String Directory_Sunday_To;
-//    public static String Directory_Monday_From;
-//    public static String Directory_Monday_To;
-//    public static String Directory_TUESDAY_From;
-//    public static String Directory_TUESDAY_To;
-//    public static String Directory_WEDNESDAY_From;
-//    public static String Directory_WEDNESDAY_To;
-//    public static String Directory_THURSDAY_From;
-//    public static String Directory_THURSDAY_To;
-//    public static String Directory_FRIDAY_From;
-//    public static String Directory_FRIDAY_To;
-//    public static String Directory_SATURDAY_From;
-//    public static String Directory_SATURDAY_To;
     public static List<Working_Hour_Model> workingHourModelList;
     public static String Directory_Hashtags;
 
@@ -75,4 +58,5 @@ public class mBuffer {
     public static String selected_media = "";
     public static String selected_media_type = "";
     public static String selected_media_id = "";
+    public static boolean isDirectMAP = true;
 }

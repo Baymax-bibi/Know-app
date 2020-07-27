@@ -59,7 +59,6 @@ public class Media_Fragment extends Fragment {
 
     private boolean isLoading = false;
     private boolean isLastPage = false;
-    // limiting to 5 for this tutorial, since total pages in actual API is very large. Feel free to modify.
     private int TOTAL_PAGES;
     private int currentPage = PAGE_START;
     private int PER_PAGE = 5;
@@ -139,8 +138,6 @@ public class Media_Fragment extends Fragment {
         StringRequest sr = new StringRequest(Request.Method.GET, Constant.URL+Constant.API_MEDIA + "?page=" + currentPage +"&per_page=" + PER_PAGE, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
-                Log.e("response_media", response);
                 Methods.closeProgress();
                 Gson gson = new Gson();
                 search_media_model = gson.fromJson(response, Search_Media_Model.class);

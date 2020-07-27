@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.refknowledgebase.refknowledgebase.R;
 
-
 public class TSFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

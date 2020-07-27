@@ -63,8 +63,6 @@ public class RV_Search_MediaAdapter extends RecyclerView.Adapter<RV_Search_Media
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 Fragment myFragment = new Assistance_detail();
-//                Log.e("RV_Search_MediaAdapter", ""+position);
-//                activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, myFragment).addToBackStack(null).commit();
             }
         });
 

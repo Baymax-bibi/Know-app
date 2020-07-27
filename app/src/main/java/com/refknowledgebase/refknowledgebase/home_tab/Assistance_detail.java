@@ -2,6 +2,7 @@ package com.refknowledgebase.refknowledgebase.home_tab;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
@@ -78,8 +79,35 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
         img_saved = root.findViewById(R.id.img_saved);
         img_share = root.findViewById(R.id.img_share);
 
+        img_home_assistance_detail_top.requestLayout();
+
         init();
+        getScreenSize();
         return root;
+    }
+
+    private void getScreenSize() {
+        int screenSize = getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK;
+
+        String toastMsg;
+        switch(screenSize) {
+            case Configuration.SCREENLAYOUT_SIZE_LARGE:
+                toastMsg = "Large screen";
+                img_home_assistance_detail_top.getLayoutParams().height = 400;
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_NORMAL:
+                img_home_assistance_detail_top.getLayoutParams().height = 500;
+                toastMsg = "Normal screen";
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_SMALL:
+                img_home_assistance_detail_top.getLayoutParams().height = 700;
+                toastMsg = "Small screen";
+                break;
+            default:
+                toastMsg = "Screen size is neither large, normal or small";
+        }
+//        Toast.makeText(getContext(), toastMsg, Toast.LENGTH_LONG).show();
     }
 
     private void init() {
@@ -109,7 +137,6 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
             @SuppressLint("LongLogTag")
             @Override
             public void onResponse(String response) {
-                Log.e("ASSDEtail", response);
                 Methods.closeProgress();
                 Gson gson = new Gson();
                 homeContentDetailModel = gson.fromJson(response, Home_Content_DetailModel.class);//draw data
@@ -143,7 +170,6 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
                 }
 
                 hashtagsEntitiesModels_list = homeContentDetailModel.getHashtags();
-//                Log.e("hashtagsEntitiesModels_list", String.valueOf(hashtagsEntitiesModels_list));
                 if (hashtagsEntitiesModels_list != null){
                     assistanceDetailAdapter.addAll_Hashtags_entities_Model(hashtagsEntitiesModels_list);
                     String hashtag_st = "";
@@ -195,13 +221,13 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
                 Intent shareIntent =   new Intent(android.content.Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT,"Insert Subject here");
-                String app_url = "";
-                if (directory_list_entitiesModels_list.get(0).getimage() != null){
-                    app_url = directory_list_entitiesModels_list.get(0).getimage() + "\n\n";
-                }
+//                String app_url = "";
+//                if (directory_list_entitiesModels_list.get(0).getimage() != null){
+//                    app_url = directory_list_entitiesModels_list.get(0).getimage() + "\n\n";
+//                }
                 String app_tile = homeContentDetailModel.getQuestion() + "\n\n";
                 String app_content = String.valueOf(Html.fromHtml(homeContentDetailModel.getAnswer()));
-                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT,app_tile + app_url + app_content);
+                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT,app_tile + app_content);
                 getContext().startActivity(Intent.createChooser(shareIntent, "Share via"));
                 break;
         }
@@ -209,17 +235,11 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
 
     private void deleteFaq() {
         final RequestQueue queue = Volley.newRequestQueue(getContext());
-        Log.e("SAVEDFAQID", String.valueOf(saved_faq_id));
-
         StringRequest sr = new StringRequest(Request.Method.DELETE, Constant.URL+Constant.API_SAVED_FAQ + "/" + saved_faq_id, new Response.Listener<String>() {
             @SuppressLint("LongLogTag")
             @Override
             public void onResponse(String response) {
                 Methods.closeProgress();
-//                Gson gson = new Gson();
-//                FAQ_SavedModel faq_savedModel  = gson.fromJson(response, FAQ_SavedModel.class);
-//                saved_faq_id = faq_savedModel.getId();
-                Log.e("deleted", response);
                 img_saved.setImageDrawable(getResources().getDrawable(R.drawable.un_saved));
                 saved_flag = !saved_flag;
             }
@@ -227,7 +247,6 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
             @Override
             public void onErrorResponse(VolleyError error) {
                 Methods.closeProgress();
-                Log.e("Service category","Service category failed" + error.toString());
                 Toast.makeText(getContext(), "Some error Occured", Toast.LENGTH_SHORT).show();
             }
         }){
@@ -257,13 +276,11 @@ public class Assistance_detail extends Fragment implements View.OnClickListener{
             @SuppressLint("LongLogTag")
             @Override
             public void onResponse(String response) {
-                Log.e("saveASSDEtail", response);
                 Methods.closeProgress();
                 Gson gson = new Gson();
                 FAQ_SavedModel faq_savedModel  = gson.fromJson(response, FAQ_SavedModel.class);
                 saved_faq_id = faq_savedModel.getId();
                 img_saved.setImageDrawable(getResources().getDrawable(R.drawable.detail_saved));
-//                Log.e("saved_faq_id", String.valueOf(saved_faq_id));
                 saved_flag = !saved_flag;
             }
         }, new Response.ErrorListener() {

@@ -87,20 +87,29 @@ public class SearchMediaAdapter extends RecyclerView.Adapter<SearchMediaAdapter.
                 holder.img_start_video.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mBuffer.selected_media = finalVideoUrl2.substring(finalVideoUrl2.length()-11);
+                    mBuffer.selected_media = finalVideoUrl2.substring(finalVideoUrl2.length()-11);
                     Intent intent = YouTubeStandalonePlayer.createVideoIntent((Activity) mConext, DEVELOPER_KEY, mBuffer.selected_media);
-                        Log.e("Video__id", mBuffer.selected_media);
                     mConext.startActivity(intent);
                     }
                 });
-            }else if(videoUrl.contains("vimeo")){
+            }
+            else if(videoUrl.contains("vimeo")){
+                ViewGroup.LayoutParams params =  holder.rl_full.getLayoutParams();
+                params.height = 0;
+                holder.rl_full.setLayoutParams(params);
                 holder.rl_video_landing.setVisibility(View.GONE);
                 holder.rl_vimeo.setVisibility(View.VISIBLE);
+
+                videoUrl = videoUrl.replace("httpss", "https");
+
                 final String finalVideoUrl1 = videoUrl;
+
+                videoUrl = videoUrl.replace("httpss", "https");
                 holder.img_vimeo_start.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         holder.img_vimeo_start.setVisibility(View.GONE);
+                        holder.vv_vimeo.setVideoURI(Uri.parse(finalVideoUrl1));
                         holder.vv_vimeo.start();
                     }
                 });
@@ -119,7 +128,6 @@ public class SearchMediaAdapter extends RecyclerView.Adapter<SearchMediaAdapter.
                 public void onClick(View v) {
                     mBuffer.selected_media_id = finalVideoUrl;
                     mListener.Home_Content_ClickListner(v, position);
-                    Log.e("SELECT_img", finalVideoUrl);
                 }
             });
         }
@@ -135,10 +143,11 @@ public class SearchMediaAdapter extends RecyclerView.Adapter<SearchMediaAdapter.
         TextView tv_content;
         VideoView vv_vimeo;
         ImageView  img_search_sub, img_vimeo_start, img_first_screen, img_start_video;
-        RelativeLayout rl_vimeo, rl_video_landing;
+        RelativeLayout rl_vimeo, rl_video_landing, rl_full;
 
         YouTubePlayerViewHolder(View itemView) {
             super(itemView);
+            this.rl_full = (RelativeLayout) itemView.findViewById(R.id.rl_full);
             this.rl_vimeo = (RelativeLayout) itemView.findViewById(R.id.rl_vimeo);
             this.img_search_sub = (ImageView) itemView.findViewById(R.id.img_search_sub);
             this.img_vimeo_start = (ImageView) itemView.findViewById(R.id.img_vimeo_start);

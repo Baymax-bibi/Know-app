@@ -45,7 +45,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class Home_Fragment extends Fragment {
 
     private RecyclerView rv_tab_bar, rv_home_content;
@@ -73,12 +72,6 @@ public class Home_Fragment extends Fragment {
 
         rv_tab_bar = root.findViewById(R.id.rv_tab_bar);
         rv_tab_bar.setLayoutManager(layoutManager_tab);
-//
-//        int totalVisibleItems = layoutManager_tab.findLastVisibleItemPosition() - layoutManager_tab.findFirstVisibleItemPosition();
-//        int centeredItemPosition = totalVisibleItems / 2;
-//        rv_tab_bar.smoothScrollToPosition(5);
-//        rv_tab_bar.setScrollX(centeredItemPosition);
-//        Log.e("TAG",layoutManager_tab.findLastVisibleItemPosition()+" | " + layoutManager_tab.findFirstVisibleItemPosition() + " | " + String.valueOf(centeredItemPosition));
 
         recyclerViewClickListener = new RecyclerViewClickListener() {
             @Override
@@ -97,11 +90,6 @@ public class Home_Fragment extends Fragment {
 
         swipeTabAdapter = new Swipe_Tab_Adapter(getContext(), recyclerViewClickListener);
         rv_tab_bar.setAdapter(swipeTabAdapter);
-//        rv_tab_bar.getLayoutManager().scrollToPosition(mBuffer.selectedItem);
-//        layoutManager_tab.scrollToPositionWithOffset(2, 10);
-//        int itemToScroll = rv_tab_bar.getChildAdapterPosition(root);
-//        int centerOfScreen = rv_tab_bar.getWidth() / 2 - root.getWidth() / 2;
-//        layoutManager_tab.scrollToPositionWithOffset(itemToScroll, centerOfScreen);
         rv_tab_bar.setItemAnimator(new DefaultItemAnimator());
         rv_tab_bar.addOnScrollListener(new PaginationScrollListener(layoutManager_tab) {
             @Override
@@ -132,21 +120,10 @@ public class Home_Fragment extends Fragment {
         Methods.showProgress(getContext());
         loadfirstpage();
 
-//content
         HomeContentClickListner homeContentClickListner = new HomeContentClickListner() {
             @Override
             public void Home_Content_ClickListner(View v, int position) {
             mBuffer.SELECTED_CONTENT_id = homeContentAdapter.getItem(position).getid();
-//            mBuffer.SELECTED_CONTENT_question = homeContentAdapter.getItem(position).getQuestion();
-//            mBuffer.SELECTED_CONTENT_question_normalize = homeContentAdapter.getItem(position).getQuestion_normalize();
-//            mBuffer.SELECTED_CONTENT_answer = homeContentAdapter.getItem(position).getAnswer();
-//            mBuffer.SELECTED_CONTENT_status = homeContentAdapter.getItem(position).getStatus();
-//            mBuffer.SELECTED_CONTENT_created_by = homeContentAdapter.getItem(position).getCreated_by();
-//            mBuffer.SELECTED_CONTENT_visible = homeContentAdapter.getItem(position).getVisible();
-//            mBuffer.SELECTED_CONTENT_service_category_ids = homeContentAdapter.getItem(position).getService_category_ids();
-//            mBuffer.SELECTED_CONTENT_country_ids = homeContentAdapter.getItem(position).getCountry_ids();
-//            mBuffer.SELECTED_CONTENT_nationality_ids = homeContentAdapter.getItem(position).getNationality_ids();
-//            mBuffer.SELECTED_CONTENT_hashtags = homeContentAdapter.getItem(position).getHashtags();
 
             fragment = new Assistance_detail();
             loadFragment(fragment);
@@ -260,8 +237,6 @@ public class Home_Fragment extends Fragment {
 
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
     }
 
     private void loadfirstpage() {
@@ -270,7 +245,6 @@ public class Home_Fragment extends Fragment {
         StringRequest sr = new StringRequest(Request.Method.GET, serviceCategory_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-//                Log.e("response_content", response);
                 Methods.closeProgress();
                 Gson gson = new Gson();
                 swipeTabModel = gson.fromJson(response, Swipe_Tab_Model.class);
@@ -394,10 +368,8 @@ public class Home_Fragment extends Fragment {
                         rv_tab_bar.smoothScrollToPosition(15);
                         break;
                 }
-//                rv_tab_bar.smoothScrollToPosition(6);
             }
         }, 200);
-
     }
 
     private void loadnextpage() {
@@ -461,5 +433,4 @@ public class Home_Fragment extends Fragment {
                     .commit();
         }
     }
-
 }

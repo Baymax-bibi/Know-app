@@ -22,8 +22,6 @@ public class Saved_Fragment extends Fragment implements View.OnClickListener{
     Fragment fragment;
     ImageView article_under, media_under, contact_under;
 
-
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_saved, container, false);
@@ -56,11 +54,8 @@ public class Saved_Fragment extends Fragment implements View.OnClickListener{
             case R.id.tv_saved_article:
                 fragment = new Saved_article_Fragment();
                 tv_saved_article.setTextColor(getResources().getColor(R.color.login_bg));
-//                tv_search_faq.setPaintFlags(tv_search_faq.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                 tv_saved_media.setTextColor(getResources().getColor(R.color.light_nav));
-//                tv_search_media.setPaintFlags(tv_search_media.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
                 tv_saved_contact.setTextColor(getResources().getColor(R.color.light_nav));
-//                tv_search_directory.setPaintFlags(tv_search_directory.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
                 article_under.setVisibility(View.VISIBLE);
                 media_under.setVisibility(View.GONE);
                 contact_under.setVisibility(View.GONE);
@@ -68,11 +63,8 @@ public class Saved_Fragment extends Fragment implements View.OnClickListener{
             case R.id.tv_saved_media:
                 fragment = new Saved_media_Fragment();
                 tv_saved_article.setTextColor(getResources().getColor(R.color.light_nav));
-//                tv_search_faq.setPaintFlags(tv_search_faq.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
                 tv_saved_media.setTextColor(getResources().getColor(R.color.login_bg));
-//                tv_search_media.setPaintFlags(tv_search_media.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                 tv_saved_contact.setTextColor(getResources().getColor(R.color.light_nav));
-//                tv_search_directory.setPaintFlags(tv_search_directory.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
                 article_under.setVisibility(View.GONE);
                 media_under.setVisibility(View.VISIBLE);
                 contact_under.setVisibility(View.GONE);
@@ -80,11 +72,8 @@ public class Saved_Fragment extends Fragment implements View.OnClickListener{
             case R.id.tv_saved_contact:
                 fragment = new Saved_contact_Fragment();
                 tv_saved_article.setTextColor(getResources().getColor(R.color.light_nav));
-//                tv_search_faq.setPaintFlags(tv_search_faq.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
                 tv_saved_media.setTextColor(getResources().getColor(R.color.light_nav));
-//                tv_search_media.setPaintFlags(tv_search_media.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
                 tv_saved_contact.setTextColor(getResources().getColor(R.color.login_bg));
-//                tv_search_directory.setPaintFlags(tv_search_directory.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                 article_under.setVisibility(View.GONE);
                 media_under.setVisibility(View.GONE);
                 contact_under.setVisibility(View.VISIBLE);
@@ -93,14 +82,12 @@ public class Saved_Fragment extends Fragment implements View.OnClickListener{
         loadFragment(fragment);
     }
 
-
     private boolean loadFragment(Fragment fragment){
         if (fragment != null){
             getActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    //.replace(R.id.fragment_container, fragment)
-                    .replace(R.id.fl_saved, fragment)
-                    .commit();
+                .beginTransaction()
+                .replace(R.id.fl_saved, fragment)
+                .commit();
             return true;
         }
         return false;

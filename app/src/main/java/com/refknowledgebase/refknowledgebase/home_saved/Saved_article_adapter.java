@@ -37,17 +37,6 @@ public class Saved_article_adapter extends RecyclerView.Adapter<Saved_article_ad
         final Saved_article_Model assistancemodel = listdata[position];
         holder.title.setText(listdata[position].getTitle());
         holder.content.setText(listdata[position].getContent());
-
-//        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AppCompatActivity activity = (AppCompatActivity) view.getContext();
-//                Fragment myFragment = new Assistance_detail();
-//                Log.e("assistance_adapter", ""+position);
-//                activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, myFragment).addToBackStack(null).commit();
-//            }
-//        });
-
     }
 
 

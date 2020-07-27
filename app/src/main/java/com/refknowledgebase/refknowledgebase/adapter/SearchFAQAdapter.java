@@ -185,7 +185,6 @@ public class SearchFAQAdapter extends RecyclerView.Adapter<SearchFAQAdapter.View
         @Override
         public void onClick(View v) {
             mListener.Home_Content_ClickListner(v, this.getPosition());
-//            Log.e("Content", "Clicked");
         }
     }
 

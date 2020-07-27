@@ -1,5 +1,7 @@
 package com.refknowledgebase.refknowledgebase.search;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,58 +13,115 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.refknowledgebase.refknowledgebase.R;
+import com.refknowledgebase.refknowledgebase.alphabetindex.RecyclerViewAdapter;
+import com.refknowledgebase.refknowledgebase.model.Directory_List_entitiesModel;
+import com.refknowledgebase.refknowledgebase.model.Service_Category_Model;
+import com.refknowledgebase.refknowledgebase.myinterface.DirectListClickListner;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Search_direcotry_adapter  extends RecyclerView.Adapter<Search_direcotry_adapter.ViewHolder>{
-    private Search_Directory_model[] listdata;
+    private List<Directory_List_entitiesModel> mDataArray;
+    private List<Service_Category_Model> mServiceArray;
+    private DirectListClickListner directListClickListner;
 
-    // RecyclerView recyclerView;
-    public Search_direcotry_adapter(Search_Directory_model[] listdata) {
-        this.listdata = listdata;
-    }
-    @Override
-    public Search_direcotry_adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View listItem= layoutInflater.inflate(R.layout.list_item_search_directory, parent, false);
-        Search_direcotry_adapter.ViewHolder viewHolder = new Search_direcotry_adapter.ViewHolder(listItem);
-        return viewHolder;
-    }
+    public Search_direcotry_adapter(Context context, DirectListClickListner _directListClickListner) {
+        mDataArray = new ArrayList<>();
+        mServiceArray = new ArrayList<>();
 
-    @Override
-    public void onBindViewHolder(Search_direcotry_adapter.ViewHolder holder, int position) {
-        final Search_Directory_model search_directory_model = listdata[position];
-        holder.tv_search_dirctory_distance.setText(listdata[position].getDistance());
-        holder.tv_search_directory_association.setText(listdata[position].getAssociation());
-        holder.tv_search_directory_address.setText(listdata[position].getAddress());
-//        holder.img_search_directory_call.setImageResource(listdata[position].getImg_1());
-//        holder.img_search_directory_location.setImageResource(listdata[position].getImg_2());
-//        holder.img_search_directory_saved.setImageResource(listdata[position].getImg_2());
-
-        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
+        directListClickListner = _directListClickListner;
     }
 
     @Override
     public int getItemCount() {
-        return listdata.length;
+        return mDataArray.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        //public ImageView img_search_directory_call, img_search_directory_location, img_search_directory_saved;
-        public TextView tv_search_dirctory_distance, tv_search_directory_association, tv_search_directory_address;
-        public RelativeLayout relativeLayout;
+    @NotNull
+    @Override
+    public Search_direcotry_adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.list_item_search_directory, parent, false);
+        return new Search_direcotry_adapter.ViewHolder(v);
+    }
 
-        public ViewHolder(View itemView) {
+    @SuppressLint("SetTextI18n")
+    @Override
+    public void onBindViewHolder(final Search_direcotry_adapter.ViewHolder holder, final int position) {
+        if(mDataArray.get(position).getacronym() != null){
+            holder.mTextView.setText(""+mDataArray.get(position).getname() + " ("+mDataArray.get(position).getacronym()+")");
+        }else {
+            holder.mTextView.setText(""+mDataArray.get(position).getname());
+        }
+
+        holder.tv_servicename.setText(""+mServiceArray.get(position).getName());
+        String Country_list = "";
+        for (int country_i = 0; country_i < mDataArray.get(position).getcountries().length; country_i ++){
+            Country_list += " " + mDataArray.get(position).getcountries()[country_i];
+        }
+        holder.tv_country.setText("Country: " + Country_list);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                directListClickListner.recyclerViewListClicked(v, position);
+            }
+        });
+    }
+
+    public void add(Directory_List_entitiesModel r){
+        mDataArray.add(r);
+        notifyItemInserted(mDataArray.size() - 1);
+    }
+
+    public void addAll(List<Directory_List_entitiesModel> moveResults) {
+        for (Directory_List_entitiesModel result : moveResults) {
+            add(result);
+        }
+    }
+
+    public Directory_List_entitiesModel getItem(int position) {
+        return mDataArray.get(position);
+    }
+
+    public void clear() {
+        while (getItemCount() > 0){
+            remove(getItem(0));
+        }
+    }
+
+    public void remove(Directory_List_entitiesModel r) {
+        int position = mDataArray.indexOf(r);
+        if (position > -1) {
+            mDataArray.remove(position);
+            notifyItemRemoved(position);
+        }
+    }
+
+    public void addServiceAll(List<Service_Category_Model> serviceCategoryModelList) {
+        for (Service_Category_Model result: serviceCategoryModelList){
+            addService(result);
+        }
+    }
+
+    private void addService(Service_Category_Model serviceCategoryModelList) {
+        mServiceArray.add(serviceCategoryModelList);
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+
+        TextView mTextView;
+        TextView tv_servicename, tv_country;
+
+        ViewHolder(View itemView) {
             super(itemView);
-//            this.img_search_directory_call = (ImageView) itemView.findViewById(R.id.img_search_directory_call);
-//            this.img_search_directory_location = (ImageView) itemView.findViewById(R.id.img_search_directory_location);
-//            this.img_search_directory_saved = (ImageView) itemView.findViewById(R.id.img_search_directory_saved);
-            this.tv_search_dirctory_distance = (TextView) itemView.findViewById(R.id.tv_search_directory_distance);
-            this.tv_search_directory_association = (TextView) itemView.findViewById(R.id.tv_search_directory_association);
-            this.tv_search_directory_address = (TextView) itemView.findViewById(R.id.tv_search_directory_address);
-            relativeLayout = (RelativeLayout)itemView.findViewById(R.id.relativeLayout);
+            mTextView = itemView.findViewById(R.id.tv_search_directory_distance);
+            tv_servicename = itemView.findViewById(R.id.tv_search_directory_association);
+            tv_country = itemView.findViewById(R.id.tv_search_directory_address);
+
         }
     }
 }

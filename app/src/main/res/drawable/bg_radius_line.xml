@@ -9,17 +9,10 @@
 
                 <corners android:radius="25dp" />
 
-<!--                <padding-->
-<!--                    android:top="10dp"-->
-<!--                    android:bottom="10dp"/>-->
                 <stroke
                     android:width="0.5dp"
                     android:color="@android:color/white"/>
             </shape>
         </item>
-        <!--        <item >-->
-        <!--            <bitmap android:gravity="right"-->
-        <!--                android:src="@drawable/white_arrow" />-->
-        <!--        </item>-->
     </layer-list></item>
 </selector>

@@ -7,7 +7,8 @@
 <RelativeLayout
     android:id="@+id/rl_contact_info"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
     <TextView
         android:id="@+id/tv_top"
         android:layout_width="wrap_content"
@@ -26,14 +27,6 @@
         android:background="#ff7a1b"
         android:layout_below="@id/tv_top"
         android:layout_marginTop="6.5dp"/>
-
-    <!--    <FrameLayout-->
-    <!--        android:id="@+id/fl_search_content"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_below="@id/img_top_under"-->
-    <!--        android:layout_marginTop="23.3dp"-->
-    <!--        android:background="#ffffff">-->
 
     <View
         android:id="@+id/shadow"
@@ -76,7 +69,8 @@
             android:layout_height="21.8dp"
             android:layout_toRightOf="@id/icon_center"
             android:layout_marginLeft="16.4dp"
-            android:src="@drawable/ic_dir_saved"/>
+            android:src="@drawable/un_saved"
+            android:tint="@color/fire_color"/>
 
         <ImageView
             android:id="@+id/img_up"
@@ -466,6 +460,10 @@
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
+    <FrameLayout
+        android:id="@+id/fl_search_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#ffffff"/>
 </RelativeLayout>
-
 </RelativeLayout>

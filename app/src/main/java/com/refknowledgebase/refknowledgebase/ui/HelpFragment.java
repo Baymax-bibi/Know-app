@@ -8,14 +8,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-
 import com.refknowledgebase.refknowledgebase.R;
-
 
 public class HelpFragment extends Fragment implements View.OnClickListener, Animation.AnimationListener {
 

@@ -127,7 +127,6 @@ public class Swipe_Tab_Adapter extends RecyclerView.Adapter<Swipe_Tab_Adapter.Vi
                 mBuffer.selectedItem = position;
                 notifyItemChanged(previousItem);
                 notifyItemChanged(position);
-                Log.e("tab_clcik", "x : " + position);
                 myListener.recyclerViewListClicked(v, position);
             }
         });
@@ -169,21 +168,12 @@ public class Swipe_Tab_Adapter extends RecyclerView.Adapter<Swipe_Tab_Adapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img_tab, img_under;
         TextView tv_title;
-//        RelativeLayout rl_one_tab;
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-//            this.itemView.setOnClickListener(this);
-//            this.rl_one_tab = (RelativeLayout) itemView.findViewById(R.id.rl_one_tab);
-//            rl_one_tab.setOnClickListener(this);
             this.tv_title = (TextView) itemView.findViewById(R.id.tv_title);
             this.img_tab = (ImageView) itemView.findViewById(R.id.img_tab);
             this.img_under = (ImageView) itemView.findViewById(R.id.img_under);
         }
 
-//        @Override
-//        public void onClick(View v) {
-//            myListener.recyclerViewListClicked(v, this.getPosition());
-//            Log.e("tab", "Clicked");
-//        }
     }
 }

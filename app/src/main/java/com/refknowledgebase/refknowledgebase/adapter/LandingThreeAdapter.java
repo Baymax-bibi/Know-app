@@ -66,7 +66,6 @@ public class LandingThreeAdapter extends RecyclerView.Adapter<LandingThreeAdapte
                 selectedItem = position;
                 notifyItemChanged(previousItem);
                 notifyItemChanged(position);
-                Log.e("tab_clcik", "x : " + position);
                 myListener.recyclerViewListClicked(v, position);
             }
         });

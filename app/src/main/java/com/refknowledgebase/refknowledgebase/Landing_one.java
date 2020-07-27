@@ -25,14 +25,6 @@ public class Landing_one extends Fragment implements View.OnClickListener {
     static RelativeLayout rl_96;
     static RelativeLayout rl_119;
     static RelativeLayout rl_129;
-//    static RelativeLayout rl_131;
-//    static RelativeLayout rl_135;
-//    static RelativeLayout rl_136;
-//    static RelativeLayout rl_137;
-//    static RelativeLayout rl_138;
-//    static RelativeLayout rl_165;
-//    static RelativeLayout rl_166;
-//    static RelativeLayout rl_167;
 
     ImageView img_assistance, img_education, img_health_care, img_protection, img_refugee_status_determination, img_resettlement, img_livelihoods, img_how_to_contact_unhcr, img_residency, img_legal_aid;
     static boolean flag = true;
@@ -54,14 +46,6 @@ public class Landing_one extends Fragment implements View.OnClickListener {
         rl_96 = (RelativeLayout) root.findViewById(R.id.rl_96);
         rl_119 = (RelativeLayout) root.findViewById(R.id.rl_119);
         rl_129 = (RelativeLayout) root.findViewById(R.id.rl_129);
-//        rl_131 = (RelativeLayout) root.findViewById(R.id.rl_131);
-//        rl_135 = (RelativeLayout) root.findViewById(R.id.rl_135);
-//        rl_136 = (RelativeLayout) root.findViewById(R.id.rl_136);
-//        rl_137 = (RelativeLayout) root.findViewById(R.id.rl_137);
-//        rl_138 = (RelativeLayout) root.findViewById(R.id.rl_138);
-//        rl_165 = (RelativeLayout) root.findViewById(R.id.rl_165);
-//        rl_166 = (RelativeLayout) root.findViewById(R.id.rl_166);
-//        rl_167 = (RelativeLayout) root.findViewById(R.id.rl_167);
 
         rl_107.setOnClickListener(this);
         rl_9.setOnClickListener(this);
@@ -84,14 +68,6 @@ public class Landing_one extends Fragment implements View.OnClickListener {
         img_how_to_contact_unhcr = root.findViewById(R.id.img_how_to_contact_unhcr);
         img_residency = root.findViewById(R.id.img_residency);
         img_legal_aid = root.findViewById(R.id.img_legal_aid);
-//        rl_131.setOnClickListener(this);
-//        rl_135.setOnClickListener(this);
-//        rl_136.setOnClickListener(this);
-//        rl_137.setOnClickListener(this);
-//        rl_138.setOnClickListener(this);
-//        rl_165.setOnClickListener(this);
-//        rl_166.setOnClickListener(this);
-//        rl_167.setOnClickListener(this);
 
         init();
 

@@ -55,7 +55,6 @@ public class Assistance_adapter extends RecyclerView.Adapter<Assistance_adapter.
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 Fragment myFragment = new Assistance_detail();
-                Log.e("assistance_adapter", ""+position);
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.home_pager, myFragment).addToBackStack(null).commit();
             }
         });

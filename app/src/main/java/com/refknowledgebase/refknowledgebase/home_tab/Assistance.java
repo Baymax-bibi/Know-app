@@ -58,7 +58,6 @@ public class Assistance extends Fragment {
             public void onClick(View v) {
                 int itemPosition = recyclerView_home_assistance.getChildLayoutPosition(v);
                 String item = myListData[itemPosition].getDescription();
-                Log.e("assistance", "item");
             }
         });
 

@@ -49,10 +49,6 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
         tv_search_media = root.findViewById(R.id.tv_search_media);
         tv_search_directory = root.findViewById(R.id.tv_search_directory);
 
-//        tv_search_faq.setOnClickListener(this);
-//        tv_search_media.setOnClickListener(this);
-//        tv_search_directory.setOnClickListener(this);
-
         rl_faq.setOnClickListener(this);
         rl_media.setOnClickListener(this);
         rl_dir.setOnClickListener(this);
@@ -106,25 +102,18 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
             case R.id.rl_faq:
                 fragment = new Search_Faq_Fragment();
                 tv_search_faq.setTextColor(getResources().getColor(R.color.login_bg));
-//                tv_search_faq.setPaintFlags(tv_search_faq.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                 tv_search_media.setTextColor(getResources().getColor(R.color.light_nav));
-//                tv_search_media.setPaintFlags(tv_search_media.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
                 tv_search_directory.setTextColor(getResources().getColor(R.color.light_nav));
-//                tv_search_directory.setPaintFlags(tv_search_directory.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
                 faq_under.setVisibility(View.VISIBLE);
                 media_under.setVisibility(View.GONE);
                 dir_under.setVisibility(View.GONE);
                 mBuffer.type_search = "faq";
-//                mBuffer.is_search = true;
                 break;
             case R.id.rl_media:
                 fragment = new Search_Media_Fragment();
                 tv_search_faq.setTextColor(getResources().getColor(R.color.light_nav));
-//                tv_search_faq.setPaintFlags(tv_search_faq.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
                 tv_search_media.setTextColor(getResources().getColor(R.color.login_bg));
-//                tv_search_media.setPaintFlags(tv_search_media.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                 tv_search_directory.setTextColor(getResources().getColor(R.color.light_nav));
-//                tv_search_directory.setPaintFlags(tv_search_directory.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
                 faq_under.setVisibility(View.GONE);
                 media_under.setVisibility(View.VISIBLE);
                 dir_under.setVisibility(View.GONE);
@@ -133,11 +122,8 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
             case R.id.rl_dir:
                 fragment = new Search_Directory_Fragment();
                 tv_search_faq.setTextColor(getResources().getColor(R.color.light_nav));
-//                tv_search_faq.setPaintFlags(tv_search_faq.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
                 tv_search_media.setTextColor(getResources().getColor(R.color.light_nav));
-//                tv_search_media.setPaintFlags(tv_search_media.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
                 tv_search_directory.setTextColor(getResources().getColor(R.color.login_bg));
-//                tv_search_directory.setPaintFlags(tv_search_directory.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                 faq_under.setVisibility(View.GONE);
                 media_under.setVisibility(View.GONE);
                 dir_under.setVisibility(View.VISIBLE);
@@ -150,10 +136,9 @@ public class SearchFragment extends Fragment implements View.OnClickListener{
     private boolean loadFragment(Fragment fragment){
         if (fragment != null){
             getActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    //.replace(R.id.fragment_container, fragment)
-                    .replace(R.id.fl_search_content, fragment)
-                    .commit();
+                .beginTransaction()
+                .replace(R.id.fl_search_content, fragment)
+                .commit();
             return true;
         }
         return false;

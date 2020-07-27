@@ -183,7 +183,6 @@ public class Saved_article_Fragment extends Fragment {
                 Collections.sort(saved_entitiesModelList, new Comparator<Saved_entitiesModel>() {
                     @Override
                     public int compare(Saved_entitiesModel o1, Saved_entitiesModel o2) {
-                        Log.e("o2_o1", String.valueOf(o2.getId()+ " : " + o1.getId()));
                         return Integer.compare(o2.getId(), o1.getId());
                     }
                 });
@@ -195,10 +194,7 @@ public class Saved_article_Fragment extends Fragment {
 
                 for (int i = 0; i < saved_entitiesModelList.size(); i++){
                     if (saved_entitiesModelList.get(i).getFaqs() != null){
-//                        Log.e("TAG", String.valueOf(saved_entitiesModelList.get(i).getFaqs()));
-
                         homeContentModelList = new ArrayList<>(saved_entitiesModelList.get(i).getFaqs());
-
                         savedFaqAdapter.addAll_faq(homeContentModelList);
                     }
                 }

@@ -19,7 +19,6 @@ import com.refknowledgebase.refknowledgebase.R;
 public class Submit_questionFragment extends Fragment {
     Spinner spin_submit_question_category;
 
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_submit_question, container, false);
@@ -34,7 +33,6 @@ public class Submit_questionFragment extends Fragment {
                 getContext().getResources().getString(R.string.home_Resettlement), getContext().getResources().getString(R.string.home_Residncy),
                 getContext().getResources().getString(R.string.home_SGBV), getContext().getResources().getString(R.string.home_Covid),
                 getContext().getResources().getString(R.string.home_IrregularMove), getContext().getResources().getString(R.string.home_TellRealStory),
-
         };
 
         spin_submit_question_category = root.findViewById(R.id.spin_submit_question_category);
@@ -42,14 +40,7 @@ public class Submit_questionFragment extends Fragment {
         {
             @Override
             public boolean isEnabled(int position){
-//                if(position == 0)
-//                {
-//                    return false;
-//                }
-//                else
-//                {
                     return true;
-//                }
             }
             @SuppressLint("ResourceAsColor")
             @Override
@@ -72,4 +63,3 @@ public class Submit_questionFragment extends Fragment {
         return root;
     }
 }
-

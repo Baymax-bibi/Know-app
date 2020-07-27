@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import com.refknowledgebase.refknowledgebase.DashboardActivity;
 import com.refknowledgebase.refknowledgebase.R;
+import com.refknowledgebase.refknowledgebase.buffer.mBuffer;
 import com.refknowledgebase.refknowledgebase.directory_tab.List_Fragment;
 import com.refknowledgebase.refknowledgebase.directory_tab.Map_Fragment;
 import com.refknowledgebase.refknowledgebase.utils.Methods;
@@ -61,6 +62,7 @@ public class Directory_Fragment extends Fragment implements View.OnClickListener
                 tv_directory_map.setTextColor(getResources().getColor(R.color.light_nav));
                 img_list_under.setVisibility(View.VISIBLE);
                 img_map_under.setVisibility(View.GONE);
+                mBuffer.isDirectMAP = false;
                 break;
             case R.id.tv_directory_map:
                 fragment = new Map_Fragment();
@@ -68,6 +70,7 @@ public class Directory_Fragment extends Fragment implements View.OnClickListener
                 tv_directory_map.setTextColor(getResources().getColor(R.color.login_bg));
                 img_list_under.setVisibility(View.GONE);
                 img_map_under.setVisibility(View.VISIBLE);
+                mBuffer.isDirectMAP = true;
                 break;
         }
         loadFragment(fragment);

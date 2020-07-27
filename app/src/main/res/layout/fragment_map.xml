@@ -5,19 +5,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:tint="@android:color/white"
-        android:backgroundTint="#1baec3"
-        app:fabSize="auto"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="33.8dp"
-        android:layout_marginRight="13.5dp"
-        app:srcCompat="@drawable/search" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fab"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom|end"-->
+<!--        android:tint="@android:color/white"-->
+<!--        android:backgroundTint="#1baec3"-->
+<!--        app:fabSize="auto"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginBottom="33.8dp"-->
+<!--        android:layout_marginRight="13.5dp"-->
+<!--        app:srcCompat="@drawable/search" />-->
 
     <fragment
         android:id="@+id/map"
@@ -50,38 +50,38 @@
             android:text="@string/near"
             android:textSize="9sp"
             android:textColor="#797979"/>
-        <LinearLayout
-            android:id="@+id/ly_map_radius"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="11.5dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/tv_search_directory_near"
-            android:background="@drawable/bg_radius_black_line"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="10.3dp"
-                android:layout_height="6dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="9.5dp"
-                android:layout_marginTop="9.3dp"
-                android:layout_marginBottom="9.8dp"
-                android:src="@drawable/down_arrow"
-                android:tint="#797979"/>
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ly_map_radius"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="11.5dp"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_toRightOf="@id/tv_search_directory_near"-->
+<!--            android:background="@drawable/bg_radius_black_line"-->
+<!--            android:orientation="horizontal">-->
+<!--            <ImageView-->
+<!--                android:layout_width="10.3dp"-->
+<!--                android:layout_height="6dp"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:layout_marginLeft="9.5dp"-->
+<!--                android:layout_marginTop="9.3dp"-->
+<!--                android:layout_marginBottom="9.8dp"-->
+<!--                android:src="@drawable/down_arrow"-->
+<!--                android:tint="#797979"/>-->
 
-            <TextView
-                android:id="@+id/tv_map_radius"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="6.3dp"
-                android:layout_marginTop="9.3dp"
-                android:layout_marginBottom="8.8dp"
-                android:layout_marginRight="11dp"
-                android:text="@string/spinner_radius"
-                android:textSize="9sp"
-                android:fontFamily="@font/roboto"
-                android:textColor="#797979"/>
-        </LinearLayout>
+<!--            <TextView-->
+<!--                android:id="@+id/tv_map_radius"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="6.3dp"-->
+<!--                android:layout_marginTop="9.3dp"-->
+<!--                android:layout_marginBottom="8.8dp"-->
+<!--                android:layout_marginRight="11dp"-->
+<!--                android:text="@string/spinner_radius"-->
+<!--                android:textSize="9sp"-->
+<!--                android:fontFamily="@font/roboto"-->
+<!--                android:textColor="#797979"/>-->
+<!--        </LinearLayout>-->
 
         <LinearLayout
             android:id="@+id/ly_map_country"
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10.8dp"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/ly_map_radius"
+            android:layout_toRightOf="@id/tv_search_directory_near"
             android:background="@drawable/bg_radius_black_line"
             android:orientation="horizontal">
             <ImageView

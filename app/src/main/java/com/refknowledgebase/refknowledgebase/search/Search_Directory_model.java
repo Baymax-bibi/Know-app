@@ -7,9 +7,6 @@ public class Search_Directory_model {
         this.distance = distance;
         this.association = association;
         this.address = address;
-//        this.img_call = img_call;
-//        this.img_location = img_location;
-//        this.img_saved = img_saved;
     }
 
     public String getDistance() {

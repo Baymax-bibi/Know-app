@@ -90,7 +90,6 @@ public class List_Fragment extends Fragment{
                 isLoading = true;
                 Methods.showProgress(getContext());
                 loading_content();
-                Log.e("Scroll", "end");
             }
 
             @Override
@@ -212,7 +211,7 @@ public class List_Fragment extends Fragment{
             }
 
             @Override
-            public byte[] getBody() throws AuthFailureError {
+            public byte[] getBody() {
                 try {
                     return requestBody == null ? null : requestBody.getBytes("utf-8");
                 } catch (UnsupportedEncodingException uee) {

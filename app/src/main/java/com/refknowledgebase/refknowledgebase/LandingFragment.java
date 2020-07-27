@@ -13,16 +13,13 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,28 +32,19 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerView;
 import com.google.android.youtube.player.YouTubeStandalonePlayer;
 import com.google.gson.Gson;
 import com.refknowledgebase.refknowledgebase.adapter.DashPagerAdapter;
-import com.refknowledgebase.refknowledgebase.adapter.SearchMediaAdapter;
-import com.refknowledgebase.refknowledgebase.adapter.Swipe_Tab_Adapter;
 import com.refknowledgebase.refknowledgebase.buffer.mBuffer;
 import com.refknowledgebase.refknowledgebase.model.Search_Media_Model;
 import com.refknowledgebase.refknowledgebase.model.Search_Media_entities_Model;
-import com.refknowledgebase.refknowledgebase.model.Swipe_Tab_Model;
-import com.refknowledgebase.refknowledgebase.model.Swipe_Tab_entitiesModel;
 import com.refknowledgebase.refknowledgebase.myinterface.RecyclerViewClickListener;
 import com.refknowledgebase.refknowledgebase.utils.Constant;
 import com.refknowledgebase.refknowledgebase.utils.Methods;
-import com.refknowledgebase.refknowledgebase.utils.youtubeconfig;
 import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import static com.refknowledgebase.refknowledgebase.utils.Constant.DEVELOPER_KEY;
 
@@ -77,6 +65,7 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
     TextView tv_media;
     ImageView img_search_icon;
     EditText et_search_text;
+    int TOTAL_ITEM = 0;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -116,8 +105,13 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
             @Override
             public void onClick(View v) {
                 ++current_position;
-                loadVideoData();
-                Methods.showProgress(getContext());
+                if (TOTAL_ITEM <= current_position){
+                    --current_position;
+                    Toast.makeText(getContext(), "Last Media", Toast.LENGTH_SHORT).show();
+                }else {
+                    loadVideoData();
+                    Methods.showProgress(getContext());
+                }
             }
         });
 
@@ -183,7 +177,6 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
         recyclerViewClickListener = new RecyclerViewClickListener() {
             @Override
             public void recyclerViewListClicked(View v, int position) {
-                Log.e("what", "is this");
             }
         };
 
@@ -207,6 +200,8 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
                 search_media_model = gson.fromJson(response, Search_Media_Model.class);
                 List<Search_Media_entities_Model> results = search_media_model.getEntities();
 
+                TOTAL_ITEM = search_media_model.getTotal();
+
                 String videoUrl = results.get(0).geturl();
                 videoUrl = videoUrl.replace("http", "https");
 
@@ -214,9 +209,9 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
                     rl_video_landing.setVisibility(View.VISIBLE);
                     img_poster.setVisibility(View.GONE);
                     if (videoUrl.contains("youtube")){
-                    String videoId = videoUrl.substring(videoUrl.length()-11);
 
                     videoUrl = videoUrl.replace("httpss", "https");
+                    String videoId = videoUrl.substring(videoUrl.length()-11);
 
                     Picasso.with(getContext()).load(Uri.parse("https://i4.ytimg.com/vi/"+ videoId+"/0.jpg")).into(img_first_screen);
                     mBuffer.selected_media = videoId;
@@ -238,7 +233,6 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Methods.closeProgress();
-                Log.e("Country","Country failed" + error.toString());
             }
         }){
             @Override
@@ -280,7 +274,6 @@ public class LandingFragment extends Fragment implements View.OnClickListener  {
 
             case R.id.img_start_video:
                 Intent intent = YouTubeStandalonePlayer.createVideoIntent(requireActivity(), DEVELOPER_KEY, mBuffer.selected_media);
-                Log.e("activity_developerkey_selected", requireActivity()+" : " + DEVELOPER_KEY + " : " + mBuffer.selected_media);
                 startActivity(intent);
                 break;
         }

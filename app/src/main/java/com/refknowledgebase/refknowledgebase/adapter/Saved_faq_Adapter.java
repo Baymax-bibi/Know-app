@@ -58,11 +58,6 @@ public class Saved_faq_Adapter extends RecyclerView.Adapter<Saved_faq_Adapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull final Saved_faq_Adapter.ViewHolder holder, final int position) {
-//        for (int i = 0; i < home_content_engitiesModelList.size(); i ++){
-//            holder.tv_title.setText(home_content_engitiesModelList.get(i).getQuestion());
-//            holder.tv_content.setText(home_content_engitiesModelList.get(i).getShort_answer());
-//        }
-//        Log.e("Count", String.valueOf(home_content_engitiesModelList.size()));
         final Home_Content_engitiesModel homeContentEngitiesModel = home_content_engitiesModelList.get(position);
 
         holder.tv_title.setText(homeContentEngitiesModel.getQuestion());
@@ -77,55 +72,10 @@ public class Saved_faq_Adapter extends RecyclerView.Adapter<Saved_faq_Adapter.Vi
         holder.img_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                saved_faq_id = homeContentEngitiesModel.getid();
-//                Log.e("saved_faq_id", String.valueOf(saved_faq_id));
-//                deleteSavedFaq();
                 mListener.Home_Content_ClickListner(v, position);
             }
         });
     }
-
-//    private void deleteSavedFaq() {
-//        final RequestQueue queue = Volley.newRequestQueue(mContext);
-//
-//        StringRequest sr = new StringRequest(Request.Method.DELETE, Constant.URL+Constant.API_SAVED_FAQ + "/" + saved_faq_id, new Response.Listener<String>() {
-//            @SuppressLint("LongLogTag")
-//            @Override
-//            public void onResponse(String response) {
-//                Methods.closeProgress();
-////                Gson gson = new Gson();
-////                FAQ_SavedModel faq_savedModel  = gson.fromJson(response, FAQ_SavedModel.class);
-////                saved_faq_id = faq_savedModel.getId();
-////                img_saved.setImageDrawable(getResources().getDrawable(R.drawable.un_saved));
-//                Toast.makeText(mContext, "Successfully Deleted", Toast.LENGTH_SHORT).show();
-//                notifyDataSetChanged();
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Methods.closeProgress();
-//                Log.e("Service category","Service category failed" + error.toString());
-//                Toast.makeText(mContext, "Some error Occured", Toast.LENGTH_SHORT).show();
-//            }
-//        }){
-//            @Override
-//            protected Map<String,String> getParams(){
-//                Map<String,String> params = new HashMap<String, String>();
-//                params.put("name", "Mylist_FAQ");
-//                params.put("faqs[0]", String.valueOf(mBuffer.SELECTED_CONTENT_id));
-//                return params;
-//            }
-//
-//            @Override
-//            public Map<String, String> getHeaders() {
-//                Map<String,String> params = new HashMap<String, String>();
-//                params.put("Content-Type","application/x-www-form-urlencoded");
-//                params.put("Authorization", mBuffer.token_type + " " + mBuffer.oAuth_token);
-//                return params;
-//            }
-//        };
-//        queue.add(sr);
-//    }
 
     public void remove(Home_Content_engitiesModel r) {
         int position = home_content_engitiesModelList.indexOf(r);
